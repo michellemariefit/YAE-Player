@@ -1,0 +1,236 @@
+<!doctype html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>My Week · Youth Athlete Edge</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow:wght@500;700;800&family=Barlow+Condensed:wght@500;600;700&family=Lato:wght@400;700&display=swap">
+<style>
+/* The week planner. The athlete taps her practice and game days, picks in season or off season,
+   and the page lays the program around them using Michelle's rules (see RULES below).
+   Ticks save on this phone. Print gives a one-page fridge sheet. */
+:root{
+  --bg:#f3f7f9; --card:#ffffff; --ink:#14263a; --muted:#5a6b7c; --line:#d6e1e8;
+  --brand:#167f8c; --brand-soft:#dff3f5; --gold:#ffc83d;
+  --accent:#f2542d; --accent-ink:#ffffff; --accent-soft:#ffe7e0; --done:#167f8c;
+  --display:"Barlow","Helvetica Neue",Arial,sans-serif; --body:"Lato","Helvetica Neue",Arial,sans-serif;
+  --mono:"Barlow Condensed","Arial Narrow","Helvetica Neue",sans-serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0e1a26; --card:#17273a; --ink:#eef4f8; --muted:#a4b4c4; --line:#2a3d52;
+  --brand:#4fc3cf; --brand-soft:#173a40; --gold:#ffd66b; --accent:#ff7a57; --accent-ink:#0e1a26; --accent-soft:#3d2219; --done:#4fc3cf; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0e1a26; --card:#17273a; --ink:#eef4f8; --muted:#a4b4c4; --line:#2a3d52;
+  --brand:#4fc3cf; --brand-soft:#173a40; --gold:#ffd66b; --accent:#ff7a57; --accent-ink:#0e1a26; --accent-soft:#3d2219; --done:#4fc3cf; color-scheme:dark}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.5 var(--body);padding:0 16px 80px}
+.wrap{max-width:560px;margin:0 auto;display:flex;flex-direction:column;gap:16px}
+button{font:inherit;color:inherit;cursor:pointer}
+button:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+header{padding-top:14px;display:flex;flex-direction:column;gap:6px}
+.eyebrow{font:600 14px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--brand)}
+h1{font:800 clamp(28px,8vw,40px)/1.05 var(--display);margin:0}
+.lead{margin:0;color:var(--muted)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:14px 16px;display:flex;flex-direction:column;gap:10px}
+.card h2{margin:0;font:800 18px/1.2 var(--display)}
+.step{font:700 13px/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--accent)}
+.seg{display:grid;grid-template-columns:1fr 1fr;background:var(--bg);border:1px solid var(--line);border-radius:14px;padding:4px}
+.seg button{border:0;background:transparent;border-radius:10px;padding:10px;font:600 16px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase}
+.seg button[aria-pressed="true"]{background:var(--brand);color:#fff}
+.days{display:grid;grid-template-columns:repeat(7,1fr);gap:6px}
+.days button{border:1px solid var(--line);background:var(--bg);border-radius:12px;padding:10px 2px;display:flex;flex-direction:column;align-items:center;gap:4px;font:600 13px/1 var(--mono)}
+.days button b{font:800 16px/1 var(--display)}
+.days button small{font-size:11px;color:var(--muted)}
+.days button[data-kind="practice"]{background:var(--brand-soft);border-color:var(--brand)}
+.days button[data-kind="game"]{background:var(--accent-soft);border-color:var(--accent)}
+.days button[data-kind="game"] small{color:var(--accent);font-weight:700}
+.days button[data-kind="practice"] small{color:var(--brand);font-weight:700}
+.hint{margin:0;font-size:14px;color:var(--muted)}
+.summary{display:flex;flex-wrap:wrap;gap:6px}
+.chip{font:600 14px/1 var(--mono);letter-spacing:.04em;background:var(--brand-soft);border:1px solid var(--brand);color:var(--brand);border-radius:8px;padding:6px 8px}
+.chip.warn{background:var(--accent-soft);border-color:var(--accent);color:var(--accent)}
+.plan{display:flex;flex-direction:column;gap:8px}
+.day{display:grid;grid-template-columns:64px 1fr;gap:10px;border:1px solid var(--line);border-radius:14px;padding:10px 12px;background:var(--card)}
+.day.rest{opacity:.8}
+.day .d{display:flex;flex-direction:column}
+.day .d b{font:800 18px/1 var(--display)}
+.day .d small{font:600 12px/1.2 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-top:4px}
+.day .d small.game{color:var(--accent)}.day .d small.practice{color:var(--brand)}
+.items{display:flex;flex-direction:column;gap:6px}
+.item{display:flex;align-items:flex-start;gap:10px}
+.item input{width:22px;height:22px;margin:1px 0 0;accent-color:var(--done);flex:none}
+.item label{flex:1}
+.item label b{font-weight:700}
+.item label small{display:block;color:var(--muted);font-size:13px}
+.item a{color:var(--accent);font-weight:700;text-decoration:none}
+.item.done label{text-decoration:line-through;color:var(--muted)}
+.rules{font-size:14px;color:var(--muted);margin:0;padding-left:18px;display:flex;flex-direction:column;gap:4px}
+.toolrow{display:flex;gap:8px;flex-wrap:wrap}
+.toolrow button{font:700 14px/1 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--brand);border:1px solid var(--line);background:var(--card);border-radius:999px;padding:8px 12px}
+.wins{display:grid;grid-template-columns:repeat(4,1fr);gap:6px}
+.win{border:1px solid var(--line);border-radius:12px;padding:8px 6px;text-align:center}
+.win b{display:block;font:800 22px/1 var(--display);color:var(--brand)}
+.win small{font:600 11px/1.2 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.win.hit{border-color:var(--done);background:var(--brand-soft)}
+@media print{
+  @page{size:letter portrait;margin:.5in}
+  body{background:#fff;color:#000;padding:0;font-size:12px}
+  .wrap{max-width:none;gap:8px}.card,.day{border-color:#999;border-radius:6px;background:#fff}
+  .noprint,.toolrow,.seg,.days,.hint,.lead{display:none}
+  .item input{width:14px;height:14px}.day{padding:6px 8px}.plan{gap:4px}
+  .chip{color:#000;border-color:#000;background:#fff}
+}
+</style>
+<div class="wrap">
+  <header>
+    <span class="eyebrow">Youth Athlete Edge · My Week</span>
+    <h1>Plan your week</h1>
+    <p class="lead">Your practices and games go in first. The program fits around them. Two minutes on Sunday night, then stick it on the fridge.</p>
+  </header>
+
+  <section class="card">
+    <span class="step">Step 1</span>
+    <h2>Are you in season right now?</h2>
+    <div class="seg" role="group"><button id="inSeason" aria-pressed="true">In season</button><button id="offSeason" aria-pressed="false">Off season</button></div>
+    <p class="hint" id="seasonHint"></p>
+  </section>
+
+  <section class="card">
+    <span class="step">Step 2</span>
+    <h2>Tap your practice and game days</h2>
+    <div class="days" id="days"></div>
+    <p class="hint">Tap once for practice, twice for a game, three times to clear. Privates and trainings count as practice.</p>
+    <div class="summary" id="summary"></div>
+  </section>
+
+  <section class="card">
+    <span class="step">Step 3</span>
+    <h2>Your week</h2>
+    <div class="plan" id="plan"></div>
+    <div class="wins" id="wins"></div>
+    <div class="toolrow"><button id="printBtn">🖨 Print this week</button><button id="clearBtn">Clear ticks</button></div>
+  </section>
+
+  <section class="card noprint">
+    <h2>The rules this follows</h2>
+    <ul class="rules" id="rules"></ul>
+  </section>
+</div>
+
+<script>
+// Michelle's scheduling rules, in one place so they are easy to change.
+const RULES={
+  season:{
+    workouts:1, workoutLabel:'1 workout a week: strength or stability. Swap a Stability exercise or two into the Foundation workout if you like.',
+    mobility:[2,3], recovery:[2,3],
+    text:['Warm-up before every game. Before practice too if there is time.',
+          'Mobility 2 to 3 times a week, 5 to 10 minutes, before practice on practice days.',
+          'Recovery (stretch, MAT holds, foam roll) 2 to 3 times a week, 5 to 10 minutes, after practice or a game, or on an off day.',
+          'One strength or stability workout a week. Not the day before a game.',
+          'Mobility and recovery are not workouts. They attach to a practice or a game.']},
+  off:{
+    workouts:2, workoutLabel:'2 workouts a week: one Foundation (strength) and one Stability & Balance.',
+    mobility:[2,3], recovery:[2,3],
+    text:['Two workouts a week: one Foundation strength, one Stability & Balance.',
+          'Mobility 2 to 3 times a week, 5 to 10 minutes. Off days or your own training day.',
+          'Recovery (stretch, MAT holds, foam roll) 2 to 3 times a week, 5 to 10 minutes.',
+          'Warm-up before every practice and game.',
+          'Four or more team sessions in a week? Drop to one workout. A heavy week does not get extra workouts stacked on top.']},
+  heavyWeek:4   // team sessions at or above this = one workout max, whatever the season
+};
+const DAYS=['Mon','Tue','Wed','Thu','Fri','Sat','Sun'];
+const $=s=>document.querySelector(s);
+const store={get(k,d){try{const v=localStorage.getItem(k);return v?JSON.parse(v):d}catch(e){return d}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}};
+function weekStart(){const d=new Date();d.setHours(0,0,0,0);d.setDate(d.getDate()-((d.getDay()+6)%7));return d}
+const WEEK=weekStart().toISOString().slice(0,10);
+const state=Object.assign({season:'season',days:['','','','','','',''],ticks:{}},store.get('yae:week:setup',{}));
+state.ticks=store.get('yae:week:'+WEEK,{});
+const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+
+// Which workout is next? Reads the player's log on this phone so it rotates through the numbers.
+function nextWorkout(prefix,count){
+  const log=store.get('yae:log',[]).filter(x=>x.id&&x.id.startsWith(prefix+'-'));
+  const last=log.length?+log[log.length-1].id.split('-')[1]:0;
+  return prefix+'-'+(last%count+1);
+}
+const NAMES={foundation:'Foundation Workout',stability:'Stability Workout'};
+function wlink(id){const [p,n]=id.split('-');return `<a href="index.html#${id}" target="_top">${NAMES[p]} ${n}</a>`}
+
+function buildPlan(){
+  const r=RULES[state.season];
+  const kinds=state.days;
+  const sessions=kinds.filter(Boolean).length;
+  const games=kinds.map((k,i)=>k==='game'?i:-1).filter(i=>i>=0);
+  const practices=kinds.map((k,i)=>k==='practice'?i:-1).filter(i=>i>=0);
+  const offs=kinds.map((k,i)=>k?-1:i).filter(i=>i>=0);
+  let workouts=sessions>=RULES.heavyWeek?1:r.workouts;
+  const plan=DAYS.map(()=>[]);
+  const notes=[];
+  // Warm-up: every game day, practice days if time (off season: every practice too)
+  games.forEach(i=>plan[i].push({k:'warmup',t:'Warm-Up',s:'before the team warm-up',link:'warmup'}));
+  practices.forEach(i=>plan[i].push({k:'warmup',t:'Warm-Up',s:state.season==='off'?'before practice':'before practice, if there is time',link:'warmup',opt:state.season!=='off'}));
+  // Mobility: 2-3x. In season on practice days (before practice). Off season: off days first, then practice days.
+  let mobDays=(state.season==='season'?practices.concat(offs):offs.concat(practices)).slice(0,r.mobility[1]);
+  if(mobDays.length<r.mobility[0]) mobDays=DAYS.map((_,i)=>i).filter(i=>!games.includes(i)).slice(0,r.mobility[0]);
+  mobDays.forEach(i=>plan[i].push({k:'mobility',t:'Mobility',s:kinds[i]==='practice'?'5 to 10 min, before practice':'5 to 10 min',link:'mobility'}));
+  // Recovery: 2-3x, after games first, then off days, then practice days (after)
+  const recOrder=games.concat(offs.filter(i=>!mobDays.includes(i)),offs,practices.filter(i=>!mobDays.includes(i)),practices);
+  const recDays=[...new Set(recOrder)].slice(0,r.recovery[1]);
+  recDays.forEach(i=>plan[i].push({k:'recovery',t:'Recovery',s:(kinds[i]?'after '+kinds[i]:'5 to 10 min')+': stretch, MAT holds, foam roll',link:'stretching'}));
+  // Workouts: off days, never the day before a game, never a game day. Fall back to a practice day.
+  const dayBeforeGame=new Set(games.map(i=>(i+6)%7));
+  let slots=offs.filter(i=>!dayBeforeGame.has(i));
+  if(slots.length<workouts) slots=slots.concat(offs.filter(i=>!slots.includes(i)));
+  if(slots.length<workouts) slots=slots.concat(practices.filter(i=>!dayBeforeGame.has(i)&&!slots.includes(i)));
+  if(slots.length<workouts) slots=slots.concat(practices.filter(i=>!slots.includes(i)));
+  // spread them out: first and middle of the available slots
+  const chosen=workouts===1?[slots[0]]:[slots[0],slots[Math.floor(slots.length/2)]||slots[1]];
+  const ids=state.season==='off'?[nextWorkout('foundation',8),nextWorkout('stability',6)]:[nextWorkout('foundation',8)];
+  chosen.filter(i=>i!==undefined).forEach((i,n)=>{
+    const id=ids[n]||ids[0];
+    plan[i].push({k:'workout',t:'Workout',s:[kinds[i]?'add it after '+kinds[i]+', one hard session a day':'',state.season==='season'?'strength or stability, your pick':''].filter(Boolean).join(' · '),link:id,html:wlink(id)});
+  });
+  if(sessions>=RULES.heavyWeek) notes.push(`${sessions} team sessions this week, so just 1 workout. That is the rule, not a shortcut.`);
+  if(sessions===0) notes.push('No practices or games this week? Use the off-season plan and take at least one full rest day.');
+  if(chosen.some(i=>kinds[i])) notes.push('No free day for the workout, so it sits after a practice. Never before a game.');
+  // one full rest day
+  const restDay=DAYS.map((_,i)=>i).find(i=>!kinds[i]&&plan[i].length===0);
+  if(restDay!==undefined) plan[restDay].push({k:'rest',t:'Rest',s:'that is part of the program too'});
+  return {plan,notes,workouts,sessions};
+}
+
+function render(){
+  const r=RULES[state.season];
+  $('#inSeason').setAttribute('aria-pressed',state.season==='season');
+  $('#offSeason').setAttribute('aria-pressed',state.season==='off');
+  $('#seasonHint').textContent=state.season==='season'
+    ?'In season: practices and games fill the week, so the program attaches to them. One workout, mobility before practice, recovery after.'
+    :'Off season: two workouts a week, and mobility and recovery get their own days.';
+  $('#days').innerHTML=DAYS.map((d,i)=>`<button data-day="${i}" data-kind="${state.days[i]}"><b>${d}</b><small>${state.days[i]==='game'?'Game':state.days[i]==='practice'?'Practice':'off'}</small></button>`).join('');
+  const {plan,notes,workouts,sessions}=buildPlan();
+  $('#summary').innerHTML=`<span class="chip">${sessions} team session${sessions===1?'':'s'}</span><span class="chip">${workouts} workout${workouts===1?'':'s'}</span>`+notes.map(n=>`<span class="chip warn">${esc(n)}</span>`).join('');
+  const counts={warmup:0,mobility:0,recovery:0,workout:0},done={warmup:0,mobility:0,recovery:0,workout:0};
+  $('#plan').innerHTML=plan.map((items,i)=>{
+    const kind=state.days[i];
+    return `<div class="day ${items.length===1&&items[0].k==='rest'?'rest':''}"><div class="d"><b>${DAYS[i]}</b><small class="${kind}">${kind||'off'}</small></div><div class="items">${
+      items.length?items.map((it,j)=>{
+        const id=`${i}-${it.k}-${j}`;const on=!!state.ticks[id];
+        if(it.k!=='rest'){counts[it.k]++;if(on)done[it.k]++}
+        return `<div class="item ${on?'done':''}">${it.k==='rest'?'<span style="width:22px"></span>':`<input type="checkbox" id="t${id}" data-tick="${id}" ${on?'checked':''}>`}<label for="t${id}"><b>${it.html||esc(it.t)}</b>${it.opt?' <span class="hint">(optional)</span>':''}<small>${esc(it.s)}</small></label></div>`}).join('')
+      :`<div class="item"><span style="width:22px"></span><label><b>Nothing planned</b><small>free day</small></label></div>`}</div></div>`}).join('');
+  $('#wins').innerHTML=[['warmup','Warm-ups'],['mobility','Mobility'],['recovery','Recovery'],['workout','Workouts']].map(([k,l])=>`<div class="win ${counts[k]&&done[k]>=counts[k]?'hit':''}"><b>${done[k]}/${counts[k]}</b><small>${l}</small></div>`).join('');
+  $('#rules').innerHTML=r.text.map(t=>`<li>${esc(t)}</li>`).join('');
+}
+document.addEventListener('click',e=>{
+  const b=e.target.closest('button');
+  if(b&&b.dataset.day!==undefined){const i=+b.dataset.day;state.days[i]={'':'practice',practice:'game',game:''}[state.days[i]];save();render();return}
+  if(b&&(b.id==='inSeason'||b.id==='offSeason')){state.season=b.id==='inSeason'?'season':'off';save();render();return}
+  if(b&&b.id==='printBtn'){window.print();return}
+  if(b&&b.id==='clearBtn'){state.ticks={};store.set('yae:week:'+WEEK,{});render();return}
+});
+document.addEventListener('change',e=>{
+  const c=e.target.closest('input[data-tick]');if(!c)return;
+  state.ticks[c.dataset.tick]=c.checked;store.set('yae:week:'+WEEK,state.ticks);render();
+});
+function save(){store.set('yae:week:setup',{season:state.season,days:state.days})}
+render();
+</script>

@@ -1,0 +1,1414 @@
+{
+ "program": "YAE",
+ "name": "The Youth Athlete Edge",
+ "groups": [
+  {
+   "id": "warmup",
+   "name": "Warm-Up",
+   "intro": "Before every game, and before practice when there's time. Short on time? Pick 3 to 5 of these.",
+   "workouts": [
+    {
+     "id": "warmup",
+     "name": "Warm-Up",
+     "group": "warmup",
+     "how": "Do this warm-up before team practices. Before games it's a MUST. Short on time before practice? Choose 3-5 of the exercises. · 1-2 sets of each · 10-15 reps each.",
+     "when": "",
+     "tip": "",
+     "sets": 2,
+     "setsLabel": "1 or 2 sets",
+     "reps": "10-15",
+     "restSeconds": 0,
+     "restLabel": "",
+     "circuit": false,
+     "blocks": [
+      {
+       "label": "1",
+       "exercises": [
+        {
+         "code": "1",
+         "name": "Banded Hip Flexions",
+         "video": "sKpWBIPtb4k",
+         "note": "",
+         "photo": "images/sKpWBIPtb4k-pdf.webp"
+        }
+       ]
+      },
+      {
+       "label": "2",
+       "exercises": [
+        {
+         "code": "2",
+         "name": "Banded Partner Adductions",
+         "video": "jBWquK9mAys",
+         "note": "",
+         "alts": [
+          {
+           "label": "Alt version",
+           "video": "9L_xzHL3yno"
+          }
+         ],
+         "photo": "images/jBWquK9mAys-pdf.webp"
+        }
+       ]
+      },
+      {
+       "label": "3",
+       "exercises": [
+        {
+         "code": "3",
+         "name": "Standing Band Abductions",
+         "video": "m5mVO3qmeN8",
+         "note": "",
+         "photo": "images/m5mVO3qmeN8-pdf.webp"
+        }
+       ]
+      },
+      {
+       "label": "4",
+       "exercises": [
+        {
+         "code": "4",
+         "name": "Banded Backkicks",
+         "video": "6EkZXGi7p4A",
+         "note": "",
+         "photo": "images/6EkZXGi7p4A-pdf.webp"
+        }
+       ]
+      },
+      {
+       "label": "5",
+       "exercises": [
+        {
+         "code": "5",
+         "name": "Diagonal Backkicks",
+         "video": "RSansB4XdUY",
+         "note": "",
+         "photo": "images/RSansB4XdUY-pdf.webp"
+        }
+       ]
+      },
+      {
+       "label": "6",
+       "exercises": [
+        {
+         "code": "6",
+         "name": "Lateral Band Walks",
+         "video": "FRCNjkDxtN0",
+         "note": "",
+         "photo": "images/FRCNjkDxtN0-pdf.webp"
+        }
+       ]
+      },
+      {
+       "label": "7",
+       "exercises": [
+        {
+         "code": "7",
+         "name": "Single Leg Reaches",
+         "video": "EXrX1lNTTio",
+         "note": "",
+         "photo": "images/EXrX1lNTTio-pdf.webp"
+        }
+       ]
+      },
+      {
+       "label": "8",
+       "exercises": [
+        {
+         "code": "8",
+         "name": "Lateral Lunges",
+         "video": "IsbtRQaUcfE",
+         "note": "",
+         "photo": "images/IsbtRQaUcfE-pdf.webp"
+        }
+       ]
+      },
+      {
+       "label": "9",
+       "exercises": [
+        {
+         "code": "9",
+         "name": "Calf Raises",
+         "video": "I8OmbB8gcD4",
+         "note": "",
+         "photo": "images/I8OmbB8gcD4-pdf.webp"
+        }
+       ]
+      },
+      {
+       "label": "10",
+       "exercises": [
+        {
+         "code": "10",
+         "name": "Calf Jumps",
+         "video": "CYoVWzBMAxU",
+         "note": "",
+         "photo": "images/CYoVWzBMAxU-pdf.webp"
+        }
+       ]
+      },
+      {
+       "label": "11",
+       "exercises": [
+        {
+         "code": "11",
+         "name": "Ankle Circles",
+         "video": "7mIROhye5Pc",
+         "note": "",
+         "photo": "images/7mIROhye5Pc-pdf.webp"
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "mobility",
+   "name": "Mobility",
+   "intro": "5 to 10 minutes. Before or after practice, or on an off day.",
+   "workouts": [
+    {
+     "id": "mobility",
+     "name": "Mobility Workout",
+     "group": "mobility",
+     "how": "2 sets of each exercise · 10 reps per side.",
+     "when": "before or after practices and games, or on off days.",
+     "tip": "",
+     "sets": 2,
+     "setsLabel": "2 sets",
+     "reps": "10",
+     "restSeconds": 0,
+     "restLabel": "",
+     "circuit": false,
+     "blocks": [
+      {
+       "label": "1",
+       "exercises": [
+        {
+         "code": "1",
+         "name": "Seated Hip Openers: Both Sides",
+         "video": "W-sKnTxMUCI",
+         "note": "",
+         "photo": "images/W-sKnTxMUCI-pdf.webp"
+        }
+       ]
+      },
+      {
+       "label": "2",
+       "exercises": [
+        {
+         "code": "2",
+         "name": "Seated Hip Openers: Single Side",
+         "video": "D606hnoTZpk",
+         "note": "",
+         "photo": "images/D606hnoTZpk-pdf.webp"
+        }
+       ]
+      },
+      {
+       "label": "3",
+       "exercises": [
+        {
+         "code": "3",
+         "name": "Seated Hip Openers: Single Side 2",
+         "video": "4RcqLYsyx1Q",
+         "note": "",
+         "photo": "images/4RcqLYsyx1Q-pdf.webp"
+        }
+       ]
+      },
+      {
+       "label": "4",
+       "exercises": [
+        {
+         "code": "4",
+         "name": "Foam Roller Hip Openers",
+         "video": "VtP4gnovG6w",
+         "note": "",
+         "photo": "images/VtP4gnovG6w-pdf.webp"
+        }
+       ]
+      },
+      {
+       "label": "5",
+       "exercises": [
+        {
+         "code": "5",
+         "name": "Slider Hip Openers",
+         "video": "Kq1TEH7wZhI",
+         "note": "",
+         "photo": "images/Kq1TEH7wZhI-pdf.webp"
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "stretching",
+   "name": "Stretching",
+   "intro": "After practice, after games, or on off days. Always finish with the MAT holds so the muscles wake back up.",
+   "workouts": [
+    {
+     "id": "stretching",
+     "name": "Stretching",
+     "group": "stretching",
+     "how": "1-2 sets of each stretch · 5-10 reps per side · always finish with the MAT exercises.",
+     "when": "",
+     "tip": "",
+     "sets": 2,
+     "setsLabel": "1 or 2 sets",
+     "reps": "5-10",
+     "restSeconds": 0,
+     "restLabel": "",
+     "circuit": false,
+     "blocks": [
+      {
+       "label": "1",
+       "exercises": [
+        {
+         "code": "1",
+         "name": "Hamstring Stretch",
+         "video": "nFl6jPhEAuA",
+         "note": "",
+         "photo": "images/nFl6jPhEAuA-pdf.webp"
+        }
+       ]
+      },
+      {
+       "label": "2",
+       "exercises": [
+        {
+         "code": "2",
+         "name": "Glute/Piriformis Stretch",
+         "video": "WuOm7LoENU8",
+         "note": "",
+         "photo": "images/WuOm7LoENU8-pdf.webp"
+        }
+       ]
+      },
+      {
+       "label": "3",
+       "exercises": [
+        {
+         "code": "3",
+         "name": "Calf Stretch",
+         "video": "SquuyQAV95g",
+         "note": "",
+         "photo": "images/SquuyQAV95g-pdf.webp"
+        }
+       ]
+      },
+      {
+       "label": "4",
+       "exercises": [
+        {
+         "code": "4",
+         "name": "Rotator Stretch",
+         "video": "bjduyvPoiig",
+         "note": "",
+         "photo": "images/bjduyvPoiig-pdf.webp"
+        }
+       ]
+      },
+      {
+       "label": "5",
+       "exercises": [
+        {
+         "code": "5",
+         "name": "Lying Quad/Hip Stretch",
+         "video": "VLDWvdhvBcM",
+         "note": "",
+         "photo": "images/VLDWvdhvBcM-pdf.webp"
+        }
+       ]
+      },
+      {
+       "label": "6",
+       "exercises": [
+        {
+         "code": "6",
+         "name": "Standing Quad Stretch",
+         "video": "vf9yZz6nq-Y",
+         "note": "",
+         "section": "Optional / Interchangeable",
+         "photo": "images/vf9yZz6nq-Y-pdf.webp"
+        }
+       ]
+      },
+      {
+       "label": "7",
+       "exercises": [
+        {
+         "code": "7",
+         "name": "Standing Glute Stretch",
+         "video": "s1vaqp4Jb2I",
+         "note": "",
+         "section": "Optional / Interchangeable",
+         "photo": "images/s1vaqp4Jb2I-pdf.webp"
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "mat",
+   "name": "MAT Holds",
+   "intro": "Do these right after stretching. Stretching relaxes the muscles; these turn them back on.",
+   "workouts": [
+    {
+     "id": "mat",
+     "name": "MAT Holds",
+     "group": "mat",
+     "how": "1 set of each exercise · 6 reps · hold each rep for 6 SECONDS · both sides (6 reps of 6 seconds per side).",
+     "when": "",
+     "tip": "",
+     "sets": 1,
+     "setsLabel": "1 set",
+     "reps": "6",
+     "restSeconds": 0,
+     "restLabel": "",
+     "circuit": false,
+     "blocks": [
+      {
+       "label": "1",
+       "exercises": [
+        {
+         "code": "1",
+         "name": "Glute Iso",
+         "video": "DmKTXSUFQyA",
+         "note": "",
+         "photo": "images/DmKTXSUFQyA-pdf.webp"
+        }
+       ]
+      },
+      {
+       "label": "2",
+       "exercises": [
+        {
+         "code": "2",
+         "name": "Hip Extension with Internal Rotation",
+         "video": "w1ekr1XKcwQ",
+         "note": "",
+         "photo": "images/w1ekr1XKcwQ-pdf.webp"
+        }
+       ]
+      },
+      {
+       "label": "3",
+       "exercises": [
+        {
+         "code": "3",
+         "name": "Hip Flexion with External Rotation Iso",
+         "video": "UQV6UFeT9Rw",
+         "note": "",
+         "photo": "images/UQV6UFeT9Rw-pdf.webp"
+        }
+       ]
+      },
+      {
+       "label": "4",
+       "exercises": [
+        {
+         "code": "4",
+         "name": "Hip Flexion with Internal Rotation Iso",
+         "video": "3M4vz0DCbpQ",
+         "note": "",
+         "photo": "images/3M4vz0DCbpQ-pdf.webp"
+        }
+       ]
+      },
+      {
+       "label": "5",
+       "exercises": [
+        {
+         "code": "5",
+         "name": "Abduction with Internal Rotation",
+         "video": "bAZQpnghSqw",
+         "note": "",
+         "photo": "images/bAZQpnghSqw-pdf.webp"
+        }
+       ]
+      },
+      {
+       "label": "6",
+       "exercises": [
+        {
+         "code": "6",
+         "name": "Abduction with External Rotation",
+         "video": "YApcAT_iKAc",
+         "note": "",
+         "photo": "images/YApcAT_iKAc-pdf.webp"
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "stability",
+   "name": "Stability & Balance",
+   "intro": "Off-season: 2 a week. In season: 1 a week still helps. Master the Disc version before moving up to the BOSU.",
+   "workouts": [
+    {
+     "id": "stability-1",
+     "name": "Stability Workout 1",
+     "group": "stability",
+     "how": "2-3 sets · 10-15 reps per exercise (each side when it's one leg at a time) · rest 60-90 seconds between sets · master the Disc version before moving up to the BOSU.",
+     "when": "Off-season: 2 times a week · In season: even 1 time a week will help · You can mix it with the Core Edge · You can mix it with strength exercises to make a full workout.",
+     "tip": "",
+     "sets": 3,
+     "setsLabel": "2 or 3 sets",
+     "reps": "10-15",
+     "restSeconds": 90,
+     "restLabel": "60-90s",
+     "circuit": false,
+     "blocks": [
+      {
+       "label": "1",
+       "exercises": [
+        {
+         "code": "1",
+         "name": "Single Leg Squats",
+         "video": "QZvzcgXJ_7s",
+         "note": "",
+         "photo": "images/QZvzcgXJ_7s-pdf.webp"
+        }
+       ]
+      },
+      {
+       "label": "2",
+       "exercises": [
+        {
+         "code": "2",
+         "name": "Single Leg Deadlifts (Modified)",
+         "video": "vbOhpCuC3Os",
+         "note": "",
+         "alts": [
+          {
+           "label": "Full Single Leg Deadlift",
+           "video": "JYnn9C3vUHQ"
+          }
+         ],
+         "photo": "images/vbOhpCuC3Os-pdf.webp"
+        }
+       ]
+      },
+      {
+       "label": "3",
+       "exercises": [
+        {
+         "code": "3",
+         "name": "Reverse Lunges",
+         "video": "aZh4KWvcL7U",
+         "note": "",
+         "photo": "images/aZh4KWvcL7U-pdf.webp"
+        }
+       ]
+      },
+      {
+       "label": "4",
+       "exercises": [
+        {
+         "code": "4",
+         "name": "Single Leg Hip Extensions on Disc",
+         "video": "ylTmQNt7H-g",
+         "note": "",
+         "photo": "images/ylTmQNt7H-g-pdf.webp"
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "id": "stability-2",
+     "name": "Stability Workout 2",
+     "group": "stability",
+     "how": "2-3 sets · 10-15 reps per exercise (each side when it's one leg at a time) · rest 60-90 seconds between sets · master the Disc version before moving up to the BOSU.",
+     "when": "Off-season: 2 times a week · In season: even 1 time a week will help · You can mix it with the Core Edge · You can mix it with strength exercises to make a full workout.",
+     "tip": "",
+     "sets": 3,
+     "setsLabel": "2 or 3 sets",
+     "reps": "10-15",
+     "restSeconds": 90,
+     "restLabel": "60-90s",
+     "circuit": false,
+     "blocks": [
+      {
+       "label": "1",
+       "exercises": [
+        {
+         "code": "1",
+         "name": "Stationary Lunges on Disc",
+         "video": "KTbJdJG_fKI",
+         "note": "",
+         "alts": [
+          {
+           "label": "BOSU Stationary Lunges",
+           "video": "juK-kWHNcVg"
+          }
+         ],
+         "photo": "images/KTbJdJG_fKI-pdf.webp"
+        }
+       ]
+      },
+      {
+       "label": "2",
+       "exercises": [
+        {
+         "code": "2",
+         "name": "Single Leg Reaches on Disc",
+         "video": "S4uhLbGWVas",
+         "note": "",
+         "photo": "images/S4uhLbGWVas-pdf.webp"
+        }
+       ]
+      },
+      {
+       "label": "3",
+       "exercises": [
+        {
+         "code": "3",
+         "name": "Single Leg Squat on Disc",
+         "video": "21RPCvGih_U",
+         "note": "",
+         "photo": "images/21RPCvGih_U-pdf.webp"
+        }
+       ]
+      },
+      {
+       "label": "4",
+       "exercises": [
+        {
+         "code": "4",
+         "name": "Leg Curl on Stability Ball",
+         "video": "6MR2-sQyS5E",
+         "note": "",
+         "photo": "images/6MR2-sQyS5E-pdf.webp"
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "id": "stability-3",
+     "name": "Stability Workout 3",
+     "group": "stability",
+     "how": "2-3 sets · 10-15 reps per exercise (each side when it's one leg at a time) · rest 60-90 seconds between sets · master the Disc version before moving up to the BOSU.",
+     "when": "Off-season: 2 times a week · In season: even 1 time a week will help · You can mix it with the Core Edge · You can mix it with strength exercises to make a full workout.",
+     "tip": "",
+     "sets": 3,
+     "setsLabel": "2 or 3 sets",
+     "reps": "10-15",
+     "restSeconds": 90,
+     "restLabel": "60-90s",
+     "circuit": false,
+     "blocks": [
+      {
+       "label": "1",
+       "exercises": [
+        {
+         "code": "1",
+         "name": "Reverse Lunges on Disc",
+         "video": "h7uZlF-Ppto",
+         "note": "",
+         "alts": [
+          {
+           "label": "BOSU Reverse Lunges",
+           "video": "v3mg8S0z5JQ"
+          }
+         ],
+         "photo": "images/h7uZlF-Ppto-pdf.webp"
+        }
+       ]
+      },
+      {
+       "label": "2",
+       "exercises": [
+        {
+         "code": "2",
+         "name": "Deadlift on BOSU",
+         "video": "wNEuAW_PS-c",
+         "note": "",
+         "photo": "images/wNEuAW_PS-c-pdf.webp"
+        }
+       ]
+      },
+      {
+       "label": "3",
+       "exercises": [
+        {
+         "code": "3",
+         "name": "Squats on BOSU",
+         "video": "dcvVFDO8dBE",
+         "note": "",
+         "photo": "images/dcvVFDO8dBE-pdf.webp"
+        }
+       ]
+      },
+      {
+       "label": "4",
+       "exercises": [
+        {
+         "code": "4",
+         "name": "Single Leg Hip Extension on Stability Ball",
+         "video": "yU01Yv9rrzQ",
+         "note": "",
+         "photo": "images/yU01Yv9rrzQ-pdf.webp"
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "id": "stability-4",
+     "name": "Stability Workout 4",
+     "group": "stability",
+     "how": "2-3 sets · 10-15 reps per exercise (each side when it's one leg at a time) · rest 60-90 seconds between sets · master the Disc version before moving up to the BOSU.",
+     "when": "Off-season: 2 times a week · In season: even 1 time a week will help · You can mix it with the Core Edge · You can mix it with strength exercises to make a full workout.",
+     "tip": "",
+     "sets": 3,
+     "setsLabel": "2 or 3 sets",
+     "reps": "10-15",
+     "restSeconds": 90,
+     "restLabel": "60-90s",
+     "circuit": false,
+     "blocks": [
+      {
+       "label": "1",
+       "exercises": [
+        {
+         "code": "1",
+         "name": "Single Leg Squat on BOSU",
+         "video": "MiC9l-j8p4Y",
+         "note": "",
+         "photo": "images/MiC9l-j8p4Y-pdf.webp"
+        }
+       ]
+      },
+      {
+       "label": "2",
+       "exercises": [
+        {
+         "code": "2",
+         "name": "Single Leg Deadlift on Back of BOSU",
+         "video": "MYL7SLJkXT4",
+         "note": "",
+         "photo": "images/MYL7SLJkXT4-pdf.webp"
+        }
+       ]
+      },
+      {
+       "label": "3",
+       "exercises": [
+        {
+         "code": "3",
+         "name": "Jump Lunges on BOSU",
+         "video": "V16-zb_SvTc",
+         "note": "",
+         "photo": "images/V16-zb_SvTc-pdf.webp"
+        }
+       ]
+      },
+      {
+       "label": "4",
+       "exercises": [
+        {
+         "code": "4",
+         "name": "Single Leg Curl on Stability Ball",
+         "video": "nzorCIUQYig",
+         "note": "",
+         "photo": "images/nzorCIUQYig-pdf.webp"
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "id": "stability-5",
+     "name": "Stability Workout 5",
+     "group": "stability",
+     "how": "2-3 sets · 10-15 reps per exercise (each side when it's one leg at a time) · rest 60-90 seconds between sets · master the Disc version before moving up to the BOSU.",
+     "when": "Off-season: 2 times a week · In season: even 1 time a week will help · You can mix it with the Core Edge · You can mix it with strength exercises to make a full workout.",
+     "tip": "",
+     "sets": 3,
+     "setsLabel": "2 or 3 sets",
+     "reps": "10-15",
+     "restSeconds": 90,
+     "restLabel": "60-90s",
+     "circuit": false,
+     "blocks": [
+      {
+       "label": "1",
+       "exercises": [
+        {
+         "code": "1",
+         "name": "Jump Squats on BOSU",
+         "video": "ZfqgDnLT8Cs",
+         "note": "",
+         "photo": "images/ZfqgDnLT8Cs-pdf.webp"
+        }
+       ]
+      },
+      {
+       "label": "2",
+       "exercises": [
+        {
+         "code": "2",
+         "name": "Single Leg Reaches on BOSU",
+         "video": "o3MtDEXLuXM",
+         "note": "",
+         "photo": "images/o3MtDEXLuXM-pdf.webp"
+        }
+       ]
+      },
+      {
+       "label": "3",
+       "exercises": [
+        {
+         "code": "3",
+         "name": "Split Jumps on BOSU",
+         "video": "-vin4kQtm34",
+         "note": "",
+         "photo": "images/-vin4kQtm34-pdf.webp"
+        }
+       ]
+      },
+      {
+       "label": "4",
+       "exercises": [
+        {
+         "code": "4",
+         "name": "Single Leg Hip Extension on BOSU",
+         "video": "k6jya93BOms",
+         "note": "",
+         "photo": "images/k6jya93BOms-pdf.webp"
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "id": "stability-6",
+     "name": "Stability Workout 6",
+     "group": "stability",
+     "how": "2-3 sets · 10-15 reps per exercise (each side when it's one leg at a time) · rest 60-90 seconds between sets · master the Disc version before moving up to the BOSU.",
+     "when": "Off-season: 2 times a week · In season: even 1 time a week will help · You can mix it with the Core Edge · You can mix it with strength exercises to make a full workout.",
+     "tip": "",
+     "sets": 3,
+     "setsLabel": "2 or 3 sets",
+     "reps": "10-15",
+     "restSeconds": 90,
+     "restLabel": "60-90s",
+     "circuit": false,
+     "blocks": [
+      {
+       "label": "1",
+       "exercises": [
+        {
+         "code": "1",
+         "name": "Single Leg Med Ball Throws",
+         "video": "nP874sn6g5E",
+         "note": "",
+         "photo": "images/nP874sn6g5E-pdf.webp"
+        }
+       ]
+      },
+      {
+       "label": "2",
+       "exercises": [
+        {
+         "code": "2",
+         "name": "Stability Ball Single Leg Hip Extensions",
+         "video": "yU01Yv9rrzQ",
+         "note": "",
+         "photo": "images/yU01Yv9rrzQ-pdf.webp"
+        }
+       ]
+      },
+      {
+       "label": "3",
+       "exercises": [
+        {
+         "code": "3",
+         "name": "Jump Ons — BOSU",
+         "video": "9PFNFo05lrY",
+         "note": "",
+         "photo": "images/9PFNFo05lrY-pdf.webp"
+        }
+       ]
+      },
+      {
+       "label": "4",
+       "exercises": [
+        {
+         "code": "4",
+         "name": "Single Leg Hip Extension Isometric Hold (20 sec) on BOSU",
+         "video": "FXY9FQ1ah40",
+         "note": "",
+         "photo": "images/FXY9FQ1ah40-pdf.webp"
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "foundation",
+   "name": "Foundation Strength",
+   "intro": "Off-season: 2 a week. In season: 1 a week. Swap in a Stability exercise or two any time.",
+   "workouts": [
+    {
+     "id": "foundation-1",
+     "name": "Foundation Workout 1",
+     "group": "foundation",
+     "how": "2-3 sets · 15-20 reps per exercise (each side when it's one side at a time) · rest 60 seconds between sets.",
+     "when": "",
+     "tip": "you can substitute any exercise in this workout for a Stability & Balance exercise, or do it on an unstable surface (Dyna Disc or BOSU) to focus more on stability.",
+     "sets": 3,
+     "setsLabel": "2 or 3 sets",
+     "reps": "15-20",
+     "restSeconds": 60,
+     "restLabel": "60s",
+     "circuit": true,
+     "blocks": [
+      {
+       "label": "A",
+       "exercises": [
+        {
+         "code": "A1",
+         "name": "Single Leg Reaches",
+         "video": "EXrX1lNTTio",
+         "note": "",
+         "photo": "images/EXrX1lNTTio-pdf.webp"
+        },
+        {
+         "code": "A2",
+         "name": "Reverse Lunges",
+         "video": "aZh4KWvcL7U",
+         "note": "",
+         "photo": "images/aZh4KWvcL7U-pdf.webp"
+        },
+        {
+         "code": "A3",
+         "name": "Band Back Kicks",
+         "video": "ZTmhNDwwA30",
+         "note": "",
+         "photo": "images/ZTmhNDwwA30-pdf.webp"
+        }
+       ]
+      },
+      {
+       "label": "B",
+       "exercises": [
+        {
+         "code": "B1",
+         "name": "Supine Stability Ball Single Leg Hip Extensions",
+         "video": "yU01Yv9rrzQ",
+         "note": "",
+         "photo": "images/yU01Yv9rrzQ-pdf.webp"
+        },
+        {
+         "code": "B2",
+         "name": "BOSU Squats",
+         "video": "dcvVFDO8dBE",
+         "note": "",
+         "photo": "images/dcvVFDO8dBE-pdf.webp"
+        },
+        {
+         "code": "B3",
+         "name": "Butterfly Banded Abductions with Crunch",
+         "video": "9Bqn068QQhE",
+         "note": "",
+         "photo": "images/9Bqn068QQhE-pdf.webp"
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "id": "foundation-2",
+     "name": "Foundation Workout 2",
+     "group": "foundation",
+     "how": "2-3 sets · 15-20 reps per exercise (each side when it's one side at a time) · rest 60 seconds between sets.",
+     "when": "",
+     "tip": "you can substitute any exercise in this workout for a Stability & Balance exercise, or do it on an unstable surface (Dyna Disc or BOSU) to focus more on stability.",
+     "sets": 3,
+     "setsLabel": "2 or 3 sets",
+     "reps": "15-20",
+     "restSeconds": 60,
+     "restLabel": "60s",
+     "circuit": true,
+     "blocks": [
+      {
+       "label": "A",
+       "exercises": [
+        {
+         "code": "A1",
+         "name": "Single Leg Deadlifts",
+         "video": "JYnn9C3vUHQ",
+         "note": "",
+         "photo": "images/JYnn9C3vUHQ-pdf.webp"
+        },
+        {
+         "code": "A2",
+         "name": "Lateral Lunges on BOSU",
+         "video": "mM6nzjTlI1U",
+         "note": "",
+         "photo": "images/mM6nzjTlI1U-pdf.webp"
+        },
+        {
+         "code": "A3",
+         "name": "Diagonal Banded Back Kicks",
+         "video": "aTdnnMeidtk",
+         "note": "",
+         "photo": "images/aTdnnMeidtk-pdf.webp"
+        }
+       ]
+      },
+      {
+       "label": "B",
+       "exercises": [
+        {
+         "code": "B1",
+         "name": "Supine Stability Ball Single Leg Hip Extensions",
+         "video": "yU01Yv9rrzQ",
+         "note": "",
+         "photo": "images/yU01Yv9rrzQ-pdf.webp"
+        },
+        {
+         "code": "B2",
+         "name": "Single Leg Squats",
+         "video": "QZvzcgXJ_7s",
+         "note": "",
+         "photo": "images/QZvzcgXJ_7s-pdf.webp"
+        },
+        {
+         "code": "B3",
+         "name": "Banded Adductions",
+         "video": "9L_xzHL3yno",
+         "note": "",
+         "photo": "images/9L_xzHL3yno-pdf.webp"
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "id": "foundation-3",
+     "name": "Foundation Workout 3",
+     "group": "foundation",
+     "how": "2-3 sets · 15-20 reps per exercise (each side when it's one side at a time) · rest 60 seconds between sets.",
+     "when": "",
+     "tip": "you can substitute any exercise in this workout for a Stability & Balance exercise, or do it on an unstable surface (Dyna Disc or BOSU) to focus more on stability.",
+     "sets": 3,
+     "setsLabel": "2 or 3 sets",
+     "reps": "15-20",
+     "restSeconds": 60,
+     "restLabel": "60s",
+     "circuit": true,
+     "blocks": [
+      {
+       "label": "A",
+       "exercises": [
+        {
+         "code": "A1",
+         "name": "Single Leg Reaches on Dyna Disc",
+         "video": "S4uhLbGWVas",
+         "note": "",
+         "photo": "images/S4uhLbGWVas-pdf.webp"
+        },
+        {
+         "code": "A2",
+         "name": "Stability Ball Leg Curls",
+         "video": "6MR2-sQyS5E",
+         "note": "Finish each set with 10 pulses",
+         "photo": "images/6MR2-sQyS5E-pdf.webp"
+        },
+        {
+         "code": "A3",
+         "name": "Banded Squat with 1½ Abductions",
+         "video": "ewpipPaSf9I",
+         "note": "",
+         "photo": "images/ewpipPaSf9I-pdf.webp"
+        }
+       ]
+      },
+      {
+       "label": "B",
+       "exercises": [
+        {
+         "code": "B1",
+         "name": "Supine Stability Ball Single Leg Hip Extensions",
+         "video": "yU01Yv9rrzQ",
+         "note": "Finish each set with 10 pulses",
+         "photo": "images/yU01Yv9rrzQ-pdf.webp"
+        },
+        {
+         "code": "B2",
+         "name": "Plie Squats",
+         "video": "TyNCUSw5C-w",
+         "note": "Finish each set with 10 pulses",
+         "photo": "images/TyNCUSw5C-w-pdf.webp"
+        },
+        {
+         "code": "B3",
+         "name": "Bowlers with Band",
+         "video": "GzB5MsAr-r8",
+         "note": "",
+         "photo": "images/GzB5MsAr-r8-pdf.webp"
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "id": "foundation-4",
+     "name": "Foundation Workout 4",
+     "group": "foundation",
+     "how": "2-3 sets · 15-20 reps per exercise (each side when it's one side at a time) · rest 60 seconds between sets.",
+     "when": "",
+     "tip": "you can substitute any exercise in this workout for a Stability & Balance exercise, or do it on an unstable surface (Dyna Disc or BOSU) to focus more on stability.",
+     "sets": 3,
+     "setsLabel": "2 or 3 sets",
+     "reps": "15-20",
+     "restSeconds": 60,
+     "restLabel": "60s",
+     "circuit": true,
+     "blocks": [
+      {
+       "label": "A",
+       "exercises": [
+        {
+         "code": "A1",
+         "name": "Single Leg Deadlift on BOSU",
+         "video": "MYL7SLJkXT4",
+         "note": "",
+         "photo": "images/MYL7SLJkXT4-pdf.webp"
+        },
+        {
+         "code": "A2",
+         "name": "BOSU Squats",
+         "video": "dcvVFDO8dBE",
+         "note": "Finish each set with 10 pulses",
+         "photo": "images/dcvVFDO8dBE-pdf.webp"
+        },
+        {
+         "code": "A3",
+         "name": "Banded Squat with Abductions",
+         "video": "qFRlVnPsHTA",
+         "note": "Finish each set with 10 pulses of abductions",
+         "photo": "images/qFRlVnPsHTA-pdf.webp"
+        }
+       ]
+      },
+      {
+       "label": "B",
+       "exercises": [
+        {
+         "code": "B1",
+         "name": "Supine Stability Ball Single Leg Hip Extensions",
+         "video": "yU01Yv9rrzQ",
+         "note": "Finish each set with 10 pulses",
+         "photo": "images/yU01Yv9rrzQ-pdf.webp"
+        },
+        {
+         "code": "B2",
+         "name": "Plie Squats",
+         "video": "TyNCUSw5C-w",
+         "note": "Finish each set with 10 pulses",
+         "photo": "images/TyNCUSw5C-w-pdf.webp"
+        },
+        {
+         "code": "B3",
+         "name": "Bowlers with Band",
+         "video": "GzB5MsAr-r8",
+         "note": "",
+         "photo": "images/GzB5MsAr-r8-pdf.webp"
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "id": "foundation-5",
+     "name": "Foundation Workout 5",
+     "group": "foundation",
+     "how": "3 sets · 10-12 reps per exercise (each side when it's one side at a time) · rest 60-90 seconds between sets.",
+     "when": "",
+     "tip": "you can substitute any exercise in this workout for a Stability & Balance exercise, or do it on an unstable surface (Dyna Disc or BOSU) to focus more on stability.",
+     "sets": 3,
+     "setsLabel": "3 sets",
+     "reps": "10-12",
+     "restSeconds": 90,
+     "restLabel": "60-90s",
+     "circuit": true,
+     "blocks": [
+      {
+       "label": "A",
+       "exercises": [
+        {
+         "code": "A1",
+         "name": "BOSU Single Leg Hip Extensions",
+         "video": "k6jya93BOms",
+         "note": "Bridge hold 10 seconds",
+         "photo": "images/k6jya93BOms-pdf.webp"
+        },
+        {
+         "code": "A2",
+         "name": "BOSU Stationary Lunges",
+         "video": "juK-kWHNcVg",
+         "note": "10-20 second hold per side",
+         "photo": "images/juK-kWHNcVg-pdf.webp"
+        },
+        {
+         "code": "A3",
+         "name": "Quadruped Butt Kicks",
+         "video": "LJ_G6tDa6b8",
+         "note": "",
+         "photo": "images/LJ_G6tDa6b8-pdf.webp"
+        }
+       ]
+      },
+      {
+       "label": "B",
+       "exercises": [
+        {
+         "code": "B1",
+         "name": "Stability Ball Hip Extensions with Abductions",
+         "video": "kMKdvU1Z-Go",
+         "note": "20-second isometric hold",
+         "photo": "images/kMKdvU1Z-Go-pdf.webp"
+        },
+        {
+         "code": "B2",
+         "name": "Lateral Lunges on Dyna Disc",
+         "video": "D2cQVxi3hww",
+         "note": "",
+         "photo": "images/D2cQVxi3hww-pdf.webp"
+        },
+        {
+         "code": "B3",
+         "name": "Single Leg Squat on BOSU",
+         "video": "MiC9l-j8p4Y",
+         "note": "Double-leg isometric hold 20 seconds",
+         "photo": "images/MiC9l-j8p4Y-pdf.webp"
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "id": "foundation-6",
+     "name": "Foundation Workout 6",
+     "group": "foundation",
+     "how": "3 sets · 10-12 reps per exercise (each side when it's one side at a time) · rest 60-90 seconds between sets.",
+     "when": "",
+     "tip": "you can substitute any exercise in this workout for a Stability & Balance exercise, or do it on an unstable surface (Dyna Disc or BOSU) to focus more on stability.",
+     "sets": 3,
+     "setsLabel": "3 sets",
+     "reps": "10-12",
+     "restSeconds": 90,
+     "restLabel": "60-90s",
+     "circuit": true,
+     "blocks": [
+      {
+       "label": "A",
+       "exercises": [
+        {
+         "code": "A1",
+         "name": "BOSU Single Leg Reaches",
+         "video": "o3MtDEXLuXM",
+         "note": "",
+         "photo": "images/o3MtDEXLuXM-pdf.webp"
+        },
+        {
+         "code": "A2",
+         "name": "BOSU Reverse Lunges",
+         "video": "v3mg8S0z5JQ",
+         "note": "10-20 second hold per side",
+         "photo": "images/v3mg8S0z5JQ-pdf.webp"
+        },
+        {
+         "code": "A3",
+         "name": "Banded Adductions",
+         "video": "9L_xzHL3yno",
+         "note": "10-second isometric hold",
+         "photo": "images/9L_xzHL3yno-pdf.webp"
+        }
+       ]
+      },
+      {
+       "label": "B",
+       "exercises": [
+        {
+         "code": "B1",
+         "name": "Stability Ball Single Leg Curl",
+         "video": "nzorCIUQYig",
+         "note": "20-second isometric hold · both legs",
+         "photo": "images/nzorCIUQYig-pdf.webp"
+        },
+        {
+         "code": "B2",
+         "name": "Bowlers on BOSU",
+         "video": "pNd8xPZ0dw4",
+         "note": "",
+         "photo": "images/pNd8xPZ0dw4-pdf.webp"
+        },
+        {
+         "code": "B3",
+         "name": "Curtsy Lunge with Banded Abduction",
+         "video": "IUkf8YI4TbA",
+         "note": "10-second isometric hold on the abduction",
+         "photo": "images/IUkf8YI4TbA-pdf.webp"
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "id": "foundation-7",
+     "name": "Foundation Workout 7",
+     "group": "foundation",
+     "how": "3 sets · 10-12 reps per exercise (each side when it's one side at a time) · rest 60-90 seconds between sets.",
+     "when": "",
+     "tip": "you can substitute any exercise in this workout for a Stability & Balance exercise, or do it on an unstable surface (Dyna Disc or BOSU) to focus more on stability.",
+     "sets": 3,
+     "setsLabel": "3 sets",
+     "reps": "10-12",
+     "restSeconds": 90,
+     "restLabel": "60-90s",
+     "circuit": true,
+     "blocks": [
+      {
+       "label": "A",
+       "exercises": [
+        {
+         "code": "A1",
+         "name": "Deadlift on BOSU",
+         "video": "wNEuAW_PS-c",
+         "note": "",
+         "photo": "images/wNEuAW_PS-c-pdf.webp"
+        },
+        {
+         "code": "A2",
+         "name": "Slider Lateral Lunges",
+         "video": "AiC3kwNWX24",
+         "note": "",
+         "photo": "images/AiC3kwNWX24-pdf.webp"
+        },
+        {
+         "code": "A3",
+         "name": "Alternating Forward Reaches",
+         "video": "26z4WiRH1pI",
+         "note": "",
+         "photo": "images/26z4WiRH1pI-pdf.webp"
+        }
+       ]
+      },
+      {
+       "label": "B",
+       "exercises": [
+        {
+         "code": "B1",
+         "name": "Stability Ball Single Leg Hip Extensions",
+         "video": "yU01Yv9rrzQ",
+         "note": "",
+         "photo": "images/yU01Yv9rrzQ-pdf.webp"
+        },
+        {
+         "code": "B2",
+         "name": "Glute Lunge with Banded Kickback",
+         "video": "7wfhUQUnXLA",
+         "note": "Finish each set with 10 kickback pulses",
+         "photo": "images/7wfhUQUnXLA-pdf.webp"
+        },
+        {
+         "code": "B3",
+         "name": "Supine Single Leg Hip Extension with Abduction",
+         "video": "ftamZKL7QiU",
+         "note": "10-second hold",
+         "photo": "images/ftamZKL7QiU-pdf.webp"
+        }
+       ]
+      }
+     ]
+    },
+    {
+     "id": "foundation-8",
+     "name": "Foundation Workout 8",
+     "group": "foundation",
+     "how": "3 sets · 10-12 reps per exercise (each side when it's one side at a time) · rest 60-90 seconds between sets.",
+     "when": "",
+     "tip": "you can substitute any exercise in this workout for a Stability & Balance exercise, or do it on an unstable surface (Dyna Disc or BOSU) to focus more on stability.",
+     "sets": 3,
+     "setsLabel": "3 sets",
+     "reps": "10-12",
+     "restSeconds": 90,
+     "restLabel": "60-90s",
+     "circuit": true,
+     "blocks": [
+      {
+       "label": "A",
+       "exercises": [
+        {
+         "code": "A1",
+         "name": "Stability Ball Hip Extension – Curl",
+         "video": "uqpAL5IFPro",
+         "note": "",
+         "photo": "images/uqpAL5IFPro-pdf.webp"
+        },
+        {
+         "code": "A2",
+         "name": "Plie Squat on Dyna Disc",
+         "video": "Q3YMunLMmNQ",
+         "note": "",
+         "photo": "images/Q3YMunLMmNQ-pdf.webp"
+        },
+        {
+         "code": "A3",
+         "name": "Explosive Lateral Lunges",
+         "video": "Y0nwOfePPFg",
+         "note": "",
+         "photo": "images/Y0nwOfePPFg-pdf.webp"
+        }
+       ]
+      },
+      {
+       "label": "B",
+       "exercises": [
+        {
+         "code": "B1",
+         "name": "Band Single Leg Curls",
+         "video": "E9CvTnBvv0c",
+         "note": "",
+         "photo": "images/E9CvTnBvv0c-pdf.webp"
+        },
+        {
+         "code": "B2",
+         "name": "Split Jumps",
+         "video": "-G4plMEkWBE",
+         "note": "",
+         "photo": "images/-G4plMEkWBE-pdf.webp"
+        },
+        {
+         "code": "B3",
+         "name": "Explosive Supine Single Leg Hip Extensions",
+         "video": "syWbCRnRENg",
+         "note": "",
+         "photo": "images/syWbCRnRENg-pdf.webp"
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}
