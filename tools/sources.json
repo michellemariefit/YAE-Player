@@ -2,7 +2,8 @@
  "_note": "YouTube demo ID -> original recording in Dropbox (PRODUCTS & PROGRAMS / The Youth Athlete Edge / Videos / Workouts). matchSeconds is where the PDF photo was taken from. Built by match_sources.py.",
  "-G4plMEkWBE": {
   "file": "Split Jumps.MOV",
-  "locked": true
+  "locked": true,
+  "matchSeconds": 18.7
  },
  "-vin4kQtm34": {
   "file": "BOSU Split Jumps.MOV",
@@ -57,7 +58,8 @@
  "9L_xzHL3yno": {
   "file": "Banded Abductions 2.MOV",
   "note": "best guess for Banded Adductions, check",
-  "locked": true
+  "locked": true,
+  "matchSeconds": 2.3
  },
  "9PFNFo05lrY": {
   "file": "BOSU Forward Squat Jumps.MOV",
@@ -156,7 +158,8 @@
  },
  "MiC9l-j8p4Y": {
   "file": "0D2501F4-2E29-43F4-8D27-28AC306EF534 2.MOV",
-  "locked": true
+  "locked": true,
+  "matchSeconds": 4.7
  },
  "Q3YMunLMmNQ": {
   "file": "Dyna Disc Plie Squat.MOV",
@@ -197,7 +200,8 @@
   "file": "BOSU Split Jumps.MOV",
   "searchFrom": 20,
   "note": "same recording as Split Jumps on BOSU",
-  "locked": true
+  "locked": true,
+  "matchSeconds": 19.7
  },
  "VLDWvdhvBcM": {
   "file": "Lying Quad Stretch.MOV",
@@ -232,7 +236,8 @@
  "ZTmhNDwwA30": {
   "file": "Banded Back kick Pulses.MOV",
   "note": "Standing Kickbacks.MOV looks identical; check",
-  "locked": true
+  "locked": true,
+  "matchSeconds": 15.3
  },
  "ZfqgDnLT8Cs": {
   "file": "BOSU Jump Squats.MOV",
@@ -307,7 +312,8 @@
  "mM6nzjTlI1U": {
   "file": "BOSU Lateral Lunges.MOV",
   "note": "YouTube demo was filmed in the gym; this is the same exercise outdoors",
-  "locked": true
+  "locked": true,
+  "matchSeconds": 40.3
  },
  "nFl6jPhEAuA": {
   "file": "Hamstring Stretch.MOV",

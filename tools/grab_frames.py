@@ -14,9 +14,10 @@ Where the videos come from:
 
 What it does, for every exercise video in data/yae.json:
   1. Opens the recording in tools/cache/.
-  2. Finds the first stretch where the body is moving (the first rep).
-  3. Saves the frame just before that movement starts as the START photo,
-     and the frame that looks most different from it within that rep as the END photo.
+  2. Uses the photo Michelle chose for the PDF as the anchor (sources.json says where in the
+     recording it is), then looks 3 seconds either side for the frame that looks most
+     different from it. Frames are lined up first so a hand-held pan does not count as movement.
+  3. The earlier of the two becomes the START photo and the later the END photo.
   4. Writes images/<video id>-start.webp and -end.webp, and adds
      startPhoto / endPhoto to each exercise in data/yae.json.
   5. Builds tools/review.html so you can check every pair at a glance.
@@ -44,8 +45,6 @@ SOURCES = os.path.join(ROOT, "tools", "sources.json")
 FRAMES = os.path.join(ROOT, "tools", "frames.json")   # seconds used for each pair, for review.html
 SAMPLE_FPS = 6          # frames per second to analyse
 SKIP_SECONDS = 2.0      # skip the very start of each video
-MAX_SECONDS = 60        # only look at the first minute
-REP_WINDOW = 5.0        # seconds after motion starts to search for the end position
 
 os.makedirs(CACHE, exist_ok=True)
 os.makedirs(IMAGES, exist_ok=True)
@@ -84,57 +83,79 @@ def source_path(vid):
     return out
 
 
-def read_frames(path, start=SKIP_SECONDS):
-    """Small grey frames for analysis (cached in tools/cache/frames/ so re-runs take seconds)."""
-    cdir = os.path.join(CACHE, "frames")
-    os.makedirs(cdir, exist_ok=True)
-    cpath = os.path.join(cdir, f"{os.path.basename(path)}.{start:.1f}.npz")
-    if os.path.exists(cpath):
-        z = np.load(cpath)
-        return list(z["g"]), list(z["t"])
-    cap = cv2.VideoCapture(path)
-    fps = cap.get(cv2.CAP_PROP_FPS) or 30
-    step = max(1, int(round(fps / SAMPLE_FPS)))
-    cap.set(cv2.CAP_PROP_POS_MSEC, max(0.0, start - 1.0) * 1000)
-    grays, times, i = [], [], int(cap.get(cv2.CAP_PROP_POS_FRAMES))
-    while True:
-        ok, frame = cap.read()
-        if not ok or i / fps > start + MAX_SECONDS:
-            break
-        if i % step == 0 and i / fps >= start:
-            grays.append(small_gray(frame))
-            times.append(i / fps)
-        i += 1
-    cap.release()
-    np.savez_compressed(cpath, g=np.array(grays), t=np.array(times))
-    return grays, times
-
-
 def small_gray(frame):
     g = cv2.cvtColor(cv2.resize(frame, (160, 90)), cv2.COLOR_BGR2GRAY)
     return cv2.GaussianBlur(g, (5, 5), 0).astype(np.float32)
 
 
-def border_diff(a, b):
-    """How much the edges of the frame changed. Big = the camera zoomed or moved, not the athlete."""
-    m = np.ones_like(a, dtype=bool); m[9:-9, 16:-16] = False
-    return np.abs(a - b)[m].mean()
+def masks(shape):
+    border = np.ones(shape, dtype=bool); border[9:-9, 16:-16] = False
+    return border, ~border
 
 
-def pick(g, times):
-    """g = small grey frames. Start = just before the first movement. End = the most different
-    frame within the first rep, ignoring frames where the camera zoomed (edges changed a lot)."""
-    motion = np.array([0.0] + [np.abs(g[i] - g[i - 1]).mean() for i in range(1, len(g))])
-    smooth = np.convolve(motion, np.ones(3) / 3, mode="same")
-    thresh = max(np.percentile(smooth, 60), 1.5)
-    moving = np.where(smooth > thresh)[0]
-    start = max(0, int(moving[0]) - 1) if len(moving) else 0
-    window = [i for i in range(start, len(g)) if times[i] - times[start] <= REP_WINDOW]
-    steady = [i for i in window if border_diff(g[i], g[start]) < 6.0]
-    if len(steady) < 3:
-        steady = window
-    end = max(steady, key=lambda i: np.abs(g[i] - g[start]).mean()) if steady else start
-    return start, end
+def aligned(a, b):
+    """Shift b so it lines up with a (hand-held camera), using phase correlation."""
+    (dx, dy), _ = cv2.phaseCorrelate(a, b)
+    if abs(dx) > 40 or abs(dy) > 25:
+        return b
+    m = np.float32([[1, 0, -dx], [0, 1, -dy]])
+    return cv2.warpAffine(b, m, (b.shape[1], b.shape[0]), borderMode=cv2.BORDER_REPLICATE)
+
+
+def window_frames(path, centre_t, span=3.0):
+    """Full frames at SAMPLE_FPS from centre_t - span to centre_t + span."""
+    cap = cv2.VideoCapture(path)
+    fps = cap.get(cv2.CAP_PROP_FPS) or 30
+    step = max(1, int(round(fps / SAMPLE_FPS)))
+    t0 = max(0.0, centre_t - span)
+    cap.set(cv2.CAP_PROP_POS_MSEC, t0 * 1000)
+    frames, times, i = [], [], int(cap.get(cv2.CAP_PROP_POS_FRAMES))
+    while True:
+        ok, frame = cap.read()
+        if not ok or i / fps > centre_t + span:
+            break
+        if i % step == 0:
+            frames.append(frame); times.append(i / fps)
+        i += 1
+    cap.release()
+    return frames, times
+
+
+def pick_pair(frames, times, anchor_t):
+    """Index of the anchor frame and of the frame most different from it (body only, after
+    lining the frames up). Returned in time order: (start, end)."""
+    g = [small_gray(f) for f in frames]
+    a = min(range(len(g)), key=lambda i: abs(times[i] - anchor_t))
+    _, centre = masks(g[a].shape)
+    def diff(i):
+        return np.abs(g[a] - aligned(g[a], g[i]))[centre].mean()
+    ok = lambda i: abs(times[i] - times[a]) >= 0.4 and g[i].mean() > 20   # skip black frames at the end of a file
+    b = max(range(len(g)), key=lambda i: diff(i) if ok(i) else -1)
+    return (a, b) if times[a] <= times[b] else (b, a)
+
+
+def find_anchor(path, vid):
+    """Where in the recording the PDF photo was taken from (used when sources.json lacks it)."""
+    photo = os.path.join(IMAGES, f"{vid}-pdf.webp")
+    if not os.path.exists(photo):
+        return None
+    ps = small_gray(cv2.imread(photo)); ps -= ps.mean(); ps /= (np.linalg.norm(ps) or 1)
+    cap = cv2.VideoCapture(path)
+    fps = cap.get(cv2.CAP_PROP_FPS) or 30
+    step = max(1, int(round(fps / 3)))
+    best, i = (-1, 0), 0
+    while True:
+        ok, fr = cap.read()
+        if not ok:
+            break
+        if i % step == 0:
+            g = small_gray(fr); g -= g.mean(); g /= (np.linalg.norm(g) or 1)
+            score = float((g * ps).sum())
+            if score > best[0]:
+                best = (score, i / fps)
+        i += 1
+    cap.release()
+    return best[1]
 
 
 def frame_at(path, seconds):
@@ -146,6 +167,11 @@ def frame_at(path, seconds):
 
 
 def save(frame, name):
+    # trim black bars on the sides (one recording is pillarboxed)
+    col = frame.mean(axis=(0, 2))
+    lit = np.where(col > 12)[0]
+    if len(lit) and (lit[0] > 8 or lit[-1] < frame.shape[1] - 9):
+        frame = frame[:, lit[0]:lit[-1] + 1]
     h, w = frame.shape[:2]
     scale = 960 / max(h, w)
     if scale < 1:
@@ -167,7 +193,7 @@ def main():
     force = set(args[1:]) if args[:1] == ["--force"] else set()
     ids = video_ids()
     remembered = json.load(open(FRAMES)) if os.path.exists(FRAMES) else {}
-    results, missing = {}, []
+    results, missing, sources_changed = {}, [], set()
     for n, (vid, name) in enumerate(ids.items(), 1):
         print(f"[{n}/{len(ids)}] {name} ({vid})")
         kept = existing(vid)
@@ -183,13 +209,20 @@ def main():
                 s, e = overrides[vid]["start"], overrides[vid]["end"]
                 fs, fe = frame_at(path, s), frame_at(path, e)
             else:
-                grays, times = read_frames(path, float(sources.get(vid, {}).get("searchFrom", SKIP_SECONDS)))
-                if not grays:
+                src = sources.get(vid, {})
+                anchor = src.get("matchSeconds")
+                if anchor is None:
+                    anchor = find_anchor(path, vid)
+                    if anchor is not None:
+                        src["matchSeconds"] = round(anchor, 1); sources_changed.add(vid)
+                if anchor is None:
+                    anchor = float(src.get("searchFrom", SKIP_SECONDS)) + 3
+                frames, times = window_frames(path, float(anchor))
+                if len(frames) < 3:
                     print("   no frames, skipped")
                     continue
-                i, j = pick(grays, times)
-                s, e = times[i], times[j]
-                fs, fe = frame_at(path, s), frame_at(path, e)
+                i, j = pick_pair(frames, times, float(anchor))
+                fs, fe, s, e = frames[i], frames[j], times[i], times[j]
             results[vid] = {"name": name, "start": save(fs, f"{vid}-start.webp"),
                             "end": save(fe, f"{vid}-end.webp"), "t": [round(s, 1), round(e, 1)],
                             "file": os.path.basename(path)}
@@ -203,6 +236,11 @@ def main():
 
     json.dump({vid: {"name": r["name"], "t": r["t"], "file": r["file"]} for vid, r in results.items()},
               open(FRAMES, "w"), indent=1)
+    if sources_changed:  # remember anchors worked out for hand-fixed sources
+        allsrc = json.load(open(SOURCES))
+        for vid in sources_changed:
+            allsrc[vid]["matchSeconds"] = sources[vid]["matchSeconds"]
+        json.dump(allsrc, open(SOURCES, "w"), indent=1)
 
     data = json.load(open(DATA))
     for g in data["groups"]:

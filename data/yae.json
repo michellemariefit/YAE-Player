@@ -29,7 +29,9 @@
          "name": "Banded Hip Flexions",
          "video": "sKpWBIPtb4k",
          "note": "",
-         "photo": "images/sKpWBIPtb4k-pdf.webp"
+         "photo": "images/sKpWBIPtb4k-pdf.webp",
+         "startPhoto": "images/sKpWBIPtb4k-start.webp",
+         "endPhoto": "images/sKpWBIPtb4k-end.webp"
         }
        ]
       },
@@ -47,7 +49,9 @@
            "video": "9L_xzHL3yno"
           }
          ],
-         "photo": "images/jBWquK9mAys-pdf.webp"
+         "photo": "images/jBWquK9mAys-pdf.webp",
+         "startPhoto": "images/jBWquK9mAys-start.webp",
+         "endPhoto": "images/jBWquK9mAys-end.webp"
         }
        ]
       },
@@ -59,7 +63,9 @@
          "name": "Standing Band Abductions",
          "video": "m5mVO3qmeN8",
          "note": "",
-         "photo": "images/m5mVO3qmeN8-pdf.webp"
+         "photo": "images/m5mVO3qmeN8-pdf.webp",
+         "startPhoto": "images/m5mVO3qmeN8-start.webp",
+         "endPhoto": "images/m5mVO3qmeN8-end.webp"
         }
        ]
       },
@@ -71,7 +77,9 @@
          "name": "Banded Backkicks",
          "video": "6EkZXGi7p4A",
          "note": "",
-         "photo": "images/6EkZXGi7p4A-pdf.webp"
+         "photo": "images/6EkZXGi7p4A-pdf.webp",
+         "startPhoto": "images/6EkZXGi7p4A-start.webp",
+         "endPhoto": "images/6EkZXGi7p4A-end.webp"
         }
        ]
       },
@@ -83,7 +91,9 @@
          "name": "Diagonal Backkicks",
          "video": "RSansB4XdUY",
          "note": "",
-         "photo": "images/RSansB4XdUY-pdf.webp"
+         "photo": "images/RSansB4XdUY-pdf.webp",
+         "startPhoto": "images/RSansB4XdUY-start.webp",
+         "endPhoto": "images/RSansB4XdUY-end.webp"
         }
        ]
       },
@@ -95,7 +105,9 @@
          "name": "Lateral Band Walks",
          "video": "FRCNjkDxtN0",
          "note": "",
-         "photo": "images/FRCNjkDxtN0-pdf.webp"
+         "photo": "images/FRCNjkDxtN0-pdf.webp",
+         "startPhoto": "images/FRCNjkDxtN0-start.webp",
+         "endPhoto": "images/FRCNjkDxtN0-end.webp"
         }
        ]
       },
@@ -107,7 +119,9 @@
          "name": "Single Leg Reaches",
          "video": "EXrX1lNTTio",
          "note": "",
-         "photo": "images/EXrX1lNTTio-pdf.webp"
+         "photo": "images/EXrX1lNTTio-pdf.webp",
+         "startPhoto": "images/EXrX1lNTTio-start.webp",
+         "endPhoto": "images/EXrX1lNTTio-end.webp"
         }
        ]
       },
@@ -119,7 +133,9 @@
          "name": "Lateral Lunges",
          "video": "IsbtRQaUcfE",
          "note": "",
-         "photo": "images/IsbtRQaUcfE-pdf.webp"
+         "photo": "images/IsbtRQaUcfE-pdf.webp",
+         "startPhoto": "images/IsbtRQaUcfE-start.webp",
+         "endPhoto": "images/IsbtRQaUcfE-end.webp"
         }
        ]
       },
@@ -131,7 +147,9 @@
          "name": "Calf Raises",
          "video": "I8OmbB8gcD4",
          "note": "",
-         "photo": "images/I8OmbB8gcD4-pdf.webp"
+         "photo": "images/I8OmbB8gcD4-pdf.webp",
+         "startPhoto": "images/I8OmbB8gcD4-start.webp",
+         "endPhoto": "images/I8OmbB8gcD4-end.webp"
         }
        ]
       },
@@ -143,7 +161,9 @@
          "name": "Calf Jumps",
          "video": "CYoVWzBMAxU",
          "note": "",
-         "photo": "images/CYoVWzBMAxU-pdf.webp"
+         "photo": "images/CYoVWzBMAxU-pdf.webp",
+         "startPhoto": "images/CYoVWzBMAxU-start.webp",
+         "endPhoto": "images/CYoVWzBMAxU-end.webp"
         }
        ]
       },
@@ -155,7 +175,9 @@
          "name": "Ankle Circles",
          "video": "7mIROhye5Pc",
          "note": "",
-         "photo": "images/7mIROhye5Pc-pdf.webp"
+         "photo": "images/7mIROhye5Pc-pdf.webp",
+         "startPhoto": "images/7mIROhye5Pc-start.webp",
+         "endPhoto": "images/7mIROhye5Pc-end.webp"
         }
        ]
       }
@@ -190,7 +212,9 @@
          "name": "Seated Hip Openers: Both Sides",
          "video": "W-sKnTxMUCI",
          "note": "",
-         "photo": "images/W-sKnTxMUCI-pdf.webp"
+         "photo": "images/W-sKnTxMUCI-pdf.webp",
+         "startPhoto": "images/W-sKnTxMUCI-start.webp",
+         "endPhoto": "images/W-sKnTxMUCI-end.webp"
         }
        ]
       },
@@ -202,7 +226,9 @@
          "name": "Seated Hip Openers: Single Side",
          "video": "D606hnoTZpk",
          "note": "",
-         "photo": "images/D606hnoTZpk-pdf.webp"
+         "photo": "images/D606hnoTZpk-pdf.webp",
+         "startPhoto": "images/D606hnoTZpk-start.webp",
+         "endPhoto": "images/D606hnoTZpk-end.webp"
         }
        ]
       },
@@ -214,7 +240,9 @@
          "name": "Seated Hip Openers: Single Side 2",
          "video": "4RcqLYsyx1Q",
          "note": "",
-         "photo": "images/4RcqLYsyx1Q-pdf.webp"
+         "photo": "images/4RcqLYsyx1Q-pdf.webp",
+         "startPhoto": "images/4RcqLYsyx1Q-start.webp",
+         "endPhoto": "images/4RcqLYsyx1Q-end.webp"
         }
        ]
       },
@@ -226,7 +254,9 @@
          "name": "Foam Roller Hip Openers",
          "video": "VtP4gnovG6w",
          "note": "",
-         "photo": "images/VtP4gnovG6w-pdf.webp"
+         "photo": "images/VtP4gnovG6w-pdf.webp",
+         "startPhoto": "images/VtP4gnovG6w-start.webp",
+         "endPhoto": "images/VtP4gnovG6w-end.webp"
         }
        ]
       },
@@ -238,7 +268,9 @@
          "name": "Slider Hip Openers",
          "video": "Kq1TEH7wZhI",
          "note": "",
-         "photo": "images/Kq1TEH7wZhI-pdf.webp"
+         "photo": "images/Kq1TEH7wZhI-pdf.webp",
+         "startPhoto": "images/Kq1TEH7wZhI-start.webp",
+         "endPhoto": "images/Kq1TEH7wZhI-end.webp"
         }
        ]
       }
@@ -273,7 +305,9 @@
          "name": "Hamstring Stretch",
          "video": "nFl6jPhEAuA",
          "note": "",
-         "photo": "images/nFl6jPhEAuA-pdf.webp"
+         "photo": "images/nFl6jPhEAuA-pdf.webp",
+         "startPhoto": "images/nFl6jPhEAuA-start.webp",
+         "endPhoto": "images/nFl6jPhEAuA-end.webp"
         }
        ]
       },
@@ -285,7 +319,9 @@
          "name": "Glute/Piriformis Stretch",
          "video": "WuOm7LoENU8",
          "note": "",
-         "photo": "images/WuOm7LoENU8-pdf.webp"
+         "photo": "images/WuOm7LoENU8-pdf.webp",
+         "startPhoto": "images/WuOm7LoENU8-start.webp",
+         "endPhoto": "images/WuOm7LoENU8-end.webp"
         }
        ]
       },
@@ -297,7 +333,9 @@
          "name": "Calf Stretch",
          "video": "SquuyQAV95g",
          "note": "",
-         "photo": "images/SquuyQAV95g-pdf.webp"
+         "photo": "images/SquuyQAV95g-pdf.webp",
+         "startPhoto": "images/SquuyQAV95g-start.webp",
+         "endPhoto": "images/SquuyQAV95g-end.webp"
         }
        ]
       },
@@ -309,7 +347,9 @@
          "name": "Rotator Stretch",
          "video": "bjduyvPoiig",
          "note": "",
-         "photo": "images/bjduyvPoiig-pdf.webp"
+         "photo": "images/bjduyvPoiig-pdf.webp",
+         "startPhoto": "images/bjduyvPoiig-start.webp",
+         "endPhoto": "images/bjduyvPoiig-end.webp"
         }
        ]
       },
@@ -321,7 +361,9 @@
          "name": "Lying Quad/Hip Stretch",
          "video": "VLDWvdhvBcM",
          "note": "",
-         "photo": "images/VLDWvdhvBcM-pdf.webp"
+         "photo": "images/VLDWvdhvBcM-pdf.webp",
+         "startPhoto": "images/VLDWvdhvBcM-start.webp",
+         "endPhoto": "images/VLDWvdhvBcM-end.webp"
         }
        ]
       },
@@ -334,7 +376,9 @@
          "video": "vf9yZz6nq-Y",
          "note": "",
          "section": "Optional / Interchangeable",
-         "photo": "images/vf9yZz6nq-Y-pdf.webp"
+         "photo": "images/vf9yZz6nq-Y-pdf.webp",
+         "startPhoto": "images/vf9yZz6nq-Y-start.webp",
+         "endPhoto": "images/vf9yZz6nq-Y-end.webp"
         }
        ]
       },
@@ -347,7 +391,9 @@
          "video": "s1vaqp4Jb2I",
          "note": "",
          "section": "Optional / Interchangeable",
-         "photo": "images/s1vaqp4Jb2I-pdf.webp"
+         "photo": "images/s1vaqp4Jb2I-pdf.webp",
+         "startPhoto": "images/s1vaqp4Jb2I-start.webp",
+         "endPhoto": "images/s1vaqp4Jb2I-end.webp"
         }
        ]
       }
@@ -382,7 +428,9 @@
          "name": "Glute Iso",
          "video": "DmKTXSUFQyA",
          "note": "",
-         "photo": "images/DmKTXSUFQyA-pdf.webp"
+         "photo": "images/DmKTXSUFQyA-pdf.webp",
+         "startPhoto": "images/DmKTXSUFQyA-start.webp",
+         "endPhoto": "images/DmKTXSUFQyA-end.webp"
         }
        ]
       },
@@ -394,7 +442,9 @@
          "name": "Hip Extension with Internal Rotation",
          "video": "w1ekr1XKcwQ",
          "note": "",
-         "photo": "images/w1ekr1XKcwQ-pdf.webp"
+         "photo": "images/w1ekr1XKcwQ-pdf.webp",
+         "startPhoto": "images/w1ekr1XKcwQ-start.webp",
+         "endPhoto": "images/w1ekr1XKcwQ-end.webp"
         }
        ]
       },
@@ -406,7 +456,9 @@
          "name": "Hip Flexion with External Rotation Iso",
          "video": "UQV6UFeT9Rw",
          "note": "",
-         "photo": "images/UQV6UFeT9Rw-pdf.webp"
+         "photo": "images/UQV6UFeT9Rw-pdf.webp",
+         "startPhoto": "images/UQV6UFeT9Rw-start.webp",
+         "endPhoto": "images/UQV6UFeT9Rw-end.webp"
         }
        ]
       },
@@ -418,7 +470,9 @@
          "name": "Hip Flexion with Internal Rotation Iso",
          "video": "3M4vz0DCbpQ",
          "note": "",
-         "photo": "images/3M4vz0DCbpQ-pdf.webp"
+         "photo": "images/3M4vz0DCbpQ-pdf.webp",
+         "startPhoto": "images/3M4vz0DCbpQ-start.webp",
+         "endPhoto": "images/3M4vz0DCbpQ-end.webp"
         }
        ]
       },
@@ -430,7 +484,9 @@
          "name": "Abduction with Internal Rotation",
          "video": "bAZQpnghSqw",
          "note": "",
-         "photo": "images/bAZQpnghSqw-pdf.webp"
+         "photo": "images/bAZQpnghSqw-pdf.webp",
+         "startPhoto": "images/bAZQpnghSqw-start.webp",
+         "endPhoto": "images/bAZQpnghSqw-end.webp"
         }
        ]
       },
@@ -442,7 +498,9 @@
          "name": "Abduction with External Rotation",
          "video": "YApcAT_iKAc",
          "note": "",
-         "photo": "images/YApcAT_iKAc-pdf.webp"
+         "photo": "images/YApcAT_iKAc-pdf.webp",
+         "startPhoto": "images/YApcAT_iKAc-start.webp",
+         "endPhoto": "images/YApcAT_iKAc-end.webp"
         }
        ]
       }
@@ -477,7 +535,9 @@
          "name": "Single Leg Squats",
          "video": "QZvzcgXJ_7s",
          "note": "",
-         "photo": "images/QZvzcgXJ_7s-pdf.webp"
+         "photo": "images/QZvzcgXJ_7s-pdf.webp",
+         "startPhoto": "images/QZvzcgXJ_7s-start.webp",
+         "endPhoto": "images/QZvzcgXJ_7s-end.webp"
         }
        ]
       },
@@ -495,7 +555,9 @@
            "video": "JYnn9C3vUHQ"
           }
          ],
-         "photo": "images/vbOhpCuC3Os-pdf.webp"
+         "photo": "images/vbOhpCuC3Os-pdf.webp",
+         "startPhoto": "images/vbOhpCuC3Os-start.webp",
+         "endPhoto": "images/vbOhpCuC3Os-end.webp"
         }
        ]
       },
@@ -507,7 +569,9 @@
          "name": "Reverse Lunges",
          "video": "aZh4KWvcL7U",
          "note": "",
-         "photo": "images/aZh4KWvcL7U-pdf.webp"
+         "photo": "images/aZh4KWvcL7U-pdf.webp",
+         "startPhoto": "images/aZh4KWvcL7U-start.webp",
+         "endPhoto": "images/aZh4KWvcL7U-end.webp"
         }
        ]
       },
@@ -519,7 +583,9 @@
          "name": "Single Leg Hip Extensions on Disc",
          "video": "ylTmQNt7H-g",
          "note": "",
-         "photo": "images/ylTmQNt7H-g-pdf.webp"
+         "photo": "images/ylTmQNt7H-g-pdf.webp",
+         "startPhoto": "images/ylTmQNt7H-g-start.webp",
+         "endPhoto": "images/ylTmQNt7H-g-end.webp"
         }
        ]
       }
@@ -553,7 +619,9 @@
            "video": "juK-kWHNcVg"
           }
          ],
-         "photo": "images/KTbJdJG_fKI-pdf.webp"
+         "photo": "images/KTbJdJG_fKI-pdf.webp",
+         "startPhoto": "images/KTbJdJG_fKI-start.webp",
+         "endPhoto": "images/KTbJdJG_fKI-end.webp"
         }
        ]
       },
@@ -565,7 +633,9 @@
          "name": "Single Leg Reaches on Disc",
          "video": "S4uhLbGWVas",
          "note": "",
-         "photo": "images/S4uhLbGWVas-pdf.webp"
+         "photo": "images/S4uhLbGWVas-pdf.webp",
+         "startPhoto": "images/S4uhLbGWVas-start.webp",
+         "endPhoto": "images/S4uhLbGWVas-end.webp"
         }
        ]
       },
@@ -577,7 +647,9 @@
          "name": "Single Leg Squat on Disc",
          "video": "21RPCvGih_U",
          "note": "",
-         "photo": "images/21RPCvGih_U-pdf.webp"
+         "photo": "images/21RPCvGih_U-pdf.webp",
+         "startPhoto": "images/21RPCvGih_U-start.webp",
+         "endPhoto": "images/21RPCvGih_U-end.webp"
         }
        ]
       },
@@ -589,7 +661,9 @@
          "name": "Leg Curl on Stability Ball",
          "video": "6MR2-sQyS5E",
          "note": "",
-         "photo": "images/6MR2-sQyS5E-pdf.webp"
+         "photo": "images/6MR2-sQyS5E-pdf.webp",
+         "startPhoto": "images/6MR2-sQyS5E-start.webp",
+         "endPhoto": "images/6MR2-sQyS5E-end.webp"
         }
        ]
       }
@@ -623,7 +697,9 @@
            "video": "v3mg8S0z5JQ"
           }
          ],
-         "photo": "images/h7uZlF-Ppto-pdf.webp"
+         "photo": "images/h7uZlF-Ppto-pdf.webp",
+         "startPhoto": "images/h7uZlF-Ppto-start.webp",
+         "endPhoto": "images/h7uZlF-Ppto-end.webp"
         }
        ]
       },
@@ -635,7 +711,9 @@
          "name": "Deadlift on BOSU",
          "video": "wNEuAW_PS-c",
          "note": "",
-         "photo": "images/wNEuAW_PS-c-pdf.webp"
+         "photo": "images/wNEuAW_PS-c-pdf.webp",
+         "startPhoto": "images/wNEuAW_PS-c-start.webp",
+         "endPhoto": "images/wNEuAW_PS-c-end.webp"
         }
        ]
       },
@@ -647,7 +725,9 @@
          "name": "Squats on BOSU",
          "video": "dcvVFDO8dBE",
          "note": "",
-         "photo": "images/dcvVFDO8dBE-pdf.webp"
+         "photo": "images/dcvVFDO8dBE-pdf.webp",
+         "startPhoto": "images/dcvVFDO8dBE-start.webp",
+         "endPhoto": "images/dcvVFDO8dBE-end.webp"
         }
        ]
       },
@@ -659,7 +739,9 @@
          "name": "Single Leg Hip Extension on Stability Ball",
          "video": "yU01Yv9rrzQ",
          "note": "",
-         "photo": "images/yU01Yv9rrzQ-pdf.webp"
+         "photo": "images/yU01Yv9rrzQ-pdf.webp",
+         "startPhoto": "images/yU01Yv9rrzQ-start.webp",
+         "endPhoto": "images/yU01Yv9rrzQ-end.webp"
         }
        ]
       }
@@ -687,7 +769,9 @@
          "name": "Single Leg Squat on BOSU",
          "video": "MiC9l-j8p4Y",
          "note": "",
-         "photo": "images/MiC9l-j8p4Y-pdf.webp"
+         "photo": "images/MiC9l-j8p4Y-pdf.webp",
+         "startPhoto": "images/MiC9l-j8p4Y-start.webp",
+         "endPhoto": "images/MiC9l-j8p4Y-end.webp"
         }
        ]
       },
@@ -699,7 +783,9 @@
          "name": "Single Leg Deadlift on Back of BOSU",
          "video": "MYL7SLJkXT4",
          "note": "",
-         "photo": "images/MYL7SLJkXT4-pdf.webp"
+         "photo": "images/MYL7SLJkXT4-pdf.webp",
+         "startPhoto": "images/MYL7SLJkXT4-start.webp",
+         "endPhoto": "images/MYL7SLJkXT4-end.webp"
         }
        ]
       },
@@ -711,7 +797,9 @@
          "name": "Jump Lunges on BOSU",
          "video": "V16-zb_SvTc",
          "note": "",
-         "photo": "images/V16-zb_SvTc-pdf.webp"
+         "photo": "images/V16-zb_SvTc-pdf.webp",
+         "startPhoto": "images/V16-zb_SvTc-start.webp",
+         "endPhoto": "images/V16-zb_SvTc-end.webp"
         }
        ]
       },
@@ -723,7 +811,9 @@
          "name": "Single Leg Curl on Stability Ball",
          "video": "nzorCIUQYig",
          "note": "",
-         "photo": "images/nzorCIUQYig-pdf.webp"
+         "photo": "images/nzorCIUQYig-pdf.webp",
+         "startPhoto": "images/nzorCIUQYig-start.webp",
+         "endPhoto": "images/nzorCIUQYig-end.webp"
         }
        ]
       }
@@ -751,7 +841,9 @@
          "name": "Jump Squats on BOSU",
          "video": "ZfqgDnLT8Cs",
          "note": "",
-         "photo": "images/ZfqgDnLT8Cs-pdf.webp"
+         "photo": "images/ZfqgDnLT8Cs-pdf.webp",
+         "startPhoto": "images/ZfqgDnLT8Cs-start.webp",
+         "endPhoto": "images/ZfqgDnLT8Cs-end.webp"
         }
        ]
       },
@@ -763,7 +855,9 @@
          "name": "Single Leg Reaches on BOSU",
          "video": "o3MtDEXLuXM",
          "note": "",
-         "photo": "images/o3MtDEXLuXM-pdf.webp"
+         "photo": "images/o3MtDEXLuXM-pdf.webp",
+         "startPhoto": "images/o3MtDEXLuXM-start.webp",
+         "endPhoto": "images/o3MtDEXLuXM-end.webp"
         }
        ]
       },
@@ -775,7 +869,9 @@
          "name": "Split Jumps on BOSU",
          "video": "-vin4kQtm34",
          "note": "",
-         "photo": "images/-vin4kQtm34-pdf.webp"
+         "photo": "images/-vin4kQtm34-pdf.webp",
+         "startPhoto": "images/-vin4kQtm34-start.webp",
+         "endPhoto": "images/-vin4kQtm34-end.webp"
         }
        ]
       },
@@ -787,7 +883,9 @@
          "name": "Single Leg Hip Extension on BOSU",
          "video": "k6jya93BOms",
          "note": "",
-         "photo": "images/k6jya93BOms-pdf.webp"
+         "photo": "images/k6jya93BOms-pdf.webp",
+         "startPhoto": "images/k6jya93BOms-start.webp",
+         "endPhoto": "images/k6jya93BOms-end.webp"
         }
        ]
       }
@@ -815,7 +913,9 @@
          "name": "Single Leg Med Ball Throws",
          "video": "nP874sn6g5E",
          "note": "",
-         "photo": "images/nP874sn6g5E-pdf.webp"
+         "photo": "images/nP874sn6g5E-pdf.webp",
+         "startPhoto": "images/nP874sn6g5E-start.webp",
+         "endPhoto": "images/nP874sn6g5E-end.webp"
         }
        ]
       },
@@ -827,7 +927,9 @@
          "name": "Stability Ball Single Leg Hip Extensions",
          "video": "yU01Yv9rrzQ",
          "note": "",
-         "photo": "images/yU01Yv9rrzQ-pdf.webp"
+         "photo": "images/yU01Yv9rrzQ-pdf.webp",
+         "startPhoto": "images/yU01Yv9rrzQ-start.webp",
+         "endPhoto": "images/yU01Yv9rrzQ-end.webp"
         }
        ]
       },
@@ -839,7 +941,9 @@
          "name": "Jump Ons — BOSU",
          "video": "9PFNFo05lrY",
          "note": "",
-         "photo": "images/9PFNFo05lrY-pdf.webp"
+         "photo": "images/9PFNFo05lrY-pdf.webp",
+         "startPhoto": "images/9PFNFo05lrY-start.webp",
+         "endPhoto": "images/9PFNFo05lrY-end.webp"
         }
        ]
       },
@@ -851,7 +955,9 @@
          "name": "Single Leg Hip Extension Isometric Hold (20 sec) on BOSU",
          "video": "FXY9FQ1ah40",
          "note": "",
-         "photo": "images/FXY9FQ1ah40-pdf.webp"
+         "photo": "images/FXY9FQ1ah40-pdf.webp",
+         "startPhoto": "images/FXY9FQ1ah40-start.webp",
+         "endPhoto": "images/FXY9FQ1ah40-end.webp"
         }
        ]
       }
@@ -886,21 +992,27 @@
          "name": "Single Leg Reaches",
          "video": "EXrX1lNTTio",
          "note": "",
-         "photo": "images/EXrX1lNTTio-pdf.webp"
+         "photo": "images/EXrX1lNTTio-pdf.webp",
+         "startPhoto": "images/EXrX1lNTTio-start.webp",
+         "endPhoto": "images/EXrX1lNTTio-end.webp"
         },
         {
          "code": "A2",
          "name": "Reverse Lunges",
          "video": "aZh4KWvcL7U",
          "note": "",
-         "photo": "images/aZh4KWvcL7U-pdf.webp"
+         "photo": "images/aZh4KWvcL7U-pdf.webp",
+         "startPhoto": "images/aZh4KWvcL7U-start.webp",
+         "endPhoto": "images/aZh4KWvcL7U-end.webp"
         },
         {
          "code": "A3",
          "name": "Band Back Kicks",
          "video": "ZTmhNDwwA30",
          "note": "",
-         "photo": "images/ZTmhNDwwA30-pdf.webp"
+         "photo": "images/ZTmhNDwwA30-pdf.webp",
+         "startPhoto": "images/ZTmhNDwwA30-start.webp",
+         "endPhoto": "images/ZTmhNDwwA30-end.webp"
         }
        ]
       },
@@ -912,21 +1024,27 @@
          "name": "Supine Stability Ball Single Leg Hip Extensions",
          "video": "yU01Yv9rrzQ",
          "note": "",
-         "photo": "images/yU01Yv9rrzQ-pdf.webp"
+         "photo": "images/yU01Yv9rrzQ-pdf.webp",
+         "startPhoto": "images/yU01Yv9rrzQ-start.webp",
+         "endPhoto": "images/yU01Yv9rrzQ-end.webp"
         },
         {
          "code": "B2",
          "name": "BOSU Squats",
          "video": "dcvVFDO8dBE",
          "note": "",
-         "photo": "images/dcvVFDO8dBE-pdf.webp"
+         "photo": "images/dcvVFDO8dBE-pdf.webp",
+         "startPhoto": "images/dcvVFDO8dBE-start.webp",
+         "endPhoto": "images/dcvVFDO8dBE-end.webp"
         },
         {
          "code": "B3",
          "name": "Butterfly Banded Abductions with Crunch",
          "video": "9Bqn068QQhE",
          "note": "",
-         "photo": "images/9Bqn068QQhE-pdf.webp"
+         "photo": "images/9Bqn068QQhE-pdf.webp",
+         "startPhoto": "images/9Bqn068QQhE-start.webp",
+         "endPhoto": "images/9Bqn068QQhE-end.webp"
         }
        ]
       }
@@ -954,21 +1072,27 @@
          "name": "Single Leg Deadlifts",
          "video": "JYnn9C3vUHQ",
          "note": "",
-         "photo": "images/JYnn9C3vUHQ-pdf.webp"
+         "photo": "images/JYnn9C3vUHQ-pdf.webp",
+         "startPhoto": "images/JYnn9C3vUHQ-start.webp",
+         "endPhoto": "images/JYnn9C3vUHQ-end.webp"
         },
         {
          "code": "A2",
          "name": "Lateral Lunges on BOSU",
          "video": "mM6nzjTlI1U",
          "note": "",
-         "photo": "images/mM6nzjTlI1U-pdf.webp"
+         "photo": "images/mM6nzjTlI1U-pdf.webp",
+         "startPhoto": "images/mM6nzjTlI1U-start.webp",
+         "endPhoto": "images/mM6nzjTlI1U-end.webp"
         },
         {
          "code": "A3",
          "name": "Diagonal Banded Back Kicks",
          "video": "aTdnnMeidtk",
          "note": "",
-         "photo": "images/aTdnnMeidtk-pdf.webp"
+         "photo": "images/aTdnnMeidtk-pdf.webp",
+         "startPhoto": "images/aTdnnMeidtk-start.webp",
+         "endPhoto": "images/aTdnnMeidtk-end.webp"
         }
        ]
       },
@@ -980,21 +1104,27 @@
          "name": "Supine Stability Ball Single Leg Hip Extensions",
          "video": "yU01Yv9rrzQ",
          "note": "",
-         "photo": "images/yU01Yv9rrzQ-pdf.webp"
+         "photo": "images/yU01Yv9rrzQ-pdf.webp",
+         "startPhoto": "images/yU01Yv9rrzQ-start.webp",
+         "endPhoto": "images/yU01Yv9rrzQ-end.webp"
         },
         {
          "code": "B2",
          "name": "Single Leg Squats",
          "video": "QZvzcgXJ_7s",
          "note": "",
-         "photo": "images/QZvzcgXJ_7s-pdf.webp"
+         "photo": "images/QZvzcgXJ_7s-pdf.webp",
+         "startPhoto": "images/QZvzcgXJ_7s-start.webp",
+         "endPhoto": "images/QZvzcgXJ_7s-end.webp"
         },
         {
          "code": "B3",
          "name": "Banded Adductions",
          "video": "9L_xzHL3yno",
          "note": "",
-         "photo": "images/9L_xzHL3yno-pdf.webp"
+         "photo": "images/9L_xzHL3yno-pdf.webp",
+         "startPhoto": "images/9L_xzHL3yno-start.webp",
+         "endPhoto": "images/9L_xzHL3yno-end.webp"
         }
        ]
       }
@@ -1022,21 +1152,27 @@
          "name": "Single Leg Reaches on Dyna Disc",
          "video": "S4uhLbGWVas",
          "note": "",
-         "photo": "images/S4uhLbGWVas-pdf.webp"
+         "photo": "images/S4uhLbGWVas-pdf.webp",
+         "startPhoto": "images/S4uhLbGWVas-start.webp",
+         "endPhoto": "images/S4uhLbGWVas-end.webp"
         },
         {
          "code": "A2",
          "name": "Stability Ball Leg Curls",
          "video": "6MR2-sQyS5E",
          "note": "Finish each set with 10 pulses",
-         "photo": "images/6MR2-sQyS5E-pdf.webp"
+         "photo": "images/6MR2-sQyS5E-pdf.webp",
+         "startPhoto": "images/6MR2-sQyS5E-start.webp",
+         "endPhoto": "images/6MR2-sQyS5E-end.webp"
         },
         {
          "code": "A3",
          "name": "Banded Squat with 1½ Abductions",
          "video": "ewpipPaSf9I",
          "note": "",
-         "photo": "images/ewpipPaSf9I-pdf.webp"
+         "photo": "images/ewpipPaSf9I-pdf.webp",
+         "startPhoto": "images/ewpipPaSf9I-start.webp",
+         "endPhoto": "images/ewpipPaSf9I-end.webp"
         }
        ]
       },
@@ -1048,21 +1184,27 @@
          "name": "Supine Stability Ball Single Leg Hip Extensions",
          "video": "yU01Yv9rrzQ",
          "note": "Finish each set with 10 pulses",
-         "photo": "images/yU01Yv9rrzQ-pdf.webp"
+         "photo": "images/yU01Yv9rrzQ-pdf.webp",
+         "startPhoto": "images/yU01Yv9rrzQ-start.webp",
+         "endPhoto": "images/yU01Yv9rrzQ-end.webp"
         },
         {
          "code": "B2",
          "name": "Plie Squats",
          "video": "TyNCUSw5C-w",
          "note": "Finish each set with 10 pulses",
-         "photo": "images/TyNCUSw5C-w-pdf.webp"
+         "photo": "images/TyNCUSw5C-w-pdf.webp",
+         "startPhoto": "images/TyNCUSw5C-w-start.webp",
+         "endPhoto": "images/TyNCUSw5C-w-end.webp"
         },
         {
          "code": "B3",
          "name": "Bowlers with Band",
          "video": "GzB5MsAr-r8",
          "note": "",
-         "photo": "images/GzB5MsAr-r8-pdf.webp"
+         "photo": "images/GzB5MsAr-r8-pdf.webp",
+         "startPhoto": "images/GzB5MsAr-r8-start.webp",
+         "endPhoto": "images/GzB5MsAr-r8-end.webp"
         }
        ]
       }
@@ -1090,21 +1232,27 @@
          "name": "Single Leg Deadlift on BOSU",
          "video": "MYL7SLJkXT4",
          "note": "",
-         "photo": "images/MYL7SLJkXT4-pdf.webp"
+         "photo": "images/MYL7SLJkXT4-pdf.webp",
+         "startPhoto": "images/MYL7SLJkXT4-start.webp",
+         "endPhoto": "images/MYL7SLJkXT4-end.webp"
         },
         {
          "code": "A2",
          "name": "BOSU Squats",
          "video": "dcvVFDO8dBE",
          "note": "Finish each set with 10 pulses",
-         "photo": "images/dcvVFDO8dBE-pdf.webp"
+         "photo": "images/dcvVFDO8dBE-pdf.webp",
+         "startPhoto": "images/dcvVFDO8dBE-start.webp",
+         "endPhoto": "images/dcvVFDO8dBE-end.webp"
         },
         {
          "code": "A3",
          "name": "Banded Squat with Abductions",
          "video": "qFRlVnPsHTA",
          "note": "Finish each set with 10 pulses of abductions",
-         "photo": "images/qFRlVnPsHTA-pdf.webp"
+         "photo": "images/qFRlVnPsHTA-pdf.webp",
+         "startPhoto": "images/qFRlVnPsHTA-start.webp",
+         "endPhoto": "images/qFRlVnPsHTA-end.webp"
         }
        ]
       },
@@ -1116,21 +1264,27 @@
          "name": "Supine Stability Ball Single Leg Hip Extensions",
          "video": "yU01Yv9rrzQ",
          "note": "Finish each set with 10 pulses",
-         "photo": "images/yU01Yv9rrzQ-pdf.webp"
+         "photo": "images/yU01Yv9rrzQ-pdf.webp",
+         "startPhoto": "images/yU01Yv9rrzQ-start.webp",
+         "endPhoto": "images/yU01Yv9rrzQ-end.webp"
         },
         {
          "code": "B2",
          "name": "Plie Squats",
          "video": "TyNCUSw5C-w",
          "note": "Finish each set with 10 pulses",
-         "photo": "images/TyNCUSw5C-w-pdf.webp"
+         "photo": "images/TyNCUSw5C-w-pdf.webp",
+         "startPhoto": "images/TyNCUSw5C-w-start.webp",
+         "endPhoto": "images/TyNCUSw5C-w-end.webp"
         },
         {
          "code": "B3",
          "name": "Bowlers with Band",
          "video": "GzB5MsAr-r8",
          "note": "",
-         "photo": "images/GzB5MsAr-r8-pdf.webp"
+         "photo": "images/GzB5MsAr-r8-pdf.webp",
+         "startPhoto": "images/GzB5MsAr-r8-start.webp",
+         "endPhoto": "images/GzB5MsAr-r8-end.webp"
         }
        ]
       }
@@ -1158,21 +1312,27 @@
          "name": "BOSU Single Leg Hip Extensions",
          "video": "k6jya93BOms",
          "note": "Bridge hold 10 seconds",
-         "photo": "images/k6jya93BOms-pdf.webp"
+         "photo": "images/k6jya93BOms-pdf.webp",
+         "startPhoto": "images/k6jya93BOms-start.webp",
+         "endPhoto": "images/k6jya93BOms-end.webp"
         },
         {
          "code": "A2",
          "name": "BOSU Stationary Lunges",
          "video": "juK-kWHNcVg",
          "note": "10-20 second hold per side",
-         "photo": "images/juK-kWHNcVg-pdf.webp"
+         "photo": "images/juK-kWHNcVg-pdf.webp",
+         "startPhoto": "images/juK-kWHNcVg-start.webp",
+         "endPhoto": "images/juK-kWHNcVg-end.webp"
         },
         {
          "code": "A3",
          "name": "Quadruped Butt Kicks",
          "video": "LJ_G6tDa6b8",
          "note": "",
-         "photo": "images/LJ_G6tDa6b8-pdf.webp"
+         "photo": "images/LJ_G6tDa6b8-pdf.webp",
+         "startPhoto": "images/LJ_G6tDa6b8-start.webp",
+         "endPhoto": "images/LJ_G6tDa6b8-end.webp"
         }
        ]
       },
@@ -1184,21 +1344,27 @@
          "name": "Stability Ball Hip Extensions with Abductions",
          "video": "kMKdvU1Z-Go",
          "note": "20-second isometric hold",
-         "photo": "images/kMKdvU1Z-Go-pdf.webp"
+         "photo": "images/kMKdvU1Z-Go-pdf.webp",
+         "startPhoto": "images/kMKdvU1Z-Go-start.webp",
+         "endPhoto": "images/kMKdvU1Z-Go-end.webp"
         },
         {
          "code": "B2",
          "name": "Lateral Lunges on Dyna Disc",
          "video": "D2cQVxi3hww",
          "note": "",
-         "photo": "images/D2cQVxi3hww-pdf.webp"
+         "photo": "images/D2cQVxi3hww-pdf.webp",
+         "startPhoto": "images/D2cQVxi3hww-start.webp",
+         "endPhoto": "images/D2cQVxi3hww-end.webp"
         },
         {
          "code": "B3",
          "name": "Single Leg Squat on BOSU",
          "video": "MiC9l-j8p4Y",
          "note": "Double-leg isometric hold 20 seconds",
-         "photo": "images/MiC9l-j8p4Y-pdf.webp"
+         "photo": "images/MiC9l-j8p4Y-pdf.webp",
+         "startPhoto": "images/MiC9l-j8p4Y-start.webp",
+         "endPhoto": "images/MiC9l-j8p4Y-end.webp"
         }
        ]
       }
@@ -1226,21 +1392,27 @@
          "name": "BOSU Single Leg Reaches",
          "video": "o3MtDEXLuXM",
          "note": "",
-         "photo": "images/o3MtDEXLuXM-pdf.webp"
+         "photo": "images/o3MtDEXLuXM-pdf.webp",
+         "startPhoto": "images/o3MtDEXLuXM-start.webp",
+         "endPhoto": "images/o3MtDEXLuXM-end.webp"
         },
         {
          "code": "A2",
          "name": "BOSU Reverse Lunges",
          "video": "v3mg8S0z5JQ",
          "note": "10-20 second hold per side",
-         "photo": "images/v3mg8S0z5JQ-pdf.webp"
+         "photo": "images/v3mg8S0z5JQ-pdf.webp",
+         "startPhoto": "images/v3mg8S0z5JQ-start.webp",
+         "endPhoto": "images/v3mg8S0z5JQ-end.webp"
         },
         {
          "code": "A3",
          "name": "Banded Adductions",
          "video": "9L_xzHL3yno",
          "note": "10-second isometric hold",
-         "photo": "images/9L_xzHL3yno-pdf.webp"
+         "photo": "images/9L_xzHL3yno-pdf.webp",
+         "startPhoto": "images/9L_xzHL3yno-start.webp",
+         "endPhoto": "images/9L_xzHL3yno-end.webp"
         }
        ]
       },
@@ -1252,21 +1424,27 @@
          "name": "Stability Ball Single Leg Curl",
          "video": "nzorCIUQYig",
          "note": "20-second isometric hold · both legs",
-         "photo": "images/nzorCIUQYig-pdf.webp"
+         "photo": "images/nzorCIUQYig-pdf.webp",
+         "startPhoto": "images/nzorCIUQYig-start.webp",
+         "endPhoto": "images/nzorCIUQYig-end.webp"
         },
         {
          "code": "B2",
          "name": "Bowlers on BOSU",
          "video": "pNd8xPZ0dw4",
          "note": "",
-         "photo": "images/pNd8xPZ0dw4-pdf.webp"
+         "photo": "images/pNd8xPZ0dw4-pdf.webp",
+         "startPhoto": "images/pNd8xPZ0dw4-start.webp",
+         "endPhoto": "images/pNd8xPZ0dw4-end.webp"
         },
         {
          "code": "B3",
          "name": "Curtsy Lunge with Banded Abduction",
          "video": "IUkf8YI4TbA",
          "note": "10-second isometric hold on the abduction",
-         "photo": "images/IUkf8YI4TbA-pdf.webp"
+         "photo": "images/IUkf8YI4TbA-pdf.webp",
+         "startPhoto": "images/IUkf8YI4TbA-start.webp",
+         "endPhoto": "images/IUkf8YI4TbA-end.webp"
         }
        ]
       }
@@ -1294,21 +1472,27 @@
          "name": "Deadlift on BOSU",
          "video": "wNEuAW_PS-c",
          "note": "",
-         "photo": "images/wNEuAW_PS-c-pdf.webp"
+         "photo": "images/wNEuAW_PS-c-pdf.webp",
+         "startPhoto": "images/wNEuAW_PS-c-start.webp",
+         "endPhoto": "images/wNEuAW_PS-c-end.webp"
         },
         {
          "code": "A2",
          "name": "Slider Lateral Lunges",
          "video": "AiC3kwNWX24",
          "note": "",
-         "photo": "images/AiC3kwNWX24-pdf.webp"
+         "photo": "images/AiC3kwNWX24-pdf.webp",
+         "startPhoto": "images/AiC3kwNWX24-start.webp",
+         "endPhoto": "images/AiC3kwNWX24-end.webp"
         },
         {
          "code": "A3",
          "name": "Alternating Forward Reaches",
          "video": "26z4WiRH1pI",
          "note": "",
-         "photo": "images/26z4WiRH1pI-pdf.webp"
+         "photo": "images/26z4WiRH1pI-pdf.webp",
+         "startPhoto": "images/26z4WiRH1pI-start.webp",
+         "endPhoto": "images/26z4WiRH1pI-end.webp"
         }
        ]
       },
@@ -1320,21 +1504,27 @@
          "name": "Stability Ball Single Leg Hip Extensions",
          "video": "yU01Yv9rrzQ",
          "note": "",
-         "photo": "images/yU01Yv9rrzQ-pdf.webp"
+         "photo": "images/yU01Yv9rrzQ-pdf.webp",
+         "startPhoto": "images/yU01Yv9rrzQ-start.webp",
+         "endPhoto": "images/yU01Yv9rrzQ-end.webp"
         },
         {
          "code": "B2",
          "name": "Glute Lunge with Banded Kickback",
          "video": "7wfhUQUnXLA",
          "note": "Finish each set with 10 kickback pulses",
-         "photo": "images/7wfhUQUnXLA-pdf.webp"
+         "photo": "images/7wfhUQUnXLA-pdf.webp",
+         "startPhoto": "images/7wfhUQUnXLA-start.webp",
+         "endPhoto": "images/7wfhUQUnXLA-end.webp"
         },
         {
          "code": "B3",
          "name": "Supine Single Leg Hip Extension with Abduction",
          "video": "ftamZKL7QiU",
          "note": "10-second hold",
-         "photo": "images/ftamZKL7QiU-pdf.webp"
+         "photo": "images/ftamZKL7QiU-pdf.webp",
+         "startPhoto": "images/ftamZKL7QiU-start.webp",
+         "endPhoto": "images/ftamZKL7QiU-end.webp"
         }
        ]
       }
@@ -1362,21 +1552,27 @@
          "name": "Stability Ball Hip Extension – Curl",
          "video": "uqpAL5IFPro",
          "note": "",
-         "photo": "images/uqpAL5IFPro-pdf.webp"
+         "photo": "images/uqpAL5IFPro-pdf.webp",
+         "startPhoto": "images/uqpAL5IFPro-start.webp",
+         "endPhoto": "images/uqpAL5IFPro-end.webp"
         },
         {
          "code": "A2",
          "name": "Plie Squat on Dyna Disc",
          "video": "Q3YMunLMmNQ",
          "note": "",
-         "photo": "images/Q3YMunLMmNQ-pdf.webp"
+         "photo": "images/Q3YMunLMmNQ-pdf.webp",
+         "startPhoto": "images/Q3YMunLMmNQ-start.webp",
+         "endPhoto": "images/Q3YMunLMmNQ-end.webp"
         },
         {
          "code": "A3",
          "name": "Explosive Lateral Lunges",
          "video": "Y0nwOfePPFg",
          "note": "",
-         "photo": "images/Y0nwOfePPFg-pdf.webp"
+         "photo": "images/Y0nwOfePPFg-pdf.webp",
+         "startPhoto": "images/Y0nwOfePPFg-start.webp",
+         "endPhoto": "images/Y0nwOfePPFg-end.webp"
         }
        ]
       },
@@ -1388,21 +1584,27 @@
          "name": "Band Single Leg Curls",
          "video": "E9CvTnBvv0c",
          "note": "",
-         "photo": "images/E9CvTnBvv0c-pdf.webp"
+         "photo": "images/E9CvTnBvv0c-pdf.webp",
+         "startPhoto": "images/E9CvTnBvv0c-start.webp",
+         "endPhoto": "images/E9CvTnBvv0c-end.webp"
         },
         {
          "code": "B2",
          "name": "Split Jumps",
          "video": "-G4plMEkWBE",
          "note": "",
-         "photo": "images/-G4plMEkWBE-pdf.webp"
+         "photo": "images/-G4plMEkWBE-pdf.webp",
+         "startPhoto": "images/-G4plMEkWBE-start.webp",
+         "endPhoto": "images/-G4plMEkWBE-end.webp"
         },
         {
          "code": "B3",
          "name": "Explosive Supine Single Leg Hip Extensions",
          "video": "syWbCRnRENg",
          "note": "",
-         "photo": "images/syWbCRnRENg-pdf.webp"
+         "photo": "images/syWbCRnRENg-pdf.webp",
+         "startPhoto": "images/syWbCRnRENg-start.webp",
+         "endPhoto": "images/syWbCRnRENg-end.webp"
         }
        ]
       }
