@@ -10,7 +10,7 @@ split, one page per workout, language for athletes and the parents running the s
 - `print.html` is the printable version: one landscape page per workout, every exercise with its
   start and end photo, sets, reps and rest in a box at the top. Ink-light, prints fine in black and white.
 - `data/yae.json` holds the whole program: six groups (Warm-Up, Mobility, Stretching, MAT Holds,
-  Stability & Balance, Foundation Strength), 19 workouts, every exercise with its name, note,
+  Stability & Balance, Foundation Strength), 18 workouts, every exercise with its name, note,
   YouTube demo ID and photos. The player and the print page both read this one file, so they can
   never drift apart.
 - `images/` holds the start and end photos pulled from the original recordings, plus the single
@@ -27,7 +27,7 @@ The page is live at `https://michellemariefit.github.io/yae-player/`.
 | `#foundation` | the eight Foundation workouts with a picker (same for `#stability`) |
 | `#foundation-1` | only Foundation Workout 1, no pickers (same for `#stability-4`, `#warmup`, `#mobility`, `#stretching`, `#mat`) |
 
-The print page works the same way: `print.html#foundation-1` is one page, `print.html` is all 19.
+The print page works the same way: `print.html#foundation-1` is one page, `print.html` is all 18.
 
 ## Put it in GHL
 
@@ -72,11 +72,11 @@ The photos come from the original recordings in Dropbox, folder
 
 ## Printable PDFs
 
-`tools/make_pdfs.py` opens `print.html` in headless Chromium and writes one PDF per workout plus
+`tools/make_pdfs.js` opens `print.html` in headless Chromium and writes one PDF per workout plus
 `pdf/yae-all-workouts.pdf`. Run it after the photos change:
 
 ```
-python tools/make_pdfs.py
+node tools/make_pdfs.js
 ```
 
 ## Instruction videos

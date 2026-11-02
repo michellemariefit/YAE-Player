@@ -85,21 +85,29 @@ def source_path(vid):
 
 
 def read_frames(path, start=SKIP_SECONDS):
+    """Small grey frames for analysis (cached in tools/cache/frames/ so re-runs take seconds)."""
+    cdir = os.path.join(CACHE, "frames")
+    os.makedirs(cdir, exist_ok=True)
+    cpath = os.path.join(cdir, f"{os.path.basename(path)}.{start:.1f}.npz")
+    if os.path.exists(cpath):
+        z = np.load(cpath)
+        return list(z["g"]), list(z["t"])
     cap = cv2.VideoCapture(path)
     fps = cap.get(cv2.CAP_PROP_FPS) or 30
     step = max(1, int(round(fps / SAMPLE_FPS)))
     cap.set(cv2.CAP_PROP_POS_MSEC, max(0.0, start - 1.0) * 1000)
-    frames, times, i = [], [], int(cap.get(cv2.CAP_PROP_POS_FRAMES))
+    grays, times, i = [], [], int(cap.get(cv2.CAP_PROP_POS_FRAMES))
     while True:
         ok, frame = cap.read()
         if not ok or i / fps > start + MAX_SECONDS:
             break
         if i % step == 0 and i / fps >= start:
-            frames.append(frame)
+            grays.append(small_gray(frame))
             times.append(i / fps)
         i += 1
     cap.release()
-    return frames, times
+    np.savez_compressed(cpath, g=np.array(grays), t=np.array(times))
+    return grays, times
 
 
 def small_gray(frame):
@@ -107,15 +115,25 @@ def small_gray(frame):
     return cv2.GaussianBlur(g, (5, 5), 0).astype(np.float32)
 
 
-def pick(frames, times):
-    g = [small_gray(f) for f in frames]
+def border_diff(a, b):
+    """How much the edges of the frame changed. Big = the camera zoomed or moved, not the athlete."""
+    m = np.ones_like(a, dtype=bool); m[9:-9, 16:-16] = False
+    return np.abs(a - b)[m].mean()
+
+
+def pick(g, times):
+    """g = small grey frames. Start = just before the first movement. End = the most different
+    frame within the first rep, ignoring frames where the camera zoomed (edges changed a lot)."""
     motion = np.array([0.0] + [np.abs(g[i] - g[i - 1]).mean() for i in range(1, len(g))])
     smooth = np.convolve(motion, np.ones(3) / 3, mode="same")
     thresh = max(np.percentile(smooth, 60), 1.5)
     moving = np.where(smooth > thresh)[0]
     start = max(0, int(moving[0]) - 1) if len(moving) else 0
     window = [i for i in range(start, len(g)) if times[i] - times[start] <= REP_WINDOW]
-    end = max(window, key=lambda i: np.abs(g[i] - g[start]).mean()) if window else start
+    steady = [i for i in window if border_diff(g[i], g[start]) < 6.0]
+    if len(steady) < 3:
+        steady = window
+    end = max(steady, key=lambda i: np.abs(g[i] - g[start]).mean()) if steady else start
     return start, end
 
 
@@ -165,12 +183,13 @@ def main():
                 s, e = overrides[vid]["start"], overrides[vid]["end"]
                 fs, fe = frame_at(path, s), frame_at(path, e)
             else:
-                frames, times = read_frames(path, float(sources.get(vid, {}).get("searchFrom", SKIP_SECONDS)))
-                if not frames:
+                grays, times = read_frames(path, float(sources.get(vid, {}).get("searchFrom", SKIP_SECONDS)))
+                if not grays:
                     print("   no frames, skipped")
                     continue
-                i, j = pick(frames, times)
-                fs, fe, s, e = frames[i], frames[j], times[i], times[j]
+                i, j = pick(grays, times)
+                s, e = times[i], times[j]
+                fs, fe = frame_at(path, s), frame_at(path, e)
             results[vid] = {"name": name, "start": save(fs, f"{vid}-start.webp"),
                             "end": save(fe, f"{vid}-end.webp"), "t": [round(s, 1), round(e, 1)],
                             "file": os.path.basename(path)}
