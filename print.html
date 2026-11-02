@@ -26,12 +26,12 @@ html,body{margin:0;background:#fff;color:var(--ink);font:400 10.5pt/1.3 "Helveti
 .cell h2{margin:0;font-size:11pt;line-height:1.15;display:flex;gap:6pt;align-items:baseline}
 .cell h2 .code{font-size:9pt;border:1.5px solid var(--ink);border-radius:4pt;padding:1pt 4pt;white-space:nowrap}
 .cell .note{font-size:8.5pt;color:var(--muted);margin:0}
-.pics{flex:1;display:grid;grid-template-columns:1fr 1fr;gap:4pt;min-height:0}
-.pics figure{margin:0;position:relative;min-height:0;display:flex}
-.pics img{width:100%;height:100%;object-fit:cover;border-radius:4pt;min-height:0}
+.pics{display:grid;grid-template-columns:1fr 1fr;gap:4pt}
+.pics figure{margin:0;position:relative}
+.pics img{width:100%;aspect-ratio:var(--ar,4/3);object-fit:cover;border-radius:4pt;display:block}
 .pics figcaption{position:absolute;left:3pt;top:3pt;font-size:7pt;letter-spacing:.1em;text-transform:uppercase;background:#fff;border:1px solid var(--ink);padding:1pt 3pt;border-radius:3pt}
-.pics.one{grid-template-columns:1fr}
-.sec{grid-column:1/-1;font-size:8pt;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin:-2pt 0 -3pt}
+.pics.one{grid-template-columns:1fr}.pics.one img{aspect-ratio:16/9}
+.sec{font-size:7.5pt;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
 .foot{display:flex;justify-content:space-between;font-size:8pt;color:var(--muted);border-top:1px solid var(--line);padding-top:3pt}
 @media print{.toolbar{display:none}.page{margin:0;width:auto;height:7.7in}}
 @media screen and (max-width:900px){.page{width:auto;height:auto;padding:12px}.grid{grid-template-columns:1fr 1fr !important}.cell{min-height:150px}}
@@ -46,10 +46,11 @@ html,body{margin:0;background:#fff;color:var(--ink);font:400 10.5pt/1.3 "Helveti
 const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 let DATA=null;
 function all(){return DATA.groups.flatMap(g=>g.workouts.map(w=>({w,g})))}
-function layout(n){const cols=n<=4?2:n<=6?3:n<=8?4:4;return {cols,rows:Math.ceil(n/cols)}}
+function layout(n){const cols=n<=6?2:3;return {cols,rows:Math.ceil(n/cols)}}
 function pageHTML(w,g){
   const exs=w.blocks.flatMap(b=>b.exercises);
   const {cols,rows}=layout(exs.length);
+  const ar=(cols===2&&exs.length>4)?'16/10':'4/3';
   let shown='';
   const cells=exs.map(e=>{
     const sec=(e.section&&e.section!==shown)?(shown=e.section,`<div class="sec">${esc(shown)}</div>`):'';
@@ -57,14 +58,14 @@ function pageHTML(w,g){
       ?`<div class="pics"><figure><img src="${esc(e.startPhoto)}" alt=""><figcaption>Start</figcaption></figure><figure><img src="${esc(e.endPhoto)}" alt=""><figcaption>End</figcaption></figure></div>`
       :(e.photo?`<div class="pics one"><figure><img src="${esc(e.photo)}" alt=""></figure></div>`:'<div class="pics one"></div>');
     const alts=(e.alts||[]).map(a=>`Progression: ${a.label}`).join(' · ');
-    return `${sec}<div class="cell"><h2><span class="code">${esc(e.code)}</span><span>${esc(e.name)}</span></h2>${pics}${(e.note||alts)?`<p class="note">${esc([e.note,alts].filter(Boolean).join(' · '))}</p>`:''}</div>`;
+    return `<div class="cell">${sec}<h2><span class="code">${esc(e.code)}</span><span>${esc(e.name)}</span></h2>${pics}${(e.note||alts)?`<p class="note">${esc([e.note,alts].filter(Boolean).join(' · '))}</p>`:''}</div>`;
   }).join('');
   const plan=[w.setsLabel,w.reps?`${w.reps} reps`:'',w.restLabel?`rest ${w.restLabel}`:''].filter(Boolean).join(' · ');
   return `<section class="page">
     <div class="head"><div><div class="eyebrow">The Youth Athlete Edge · ${esc(g.name)}</div><h1>${esc(w.name)}</h1></div>
       <div style="font-size:8.5pt;color:var(--muted);text-align:right">${w.circuit?'Do the A exercises in order, then the B exercises.':'Do the exercises in order.'}<br>Videos: members area</div></div>
     <div class="box"><div><p class="plan">${esc(plan)}</p><p><b>How</b>${esc(w.how)}</p></div><div>${w.when?`<p><b>When</b>${esc(w.when)}</p>`:''}${w.tip?`<p><b>Make it yours</b>${esc(w.tip)}</p>`:''}</div></div>
-    <div class="grid" style="grid-template-columns:repeat(${cols},1fr);grid-template-rows:repeat(${rows},1fr)">${cells}</div>
+    <div class="grid" style="--ar:${ar};grid-template-columns:repeat(${cols},1fr);grid-template-rows:repeat(${rows},minmax(0,1fr))">${cells}</div>
     <div class="foot"><span>The Youth Athlete Edge · © 2026 Michelle Marie Fit</span><span>Start photo = where you begin · End photo = the top of the move</span></div>
   </section>`;
 }
