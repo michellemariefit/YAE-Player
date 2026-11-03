@@ -19,7 +19,7 @@ split, one page per workout, language for athletes and the parents running the s
 
 ## Links
 
-The page is live at `https://michellemariefit.github.io/yae-player/`.
+The page is live at `https://michellemariefit.github.io/YAE-Player/`.
 
 | Link ends with | Shows |
 | --- | --- |
@@ -34,7 +34,7 @@ The print page works the same way: `print.html#foundation-1` is one page, `print
 Paste this in a lesson, changing the bit after `#` to the workout that lesson is about:
 
 ```html
-<iframe src="https://michellemariefit.github.io/yae-player/#foundation-1" style="width:100%;height:1400px;border:0" allow="encrypted-media; picture-in-picture" allowfullscreen></iframe>
+<iframe src="https://michellemariefit.github.io/YAE-Player/#foundation-1" style="width:100%;height:1400px;border:0" allow="encrypted-media; picture-in-picture" allowfullscreen></iframe>
 ```
 
 A link with a workout name after `#` shows only that workout. A group name shows the picker for
