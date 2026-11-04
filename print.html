@@ -50,7 +50,7 @@ function layout(n){const cols=n<=6?2:3;return {cols,rows:Math.ceil(n/cols)}}
 function pageHTML(w,g){
   const exs=w.blocks.flatMap(b=>b.exercises);
   const {cols,rows}=layout(exs.length);
-  const ar=(cols===2&&exs.length>4)?'16/10':'4/3';
+  const ar=(cols===2&&exs.length>4)?'16/9':'4/3';
   let shown='';
   const cells=exs.map(e=>{
     const sec=(e.section&&e.section!==shown)?(shown=e.section,`<div class="sec">${esc(shown)}</div>`):'';
@@ -64,7 +64,7 @@ function pageHTML(w,g){
   return `<section class="page">
     <div class="head"><div><div class="eyebrow">The Youth Athlete Edge · ${esc(g.name)}</div><h1>${esc(w.name)}</h1></div>
       <div style="font-size:8.5pt;color:var(--muted);text-align:right">${w.circuit?'Do the A exercises in order, then the B exercises.':'Do the exercises in order.'}<br>Videos: members area</div></div>
-    <div class="box"><div><p class="plan">${esc(plan)}</p><p><b>How</b>${esc(w.how)}</p></div><div>${w.when?`<p><b>When</b>${esc(w.when)}</p>`:''}${w.tip?`<p><b>Make it yours</b>${esc(w.tip)}</p>`:''}</div></div>
+    <div class="box"><div><p class="plan">${esc(plan)}</p><p><b>How</b>${esc(w.how)}</p></div><div><p><b>When</b>${esc(g.when||w.when||'')}</p>${w.tip?`<p><b>Make it yours</b>${esc(w.tip)}</p>`:''}</div></div>
     <div class="grid" style="--ar:${ar};grid-template-columns:repeat(${cols},1fr);grid-template-rows:repeat(${rows},minmax(0,1fr))">${cells}</div>
     <div class="foot"><span>The Youth Athlete Edge · © 2026 Michelle Marie Fit</span><span>Start photo = where you begin · End photo = the top of the move</span></div>
   </section>`;

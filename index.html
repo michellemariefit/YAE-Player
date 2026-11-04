@@ -48,6 +48,8 @@ h1{font:800 clamp(28px,8vw,40px)/1.05 var(--display);margin:0;text-wrap:balance;
 
 .intro{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:14px 16px;display:flex;flex-direction:column;gap:10px}
 .intro p{margin:0;color:var(--muted)}
+.when{background:var(--gold);color:#14263a;border-radius:12px;padding:10px 12px;font-size:15px;line-height:1.4}
+.when b{display:block;font:700 12px/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;margin-bottom:4px}
 .intro p b{color:var(--ink)}
 .plan{display:flex;flex-wrap:wrap;gap:6px}
 .chip{font:600 14px/1 var(--mono);letter-spacing:.04em;background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:6px 8px;font-variant-numeric:tabular-nums}
@@ -191,7 +193,7 @@ async function render(){
     return `<button aria-pressed="${x.id===w.id}" data-workout="${x.id}" class="${done?'is-done':''}">Workout ${esc(shortName(x,g))}</button>`}).join(''):'';
 
   const gear=gearFor(w);
-  $('#intro').innerHTML=`<div class="plan"><span class="chip hot">${esc(w.setsLabel)}</span>${w.reps?`<span class="chip hot">${esc(w.reps)} reps</span>`:''}${w.restLabel?`<span class="chip hot">Rest ${esc(w.restLabel)}</span>`:''}</div>
+  $('#intro').innerHTML=`<div class="when"><b>When to do this</b>${esc(g.when||'')}</div><div class="plan"><span class="chip hot">${esc(w.setsLabel)}</span>${w.reps?`<span class="chip hot">${esc(w.reps)} reps</span>`:''}${w.restLabel?`<span class="chip hot">Rest ${esc(w.restLabel)}</span>`:''}</div>
     <p><b>How:</b> ${esc(w.how)}</p>${w.when?`<p><b>When:</b> ${esc(w.when)}</p>`:''}${w.tip?`<p><b>Make it yours:</b> ${esc(w.tip)}</p>`:''}
     ${gear.length?`<p class="gear"><b>You need:</b> ${esc(gear.join(', '))}</p>`:''}
     <div class="toolrow"><a href="print.html#${esc(w.id)}" target="_blank" rel="noopener">🖨 Print this workout</a></div>`;

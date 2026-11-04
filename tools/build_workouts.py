@@ -36,17 +36,23 @@ OUT = os.path.join(ROOT, "data", "yae.json")
 # Program structure. Order here is the order in the player.
 GROUPS = [
     {"id": "warmup", "name": "Warm-Up", "files": ["warmup"],
-     "intro": "Before every game, and before practice when there's time. Short on time? Pick 3 to 5 of these."},
+     "intro": "Before every game, and before practice when there's time. Short on time? Pick 3 to 5 of these.",
+     "when": "Before every game, no exceptions. Before practice too when there is time. Short on time? Pick 3 to 5 of the exercises."},
     {"id": "mobility", "name": "Mobility", "files": ["mobility"],
-     "intro": "5 to 10 minutes. Before or after practice, or on an off day."},
+     "intro": "5 to 10 minutes. Before or after practice, or on an off day.",
+     "when": "2 to 3 times a week, 5 to 10 minutes. In season: before practice on practice days. Off season: on off days or your own training day. This is not a workout, it attaches to one."},
     {"id": "stretching", "name": "Stretching", "files": ["stretching"],
-     "intro": "After practice, after games, or on off days. Always finish with the MAT holds so the muscles wake back up."},
+     "intro": "After practice, after games, or on off days. Always finish with the MAT holds so the muscles wake back up.",
+     "when": "Recovery, 2 to 3 times a week, 5 to 10 minutes. After practice, after a game, or on an off day. Always finish with the MAT Holds."},
     {"id": "mat", "name": "MAT Holds", "files": ["mat"],
-     "intro": "Do these right after stretching. Stretching relaxes the muscles; these turn them back on."},
+     "intro": "Do these right after stretching. Stretching relaxes the muscles; these turn them back on.",
+     "when": "Right after stretching, every time. Stretching relaxes the muscles; these turn them back on."},
     {"id": "stability", "name": "Stability & Balance", "files": [f"stability-{n}" for n in range(1, 7)],
-     "intro": "Off-season: 2 a week. In season: 1 a week still helps. Master the Disc version before moving up to the BOSU."},
+     "intro": "Off-season: 2 a week. In season: 1 a week still helps. Master the Disc version before moving up to the BOSU.",
+     "when": "In season: 1 workout a week, this or a Foundation workout. Off season: 2 workouts a week, one Stability and one Foundation. Never the day before a game."},
     {"id": "foundation", "name": "Foundation Strength", "files": [f"foundation-{n}" for n in range(1, 9)],
-     "intro": "Off-season: 2 a week. In season: 1 a week. Swap in a Stability exercise or two any time."},
+     "intro": "Off-season: 2 a week. In season: 1 a week. Swap in a Stability exercise or two any time.",
+     "when": "In season: 1 workout a week, this or a Stability workout. Off season: 2 workouts a week, one Foundation and one Stability. Never the day before a game. Work through the eight in order."},
 ]
 TITLE_FIX = {"warmup": "Warm-Up", "mat": "MAT Holds"}
 YT = re.compile(r"youtu\.be/([A-Za-z0-9_-]{11})")
@@ -184,7 +190,7 @@ def main():
                             existing[e["video"]] = (e["startPhoto"], e["endPhoto"])
     n = 0
     for g in GROUPS:
-        group = {"id": g["id"], "name": g["name"], "intro": g["intro"], "workouts": []}
+        group = {"id": g["id"], "name": g["name"], "intro": g["intro"], "when": g["when"], "workouts": []}
         for f in g["files"]:
             w = build_workout(f, g)
             for b in w["blocks"]:
