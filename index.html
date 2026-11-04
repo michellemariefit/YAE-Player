@@ -96,6 +96,8 @@ h1{font:800 clamp(28px,8vw,40px)/1.05 var(--display);margin:0;text-wrap:balance;
 
 .rest{grid-column:1/-1;position:relative;overflow:hidden;background:var(--brand);color:#fff;border-radius:14px;
   padding:14px 14px 12px;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.restwrap .rest{border-radius:20px;padding:18px 16px 16px}
+.restwrap .rest .t{font-size:52px}
 .rest.hold{background:var(--ink)}
 .rest .t{font:700 40px/1 var(--mono);font-variant-numeric:tabular-nums;min-width:2.4ch}
 .rest .lbl{flex:1;min-width:120px;font-size:14px;font-weight:700}
@@ -158,7 +160,7 @@ function howtoHTML(w){
   if(store.get('yae:howto',false)) return `<button class="howto-link" data-howto="show">How this works</button>`;
   const steps=w.circuit
     ?`<li>Do <b>A1</b>, then <b>A2</b>, then <b>A3</b>, one after the other. That's one round.</li>
-      <li>Tap <b>Set 1</b> on the last exercise. Your rest timer starts right there.</li>
+      <li>After <b>A3</b>, tap <b>Set 1</b> under A3. A rest timer appears below the A circuit. Only the last exercise in a circuit starts the timer.</li>
       <li>When it hits zero, go back to <b>A1</b> for round 2. Then do the same for <b>B</b>.</li>
       <li>Tap a set again to untick it. When every set is ticked, press Finish.</li>`
     :`<li>Do the exercises in order. Tap <b>Set 1</b> when you finish a set.</li>
@@ -227,8 +229,8 @@ async function render(){
           <div class="links">${links}</div>
         </div>
         ${vid&&EMBED_OK?`<div class="embed"><iframe src="https://www.youtube-nocookie.com/embed/${esc(vid)}?rel=0&modestbranding=1&playsinline=1${state.justOpened===e.code?'&autoplay=1':''}" title="${esc(e.name)} demo" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe></div>`:''}
-        ${rest&&rest.code===e.code?restHTML():''}
-        </div>`}).join('')+`</section>`}).join('');
+        ${rest&&rest.kind==='hold'&&rest.code===e.code?restHTML():''}
+        </div>`}).join('')+`</section>`+(rest&&rest.kind==='rest'&&rest.block===s.label?`<section class="restwrap">${restHTML()}</section>`:'')}).join('');
   state.justOpened=null;
 
   if(saved.finished){
@@ -242,8 +244,8 @@ async function render(){
 }
 
 let timer=null,rest=null;   // rest = {code, left, total, label, kind} while a rest or hold timer is running
-function startRest(code,sec,label,kind='rest'){
-  clearInterval(timer);rest={code,left:sec,total:sec,label,kind};
+function startRest(code,sec,label,kind='rest',block=null){
+  clearInterval(timer);rest={code,block,left:sec,total:sec,label,kind};
   timer=setInterval(()=>{rest.left--;tick();if(rest.left<=0)stopRest(true)},1000);
 }
 function tick(){
@@ -270,7 +272,7 @@ document.addEventListener('click',e=>{
         const more=i+1<w.sets;
         startRest(ex.code,secs,w.circuit
           ?(more?`Round ${i+1} of ${grp.label} done · then back to ${grp.exercises[0].code} for round ${i+2}`:`Round ${i+1} of ${grp.label} done · that was the last one`)
-          :(more?`Set ${i+1} done · then set ${i+2}`:`Set ${i+1} done · last one`));
+          :(more?`Set ${i+1} done · then set ${i+2}`:`Set ${i+1} done · last one`),'rest',grp.label);
       }
     }
     render();return;
