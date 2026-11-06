@@ -2,3 +2,4 @@ tools/cache/
 tools/pdf/
 __pycache__/
 *.part
+tools/lessons/
