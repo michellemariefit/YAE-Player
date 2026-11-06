@@ -9,26 +9,26 @@
 <meta name="apple-mobile-web-app-title" content="YAE">
 <link rel="apple-touch-icon" href="icons/icon-180.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow:wght@500;700;800&family=Barlow+Condensed:wght@500;600;700&family=Lato:wght@400;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Inter:wght@400;500;600;700&display=swap">
 <style>
 /* Layout: one phone column. Sticky header with the group and workout pickers, then one card per exercise
    (or per circuit) that you work down; a rest timer appears inside the card you just ticked.
    Brand: Youth Athlete Edge. Navy ink, teal brand, coral for actions, yellow highlight. Bold condensed labels. */
 :root{
   --bg:#f3f7f9; --card:#ffffff; --ink:#1b2e4c; --muted:#5a6b7c; --line:#d6e1e8;
-  --brand:#0e9a8f; --brand-soft:#dcf3f0; --gold:#ffc83d;
+  --brand:#0e9a8f; --brand-soft:#dcf3f0; --gold:#e6aa3e;
   --accent:#b0295e; --accent-ink:#ffffff; --accent-soft:#f7e3ea; --done:#0e9a8f; --done-soft:#dcf3f0;
-  --display:"Barlow","Helvetica Neue",Arial,sans-serif;
-  --body:"Lato","Helvetica Neue",Arial,sans-serif;
-  --mono:"Barlow Condensed","Arial Narrow","Helvetica Neue",sans-serif;
+  --display:"Bricolage Grotesque","Helvetica Neue",Arial,sans-serif;
+  --body:"Inter","Helvetica Neue",Arial,sans-serif;
+  --mono:"Inter","Helvetica Neue",Arial,sans-serif;
 }
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
   --bg:#0f1b2e; --card:#1b2b45; --ink:#eef4f8; --muted:#a4b4c4; --line:#2c3f5c;
-  --brand:#4fcfc4; --brand-soft:#17403c; --gold:#ffd66b;
+  --brand:#4fcfc4; --brand-soft:#17403c; --gold:#f0c060;
   --accent:#e8558a; --accent-ink:#0f1b2e; --accent-soft:#3a1a2a; --done:#4fcfc4; --done-soft:#17403c; color-scheme:dark}}
 :root[data-theme="dark"]{
   --bg:#0f1b2e; --card:#1b2b45; --ink:#eef4f8; --muted:#a4b4c4; --line:#2c3f5c;
-  --brand:#4fcfc4; --brand-soft:#17403c; --gold:#ffd66b;
+  --brand:#4fcfc4; --brand-soft:#17403c; --gold:#f0c060;
   --accent:#e8558a; --accent-ink:#0f1b2e; --accent-soft:#3a1a2a; --done:#4fcfc4; --done-soft:#17403c; color-scheme:dark}
 *{box-sizing:border-box}
 body{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.5 var(--body);
