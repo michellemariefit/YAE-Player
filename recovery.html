@@ -44,6 +44,10 @@ a.back{font:700 14px/1 var(--mono);letter-spacing:.06em;text-transform:uppercase
 .item.done label b{text-decoration:line-through;color:var(--muted)}
 .rule{font-size:14px;color:var(--muted);margin:0;padding-left:18px}
 .rule li{margin-bottom:4px}
+.vids{display:flex;flex-wrap:wrap;gap:8px}
+.vids a,.vids span{font:700 13px/1 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--accent);text-decoration:none;border:1px solid var(--line);border-radius:999px;padding:8px 11px}
+.vids span{color:var(--muted)}
+.hurt{border-style:dashed}
 .finish{border:0;background:var(--accent);color:#fff;border-radius:12px;padding:16px;font:700 18px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase}
 .finish:disabled{opacity:.45}
 .donecard{background:var(--brand-soft);border:1px solid var(--brand);border-radius:18px;padding:16px;text-align:center}
@@ -65,11 +69,19 @@ a.back{font:700 14px/1 var(--mono);letter-spacing:.06em;text-transform:uppercase
     <h2>2 · Myofascial release <small>about 5 min</small></h2>
     <p>Pick the tool you have and the spots that are tight. Tick what you did. One minute per spot is plenty. Slow, and stop short of pain.</p>
     <div id="list"></div>
+    <p style="margin-top:4px"><b>Watch the tool videos once first.</b> They show the trigger points and how hard to press. After a few times you will not need them.</p>
+    <div id="howvids" class="vids"></div>
     <ul class="rule">
       <li>Tight today? Roll it. Fine today? Skip it. This is not homework.</li>
       <li>Never roll directly on a joint, the knee cap, or the low back bones.</li>
       <li>Anything that hurts for more than two days is a protocol-and-doctor thing, not a roll-it-out thing.</li>
     </ul>
+  </section>
+
+  <section class="card hurt">
+    <h2>If something hurts <small>not every week</small></h2>
+    <p>Only when there is an injury, a sore spot or swelling. Pain that lingers more than two days is a doctor thing, never "play through it".</p>
+    <div id="hurtlist"></div>
   </section>
 
   <div id="foot"></div>
@@ -85,9 +97,14 @@ const RELEASE=[
   ['feet','Bottom of the feet','Ball under the foot, standing. 30 seconds each. Great after games.','Ball'],
   ['hipflex','Hip flexors (front of hip)','Ball or massage gun, lying face down. Small circles. Skip if it is sharp.','Ball · massage gun'],
   ['back','Upper back','Foam roller across the shoulder blades, arms hugged. Never the low back.','Foam roller'],
-  ['ice','Ice or velcro ice packs','Anything sore or swollen after a game. 15 minutes on, then off.','Ice'],
-  ['redlight','Red light (optional)','If you have one. 10 to 15 minutes on the sore area. Nice to have, not needed.','Red light'],
 ];
+// Only when something hurts. Not part of the weekly routine.
+const HURT=[
+  ['ice','Ice or velcro ice packs','Anything sore or swollen after a game. 15 minutes on, then off.'],
+  ['redlight','Red light','For an injury, a sore spot or inflammation. 10 to 15 minutes on the area. Skip it when nothing hurts.'],
+];
+// The how-to videos live in the GHL course. Fill in the lesson links once Michelle sends the course address.
+const VIDS=[['Foam roller',''],['Hand roller',''],['Massage gun',''],['Ball (deep release)','']];
 const $=s=>document.querySelector(s);
 const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 const store={get(k,d){try{const v=localStorage.getItem(k);return v?JSON.parse(v):d}catch(e){return d}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}};
@@ -95,8 +112,10 @@ const today=new Date();today.setHours(0,0,0,0);
 const KEY='yae:recovery:'+today.toISOString().slice(0,10);
 function render(){
   const t=store.get(KEY,{});
+  $('#hurtlist').innerHTML=HURT.map(([id,name,how])=>`<div class="item ${t[id]?'done':''}"><input type="checkbox" id="r-${id}" data-id="${id}" ${t[id]?'checked':''}><label for="r-${id}"><b>${esc(name)}</b><small>${esc(how)}</small></label></div>`).join('');
+  $('#howvids').innerHTML=VIDS.map(([name,url])=>url?`<a href="${esc(url)}" target="_blank" rel="noopener">▶ ${esc(name)}</a>`:`<span>▶ ${esc(name)}</span>`).join('');
   $('#list').innerHTML=RELEASE.map(([id,name,how,tool])=>`<div class="item ${t[id]?'done':''}"><input type="checkbox" id="r-${id}" data-id="${id}" ${t[id]?'checked':''}><label for="r-${id}"><b>${esc(name)}</b><small>${esc(how)}</small><small style="color:var(--brand);font-weight:700">${esc(tool)}</small></label></div>`).join('');
-  const n=Object.values(t).filter(Boolean).length;
+  const n=RELEASE.filter(([id])=>t[id]).length;
   $('#foot').innerHTML=t.finished
     ?`<div class="donecard"><b>Recovery done</b>Logged for today. Same again in a couple of days.</div>`
     :`<button class="finish" id="finish">${n?`Finish recovery · ${n} spot${n===1?'':'s'}`:'Finish recovery'}</button>`;
