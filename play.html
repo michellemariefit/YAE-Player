@@ -32,7 +32,8 @@ button:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
 .dots i{flex:1;height:6px;border-radius:3px;background:var(--line)}
 .dots i.done{background:var(--brand)}.dots i.now{background:var(--accent)}
 main{flex:1;display:flex;flex-direction:column;gap:12px;min-height:0}
-.card{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:14px;display:flex;flex-direction:column;gap:10px;flex:1;min-height:0}
+main .row{margin-top:auto}
+.card{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:14px;display:flex;flex-direction:column;gap:10px}
 .pair{display:grid;grid-template-columns:1fr 1fr;gap:8px}
 .pair figure{margin:0;position:relative}
 .pair img{width:100%;aspect-ratio:16/11;object-fit:cover;border-radius:14px;background:var(--brand-soft);display:block}
@@ -45,7 +46,7 @@ h1{margin:0;font:800 clamp(24px,7vw,32px)/1.1 var(--display);display:flex;gap:10
 .chips{display:flex;flex-wrap:wrap;gap:6px}
 .chip{font:600 15px/1 var(--mono);letter-spacing:.04em;background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:7px 9px}
 .chip.hot{background:var(--brand-soft);border-color:var(--brand);color:var(--brand)}
-.links{display:flex;gap:14px;flex-wrap:wrap;margin-top:auto}
+.links{display:flex;gap:14px;flex-wrap:wrap}
 .links button,.links a{background:none;border:0;padding:6px 0;font-weight:700;color:var(--accent);text-decoration:none}
 .links .alt{color:var(--brand)}
 .embed{aspect-ratio:16/9;border-radius:12px;overflow:hidden;background:#000}
@@ -189,10 +190,10 @@ function render(){
     ?`<div class="pair"><figure><img src="${esc(e.startPhoto)}" alt=""><figcaption>Start</figcaption></figure><figure><img src="${esc(e.endPhoto)}" alt=""><figcaption>End</figcaption></figure></div>`
     :(e.photo?`<img class="single" src="${esc(e.photo)}" alt="">`:'');
   const vids=[{label:'Watch demo',video:e.video,cls:''},...(e.alts||[]).map(a=>({label:a.label,video:a.video,cls:'alt'}))].filter(v=>v.video);
-  const links=vids.map(v=>EMBED_OK?`<button class="${v.cls}" data-embed="${esc(v.video)}">▶ ${esc(v.label)}</button>`:`<a class="${v.cls}" href="https://www.youtube.com/watch?v=${esc(v.video)}" target="_blank" rel="noopener">▶ ${esc(v.label)}</a>`).join('');
+  const links=vids.map(v=>EMBED_OK?`<button class="${v.cls}" data-embed="${esc(v.video)}">${openVid===v.video?'✕ Close demo':'▶ '+esc(v.label)}</button>`:`<a class="${v.cls}" href="https://www.youtube.com/watch?v=${esc(v.video)}" target="_blank" rel="noopener">▶ ${esc(v.label)}</a>`).join('');
   const holdUI=hs?(hold&&!hold.done?`<div class="hold"><div class="t" id="tnum">${hold.left}</div><div>Hold it steady</div><button id="stopHold">Stop</button></div>`
     :`<button class="go brand" id="startHold" style="padding:14px;font-size:18px">⏱ ${hold&&hold.done?'Hold done · again?':`Start ${hs}s hold`}</button>`):'';
-  m.innerHTML=`<div class="card">${openVid&&EMBED_OK?`<div class="embed"><iframe src="https://www.youtube-nocookie.com/embed/${esc(openVid)}?rel=0&modestbranding=1&playsinline=1&autoplay=1" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe></div>`:pic}
+  m.innerHTML=`<div class="card">${pic}${openVid&&EMBED_OK?`<div class="embed"><iframe src="https://www.youtube-nocookie.com/embed/${esc(openVid)}?rel=0&modestbranding=1&playsinline=1&autoplay=1" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe></div>`:''}
     <h1><span class="code ${e.swapped?'swap':''}">${esc(e.code)}</span><span>${esc(e.name)}</span></h1>
     <div class="chips">${W.reps?`<span class="chip hot">${esc(W.reps)} reps</span>`:''}${e.note?`<span class="chip">${esc(e.note)}</span>`:''}${e.swapped?`<span class="chip">stability swap for ${esc(e.orig)}</span>`:''}</div>
     ${holdUI}
