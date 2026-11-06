@@ -67,7 +67,7 @@ a.back{font:700 14px/1 var(--mono);letter-spacing:.06em;text-transform:uppercase
 
   <section class="card">
     <h2>2 · Myofascial release <small>about 5 min</small></h2>
-    <p>Pick the tool you have and the spots that are tight. Tick what you did. One minute per spot is plenty. Slow, and stop short of pain.</p>
+    <p>Same order as the foam roller video. Big rolls to find the tight spot, then short rolls right on it. One minute per spot is plenty. Knee hurts? The inner quad near the knee is usually the cause.</p>
     <div id="list"></div>
     <p style="margin-top:4px"><b>Watch the tool videos once first.</b> They show the trigger points and how hard to press. After a few times you will not need them.</p>
     <div id="howvids" class="vids"></div>
@@ -89,14 +89,14 @@ a.back{font:700 14px/1 var(--mono);letter-spacing:.06em;text-transform:uppercase
 <script>
 // Edit the words here. Each item: id, name, how, which tool.
 const RELEASE=[
-  ['quads','Quads (front of thigh)','Foam roller or massage gun. Face down, roll hip to knee. 1 minute each leg.','Foam roller · massage gun'],
-  ['hams','Hamstrings (back of thigh)','Foam roller or massage gun. Sit, roller under the thigh, roll knee to hip.','Foam roller · massage gun'],
-  ['calves','Calves','Foam roller, hand roller, or massage gun. Cross the other leg on top for more pressure.','Foam roller · hand roller · massage gun'],
-  ['itband','Outside of the thigh','Foam roller, on your side, hip to knee. This one is tender, go slow.','Foam roller'],
-  ['glutes','Glutes and hips','Baseball or tennis ball. Sit on it, cross the ankle over the knee, find the spot, breathe.','Ball'],
+  ['hams','Hamstrings (back of thigh)','Sit on the roller, big rolls hip to knee. Find the spot that hurts a little more, then short rolls right there. Lean into one leg for more pressure.','Foam roller · massage gun'],
+  ['inner','Inner thigh','One leg on the roller, lean onto it. Big rolls, then dig into the tight spot. This one is tender.','Foam roller'],
+  ['glutes','Glutes, one side at a time','Sit on the roller, lean onto one glute. Big rolls, then little rolls on the trigger point.','Foam roller · ball'],
+  ['sideglute','Side of the glute and hip','Roll onto your side, cross the top leg over. More weight on it until the tension goes.','Foam roller · ball'],
+  ['hipflex','Hip flexors (front of hip)','Face down, roller just under the hip bone. It hurts, breathe through it. Big relief after.','Foam roller · massage gun'],
+  ['quads','Quads, top to knee','Face down. Top of the quad, then the middle, then rotate in for the inner part near the knee. Stay there longest: that spot is behind most knee pain.','Foam roller · massage gun'],
+  ['calves','Calves, all three sides','Hands on the floor, hips lifted so the weight is on the calf. Middle, inner, outer.','Foam roller · hand roller · massage gun'],
   ['feet','Bottom of the feet','Ball under the foot, standing. 30 seconds each. Great after games.','Ball'],
-  ['hipflex','Hip flexors (front of hip)','Ball or massage gun, lying face down. Small circles. Skip if it is sharp.','Ball · massage gun'],
-  ['back','Upper back','Foam roller across the shoulder blades, arms hugged. Never the low back.','Foam roller'],
 ];
 // Only when something hurts. Not part of the weekly routine.
 const HURT=[
