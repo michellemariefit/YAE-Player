@@ -1,0 +1,13 @@
+{
+ "_note": "Exact seconds for pairs picked by hand. start/end are seconds into the Dropbox recording named in sources.json.",
+ "aZh4KWvcL7U": {
+  "start": 21.0,
+  "end": 22.5,
+  "why": "Reverse Lunges: knee down and leg back, then the knee drive"
+ },
+ "dcvVFDO8dBE": {
+  "start": 18.0,
+  "end": 19.0,
+  "why": "BOSU Squats: standing, then the 90 degree bottom"
+ }
+}
