@@ -38,7 +38,11 @@ def main():
             print("have", base); continue
         print("transcribing", base, flush=True)
         wav = audio_for(path)
-        segs, info = model.transcribe(wav, language="en", word_timestamps=True, vad_filter=True,
+        # load the wav ourselves (the bundled audio decoder clashes with the installed 'av' version)
+        import numpy as np, wave
+        with wave.open(wav) as wf:
+            audio = np.frombuffer(wf.readframes(wf.getnframes()), dtype=np.int16).astype(np.float32) / 32768.0
+        segs, info = model.transcribe(audio, language="en", word_timestamps=True, vad_filter=True,
                                       vad_parameters={"min_silence_duration_ms": 400})
         out = []
         for s in segs:
