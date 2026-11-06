@@ -530,10 +530,10 @@
      "reps": "10-15",
      "restSeconds": 90,
      "restLabel": "60-90s",
-     "circuit": false,
+     "circuit": true,
      "blocks": [
       {
-       "label": "1",
+       "label": "Circuit",
        "exercises": [
         {
          "code": "1",
@@ -543,12 +543,7 @@
          "photo": "images/QZvzcgXJ_7s-pdf.webp",
          "startPhoto": "images/QZvzcgXJ_7s-start.webp",
          "endPhoto": "images/QZvzcgXJ_7s-end.webp"
-        }
-       ]
-      },
-      {
-       "label": "2",
-       "exercises": [
+        },
         {
          "code": "2",
          "name": "Single Leg Deadlifts (Modified)",
@@ -563,12 +558,7 @@
          "photo": "images/vbOhpCuC3Os-pdf.webp",
          "startPhoto": "images/vbOhpCuC3Os-start.webp",
          "endPhoto": "images/vbOhpCuC3Os-end.webp"
-        }
-       ]
-      },
-      {
-       "label": "3",
-       "exercises": [
+        },
         {
          "code": "3",
          "name": "Reverse Lunges",
@@ -577,12 +567,7 @@
          "photo": "images/aZh4KWvcL7U-pdf.webp",
          "startPhoto": "images/aZh4KWvcL7U-start.webp",
          "endPhoto": "images/aZh4KWvcL7U-end.webp"
-        }
-       ]
-      },
-      {
-       "label": "4",
-       "exercises": [
+        },
         {
          "code": "4",
          "name": "Single Leg Hip Extensions on Disc",
@@ -608,10 +593,10 @@
      "reps": "10-15",
      "restSeconds": 90,
      "restLabel": "60-90s",
-     "circuit": false,
+     "circuit": true,
      "blocks": [
       {
-       "label": "1",
+       "label": "Circuit",
        "exercises": [
         {
          "code": "1",
@@ -627,12 +612,7 @@
          "photo": "images/KTbJdJG_fKI-pdf.webp",
          "startPhoto": "images/KTbJdJG_fKI-start.webp",
          "endPhoto": "images/KTbJdJG_fKI-end.webp"
-        }
-       ]
-      },
-      {
-       "label": "2",
-       "exercises": [
+        },
         {
          "code": "2",
          "name": "Single Leg Reaches on Disc",
@@ -641,12 +621,7 @@
          "photo": "images/S4uhLbGWVas-pdf.webp",
          "startPhoto": "images/S4uhLbGWVas-start.webp",
          "endPhoto": "images/S4uhLbGWVas-end.webp"
-        }
-       ]
-      },
-      {
-       "label": "3",
-       "exercises": [
+        },
         {
          "code": "3",
          "name": "Single Leg Squat on Disc",
@@ -655,12 +630,7 @@
          "photo": "images/21RPCvGih_U-pdf.webp",
          "startPhoto": "images/21RPCvGih_U-start.webp",
          "endPhoto": "images/21RPCvGih_U-end.webp"
-        }
-       ]
-      },
-      {
-       "label": "4",
-       "exercises": [
+        },
         {
          "code": "4",
          "name": "Leg Curl on Stability Ball",
@@ -686,10 +656,10 @@
      "reps": "10-15",
      "restSeconds": 90,
      "restLabel": "60-90s",
-     "circuit": false,
+     "circuit": true,
      "blocks": [
       {
-       "label": "1",
+       "label": "Circuit",
        "exercises": [
         {
          "code": "1",
@@ -705,12 +675,7 @@
          "photo": "images/h7uZlF-Ppto-pdf.webp",
          "startPhoto": "images/h7uZlF-Ppto-start.webp",
          "endPhoto": "images/h7uZlF-Ppto-end.webp"
-        }
-       ]
-      },
-      {
-       "label": "2",
-       "exercises": [
+        },
         {
          "code": "2",
          "name": "Deadlift on BOSU",
@@ -719,12 +684,7 @@
          "photo": "images/wNEuAW_PS-c-pdf.webp",
          "startPhoto": "images/wNEuAW_PS-c-start.webp",
          "endPhoto": "images/wNEuAW_PS-c-end.webp"
-        }
-       ]
-      },
-      {
-       "label": "3",
-       "exercises": [
+        },
         {
          "code": "3",
          "name": "Squats on BOSU",
@@ -733,12 +693,7 @@
          "photo": "images/dcvVFDO8dBE-pdf.webp",
          "startPhoto": "images/dcvVFDO8dBE-start.webp",
          "endPhoto": "images/dcvVFDO8dBE-end.webp"
-        }
-       ]
-      },
-      {
-       "label": "4",
-       "exercises": [
+        },
         {
          "code": "4",
          "name": "Single Leg Hip Extension on Stability Ball",
@@ -764,10 +719,10 @@
      "reps": "10-15",
      "restSeconds": 90,
      "restLabel": "60-90s",
-     "circuit": false,
+     "circuit": true,
      "blocks": [
       {
-       "label": "1",
+       "label": "Circuit",
        "exercises": [
         {
          "code": "1",
@@ -777,12 +732,7 @@
          "photo": "images/MiC9l-j8p4Y-pdf.webp",
          "startPhoto": "images/MiC9l-j8p4Y-start.webp",
          "endPhoto": "images/MiC9l-j8p4Y-end.webp"
-        }
-       ]
-      },
-      {
-       "label": "2",
-       "exercises": [
+        },
         {
          "code": "2",
          "name": "Single Leg Deadlift on Back of BOSU",
@@ -791,12 +741,7 @@
          "photo": "images/MYL7SLJkXT4-pdf.webp",
          "startPhoto": "images/MYL7SLJkXT4-start.webp",
          "endPhoto": "images/MYL7SLJkXT4-end.webp"
-        }
-       ]
-      },
-      {
-       "label": "3",
-       "exercises": [
+        },
         {
          "code": "3",
          "name": "Jump Lunges on BOSU",
@@ -805,12 +750,7 @@
          "photo": "images/V16-zb_SvTc-pdf.webp",
          "startPhoto": "images/V16-zb_SvTc-start.webp",
          "endPhoto": "images/V16-zb_SvTc-end.webp"
-        }
-       ]
-      },
-      {
-       "label": "4",
-       "exercises": [
+        },
         {
          "code": "4",
          "name": "Single Leg Curl on Stability Ball",
@@ -836,10 +776,10 @@
      "reps": "10-15",
      "restSeconds": 90,
      "restLabel": "60-90s",
-     "circuit": false,
+     "circuit": true,
      "blocks": [
       {
-       "label": "1",
+       "label": "Circuit",
        "exercises": [
         {
          "code": "1",
@@ -849,12 +789,7 @@
          "photo": "images/ZfqgDnLT8Cs-pdf.webp",
          "startPhoto": "images/ZfqgDnLT8Cs-start.webp",
          "endPhoto": "images/ZfqgDnLT8Cs-end.webp"
-        }
-       ]
-      },
-      {
-       "label": "2",
-       "exercises": [
+        },
         {
          "code": "2",
          "name": "Single Leg Reaches on BOSU",
@@ -863,12 +798,7 @@
          "photo": "images/o3MtDEXLuXM-pdf.webp",
          "startPhoto": "images/o3MtDEXLuXM-start.webp",
          "endPhoto": "images/o3MtDEXLuXM-end.webp"
-        }
-       ]
-      },
-      {
-       "label": "3",
-       "exercises": [
+        },
         {
          "code": "3",
          "name": "Split Jumps on BOSU",
@@ -877,12 +807,7 @@
          "photo": "images/-vin4kQtm34-pdf.webp",
          "startPhoto": "images/-vin4kQtm34-start.webp",
          "endPhoto": "images/-vin4kQtm34-end.webp"
-        }
-       ]
-      },
-      {
-       "label": "4",
-       "exercises": [
+        },
         {
          "code": "4",
          "name": "Single Leg Hip Extension on BOSU",
@@ -908,10 +833,10 @@
      "reps": "10-15",
      "restSeconds": 90,
      "restLabel": "60-90s",
-     "circuit": false,
+     "circuit": true,
      "blocks": [
       {
-       "label": "1",
+       "label": "Circuit",
        "exercises": [
         {
          "code": "1",
@@ -921,12 +846,7 @@
          "photo": "images/nP874sn6g5E-pdf.webp",
          "startPhoto": "images/nP874sn6g5E-start.webp",
          "endPhoto": "images/nP874sn6g5E-end.webp"
-        }
-       ]
-      },
-      {
-       "label": "2",
-       "exercises": [
+        },
         {
          "code": "2",
          "name": "Stability Ball Single Leg Hip Extensions",
@@ -935,12 +855,7 @@
          "photo": "images/yU01Yv9rrzQ-pdf.webp",
          "startPhoto": "images/yU01Yv9rrzQ-start.webp",
          "endPhoto": "images/yU01Yv9rrzQ-end.webp"
-        }
-       ]
-      },
-      {
-       "label": "3",
-       "exercises": [
+        },
         {
          "code": "3",
          "name": "Jump Ons — BOSU",
@@ -949,12 +864,7 @@
          "photo": "images/9PFNFo05lrY-pdf.webp",
          "startPhoto": "images/9PFNFo05lrY-start.webp",
          "endPhoto": "images/9PFNFo05lrY-end.webp"
-        }
-       ]
-      },
-      {
-       "label": "4",
-       "exercises": [
+        },
         {
          "code": "4",
          "name": "Single Leg Hip Extension Isometric Hold (20 sec) on BOSU",

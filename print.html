@@ -63,7 +63,7 @@ function pageHTML(w,g){
   const plan=[w.setsLabel,w.reps?`${w.reps} reps`:'',w.restLabel?`rest ${w.restLabel}`:''].filter(Boolean).join(' · ');
   return `<section class="page">
     <div class="head"><div><div class="eyebrow">The Youth Athlete Edge · ${esc(g.name)}</div><h1>${esc(w.name)}</h1></div>
-      <div style="font-size:8.5pt;color:var(--muted);text-align:right">${w.circuit?'Do the A exercises in order, then the B exercises.':'Do the exercises in order.'}<br>Videos: members area</div></div>
+      <div style="font-size:8.5pt;color:var(--muted);text-align:right">${w.circuit?(w.blocks.length>1?'Do the A exercises in order, then the B exercises.':'Do all the exercises in order, rest, then go again.'):'Do the exercises in order.'}<br>Videos: members area</div></div>
     <div class="box"><div><p class="plan">${esc(plan)}</p><p><b>How</b>${esc(w.how)}</p></div><div><p><b>When</b>${esc(g.when||w.when||'')}</p>${w.tip?`<p><b>Make it yours</b>${esc(w.tip)}</p>`:''}</div></div>
     <div class="grid" style="--ar:${ar};grid-template-columns:repeat(${cols},1fr);grid-template-rows:repeat(${rows},minmax(0,1fr))">${cells}</div>
     <div class="foot"><span>The Youth Athlete Edge · © 2026 Michelle Marie Fit</span><span>Start photo = where you begin · End photo = the top of the move</span></div>

@@ -160,6 +160,9 @@ def build_workout(file_id, group):
             if not blocks or blocks[-1]["label"] != letter:
                 blocks.append({"label": letter, "exercises": []})
             blocks[-1]["exercises"].append(e)
+    elif meta["restSeconds"] > 0:
+        # numbered workouts with a rest (Stability) are one circuit: do all of them, then rest
+        blocks.append({"label": "Circuit", "exercises": list(exercises)})
     else:
         for e in exercises:
             blocks.append({"label": e["code"], "exercises": [e]})
@@ -174,7 +177,7 @@ def build_workout(file_id, group):
             "how": meta["how"], "when": meta["when"], "tip": meta["tip"],
             "sets": meta["sets"], "setsLabel": sets_label, "reps": meta["reps"],
             "restSeconds": meta["restSeconds"], "restLabel": meta["restLabel"],
-            "circuit": lettered, "blocks": blocks}
+            "circuit": lettered or meta["restSeconds"] > 0, "blocks": blocks}
 
 
 def main():

@@ -160,10 +160,11 @@ async function load(){
 }
 function howtoHTML(w){
   if(store.get('yae:howto',false)) return `<button class="howto-link" data-howto="show">How this works</button>`;
+  const c=w.blocks[0].exercises.map(e=>e.code), first=c[0], last=c[c.length-1], multi=w.blocks.length>1;
   const steps=w.circuit
-    ?`<li>Do <b>A1</b>, then <b>A2</b>, then <b>A3</b>, one after the other. That's one round.</li>
-      <li>After <b>A3</b>, tap <b>Set 1</b> under A3. A rest timer appears below the A circuit. Only the last exercise in a circuit starts the timer.</li>
-      <li>When it hits zero, go back to <b>A1</b> for round 2. Then do the same for <b>B</b>.</li>
+    ?`<li>Do ${c.map(x=>`<b>${esc(x)}</b>`).join(', then ')}, one after the other. That's one round.</li>
+      <li>After <b>${esc(last)}</b>, tap <b>Set 1</b> under ${esc(last)}. A rest timer appears below the circuit. Only the last exercise starts the timer.</li>
+      <li>When it hits zero, go back to <b>${esc(first)}</b> for round 2.${multi?` Then do the same for <b>${esc(w.blocks[1].label)}</b>.`:''}</li>
       <li>Tap a set again to untick it. When every set is ticked, press Finish.</li>`
     :`<li>Do the exercises in order. Tap <b>Set 1</b> when you finish a set.</li>
       <li>Tap <b>Watch demo</b> if you forget how one goes.</li>
@@ -206,7 +207,7 @@ async function render(){
     const complete=s.exercises.every(e=>(saved.ticks[e.code]||[]).filter(Boolean).length>=w.sets);
     if(!complete) allDone=false;
     const head=w.circuit
-      ?`<div class="ss-head"><h2>${esc(s.label)} · ${kind}</h2><span>${complete?'Done':`${w.setsLabel}, back to back`}</span></div>`
+      ?`<div class="ss-head"><h2>${s.label==='Circuit'?'Circuit':`${esc(s.label)} · ${kind}`}</h2><span>${complete?'Done':`${w.setsLabel}, back to back`}</span></div>`
       :(s.exercises[0].section&&s.exercises[0].section!==shownSec?(shownSec=s.exercises[0].section,`<div class="sec">${esc(shownSec)}</div>`):'');
     return `<section class="ss ${complete?'complete':''}">${head}`+
     s.exercises.map((e,ei)=>{
@@ -273,7 +274,7 @@ document.addEventListener('click',e=>{
       if(secs>0){
         const more=i+1<w.sets;
         startRest(ex.code,secs,w.circuit
-          ?(more?`Round ${i+1} of ${grp.label} done · then back to ${grp.exercises[0].code} for round ${i+2}`:`Round ${i+1} of ${grp.label} done · that was the last one`)
+          ?(more?`Round ${i+1}${grp.label==='Circuit'?'':' of '+grp.label} done · then back to ${grp.exercises[0].code} for round ${i+2}`:`Round ${i+1}${grp.label==='Circuit'?'':' of '+grp.label} done · that was the last one`)
           :(more?`Set ${i+1} done · then set ${i+2}`:`Set ${i+1} done · last one`),'rest',grp.label);
       }
     }
