@@ -1,67 +1,126 @@
 {
- "_note": "Stability substitute for each Foundation exercise. Key = Foundation workout id, then exercise code -> YouTube id of the Stability exercise. default:true marks the two swaps the 'Add stability' button uses. An entry of null means no swap (already a stability move). Edit this file, then run tools/build_workouts.py.",
+ "_note": "Stability substitute for each Foundation exercise, as Michelle chose. Key = Foundation workout id, then exercise code -> YouTube id of the substitute. default:true marks the swaps the 'Add stability' button uses. null = no swap. Edit this file, then run tools/build_workouts.py.",
  "foundation-1": {
-  "A1": {"video": "S4uhLbGWVas", "default": true},
-  "A2": {"video": "h7uZlF-Ppto", "default": true},
-  "A3": {"video": "ylTmQNt7H-g"},
-  "B1": {"video": "k6jya93BOms"},
-  "B2": {"video": "MiC9l-j8p4Y"},
-  "B3": {"video": "FXY9FQ1ah40"}
+  "A1": {
+   "video": "S4uhLbGWVas",
+   "default": true
+  },
+  "A2": {
+   "video": "h7uZlF-Ppto",
+   "default": true
+  },
+  "A3": null,
+  "B1": {
+   "video": "k6jya93BOms"
+  },
+  "B2": null,
+  "B3": null
  },
  "foundation-2": {
-  "A1": {"video": "wNEuAW_PS-c", "default": true},
-  "A2": {"video": "21RPCvGih_U"},
-  "A3": {"video": "ylTmQNt7H-g"},
-  "B1": {"video": "k6jya93BOms"},
-  "B2": {"video": "21RPCvGih_U", "default": true},
-  "B3": {"video": "nzorCIUQYig"}
+  "A1": {
+   "video": "wNEuAW_PS-c",
+   "default": true
+  },
+  "A2": null,
+  "A3": null,
+  "B1": {
+   "video": "k6jya93BOms"
+  },
+  "B2": {
+   "video": "MiC9l-j8p4Y",
+   "default": true
+  },
+  "B3": {
+   "video": "nzorCIUQYig"
+  }
  },
  "foundation-3": {
-  "A1": {"video": "o3MtDEXLuXM", "default": true},
-  "A2": {"video": "nzorCIUQYig", "default": true},
-  "A3": {"video": "dcvVFDO8dBE"},
-  "B1": {"video": "k6jya93BOms"},
-  "B2": {"video": "ZfqgDnLT8Cs"},
-  "B3": {"video": "vbOhpCuC3Os"}
+  "A1": {
+   "video": "o3MtDEXLuXM",
+   "default": true
+  },
+  "A2": null,
+  "A3": null,
+  "B1": {
+   "video": "k6jya93BOms"
+  },
+  "B2": {
+   "video": "ZfqgDnLT8Cs",
+   "default": true
+  },
+  "B3": {
+   "video": "vbOhpCuC3Os"
+  }
  },
  "foundation-4": {
   "A1": null,
-  "A2": {"video": "MiC9l-j8p4Y", "default": true},
-  "A3": {"video": "dcvVFDO8dBE"},
-  "B1": {"video": "k6jya93BOms", "default": true},
-  "B2": {"video": "ZfqgDnLT8Cs"},
-  "B3": {"video": "vbOhpCuC3Os"}
+  "A2": null,
+  "A3": null,
+  "B1": {
+   "video": "k6jya93BOms",
+   "default": true
+  },
+  "B2": {
+   "video": "mM6nzjTlI1U",
+   "default": true
+  },
+  "B3": {
+   "video": "pNd8xPZ0dw4"
+  }
  },
  "foundation-5": {
-  "A1": {"video": "FXY9FQ1ah40"},
-  "A2": {"video": "V16-zb_SvTc", "default": true},
-  "A3": {"video": "ylTmQNt7H-g"},
-  "B1": {"video": "yU01Yv9rrzQ"},
-  "B2": {"video": "21RPCvGih_U", "default": true},
-  "B3": {"video": "ZfqgDnLT8Cs"}
+  "A1": null,
+  "A2": null,
+  "A3": {
+   "video": "ylTmQNt7H-g",
+   "default": true
+  },
+  "B1": null,
+  "B2": null,
+  "B3": null
  },
  "foundation-6": {
-  "A1": {"video": "nP874sn6g5E"},
-  "A2": {"video": "V16-zb_SvTc", "default": true},
-  "A3": {"video": "nzorCIUQYig"},
-  "B1": {"video": "yU01Yv9rrzQ"},
-  "B2": {"video": "MYL7SLJkXT4", "default": true},
-  "B3": {"video": "h7uZlF-Ppto"}
+  "A1": null,
+  "A2": null,
+  "A3": null,
+  "B1": null,
+  "B2": null,
+  "B3": null
  },
  "foundation-7": {
-  "A1": {"video": "MYL7SLJkXT4"},
-  "A2": {"video": "21RPCvGih_U", "default": true},
-  "A3": {"video": "o3MtDEXLuXM", "default": true},
-  "B1": {"video": "k6jya93BOms"},
-  "B2": {"video": "h7uZlF-Ppto"},
-  "B3": {"video": "FXY9FQ1ah40"}
+  "A1": null,
+  "A2": {
+   "video": "21RPCvGih_U",
+   "default": true
+  },
+  "A3": {
+   "video": "o3MtDEXLuXM",
+   "default": true
+  },
+  "B1": {
+   "video": "k6jya93BOms"
+  },
+  "B2": {
+   "video": "h7uZlF-Ppto"
+  },
+  "B3": null
  },
  "foundation-8": {
-  "A1": {"video": "nzorCIUQYig", "default": true},
-  "A2": {"video": "ZfqgDnLT8Cs"},
-  "A3": {"video": "V16-zb_SvTc"},
-  "B1": {"video": "nzorCIUQYig"},
-  "B2": {"video": "-vin4kQtm34", "default": true},
-  "B3": {"video": "k6jya93BOms"}
+  "A1": null,
+  "A2": null,
+  "A3": {
+   "video": "V16-zb_SvTc",
+   "default": true
+  },
+  "B1": {
+   "video": "nzorCIUQYig"
+  },
+  "B2": {
+   "video": "-vin4kQtm34",
+   "default": true
+  },
+  "B3": {
+   "video": "k6jya93BOms"
+  }
  }
 }

@@ -189,9 +189,7 @@ def add_swaps(data):
         return
     swaps = {k: v for k, v in json.load(open(SWAPS)).items() if not k.startswith("_")}
     by_video = {}
-    for g in data["groups"]:
-        if g["id"] != "stability":
-            continue
+    for g in sorted(data["groups"], key=lambda g: g["id"] != "stability"):   # prefer the Stability copy
         for w in g["workouts"]:
             for b in w["blocks"]:
                 for e in b["exercises"]:
