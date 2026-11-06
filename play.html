@@ -2,6 +2,12 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Play · Youth Athlete Edge</title>
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#167f8c">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="YAE">
+<link rel="apple-touch-icon" href="icons/icon-180.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow:wght@500;700;800&family=Barlow+Condensed:wght@500;600;700&family=Lato:wght@400;700&display=swap">
 <style>
@@ -151,7 +157,7 @@ function finish(){
 }
 
 function render(){
-  $('#listLink').href=`index.html#${W.id}`;
+  $('#listLink').href=W.id==='first'?'start.html':`index.html#${W.id}`;
   const exSteps=steps.filter(s=>s.kind==='ex');
   const doneCount=steps.slice(0,Math.max(at,0)).filter(s=>s.kind==='ex').length;
   $('#dots').innerHTML=exSteps.map((s,i)=>`<i class="${i<doneCount?'done':i===doneCount&&at<steps.length?'now':''}"></i>`).join('');
@@ -161,7 +167,7 @@ function render(){
     const sw=store.get(key()+':swaps',{});
     $('#where').innerHTML=`${esc(G.name)}<small>${esc(W.name)}</small>`;
     m.innerHTML=`<div class="intro"><h2>${esc(W.name)}</h2>
-      <p>${esc(W.setsLabel)} · ${esc(W.reps)} reps${W.restLabel?` · rest ${esc(W.restLabel)}`:''}. ${exSteps.length} exercises in total, counting every round. I'll tell you what's next and start the rest timer for you.</p>
+      <p>${W.id==='first'?'Five warm-up moves, then five mobility moves. About ten minutes. Tap Done after each one.':`${esc(W.setsLabel)} · ${esc(W.reps)} reps${W.restLabel?` · rest ${esc(W.restLabel)}`:''}. ${exSteps.length} exercises in total, counting every round. I'll tell you what's next and start the rest timer for you.`}</p>
       ${defaults.length?`<label class="opt"><input type="checkbox" id="swapOpt" ${defaults.every(e=>sw[e.code])?'checked':''}><span><b>Add stability</b><br><small style="color:var(--muted)">Swaps ${defaults.map(e=>e.code).join(' and ')} for ${defaults.map(e=>e.swap.name).join(' and ')}</small></span></label>`:''}
       <button class="go" id="start">Start</button></div>`;
     return;
@@ -169,7 +175,7 @@ function render(){
   if(at>=steps.length){
     $('#where').innerHTML=`${esc(G.name)}<small>${esc(W.name)}</small>`;
     const n=store.get('yae:log',[]).filter(x=>{const d=new Date();d.setHours(0,0,0,0);d.setDate(d.getDate()-((d.getDay()+6)%7));return x.t>=d.getTime()}).length;
-    m.innerHTML=`<div class="donecard"><h2>${esc(W.name)} done</h2><p>Nice work. Drink some water and stretch it out.</p><p><b>${n}</b> workout${n===1?'':'s'} this week.</p>
+    m.innerHTML=`<div class="donecard"><h2>${W.id==='first'?'That was it.':esc(W.name)+' done'}</h2><p>${W.id==='first'?'Same thing before your next practice. That is the whole habit.':'Nice work. Drink some water and stretch it out.'}</p><p><b>${n}</b> workout${n===1?'':'s'} this week.</p>
       <a class="go brand" style="display:block;text-decoration:none;text-align:center" href="week.html">See my week</a><a class="go" style="display:block;text-decoration:none;text-align:center;background:var(--card);color:var(--ink);border:1px solid var(--line)" href="index.html#${esc(W.id)}">Back to the list</a></div>`;
     return;
   }
@@ -217,8 +223,15 @@ document.addEventListener('visibilitychange',()=>{if(!document.hidden&&(rest||ho
 
 fetch('data/yae.json').then(r=>r.json()).then(d=>{
   DATA=d;const id=decodeURIComponent(location.hash.replace(/^#/,'')).toLowerCase();
-  [W,G]=workoutOf(id);if(!W){[W,G]=[d.groups[5].workouts[0],d.groups[5]]}
+  if(id==='first'){ // Start Here session: five warm-up moves, then the mobility workout, one round
+    const wu=d.groups.find(g=>g.id==='warmup').workouts[0], mo=d.groups.find(g=>g.id==='mobility').workouts[0];
+    const picks=wu.blocks.flatMap(b=>b.exercises).filter(e=>/hip flexion|abduction|backkick|band walk|single leg reach/i.test(e.name)).slice(0,5);
+    W={id:'first',name:'Your first session',sets:1,setsLabel:'1 set',reps:'10',restSeconds:0,restLabel:'',how:'',circuit:false,
+       blocks:[{label:'Warm-up',exercises:picks.map(e=>({...e,note:'10 reps'}))},{label:'Mobility',exercises:mo.blocks.flatMap(b=>b.exercises).map(e=>({...e,note:'10 each side, do it twice'}))}]};
+    G={id:'start',name:'Start here'};
+  } else {[W,G]=workoutOf(id);if(!W){[W,G]=[d.groups[5].workouts[0],d.groups[5]]}}
   buildSteps();render();
 });
 window.addEventListener('hashchange',()=>location.reload());
 </script>
+<script>if('serviceWorker' in navigator&&location.protocol==='https:')navigator.serviceWorker.register('sw.js').catch(()=>{});</script>

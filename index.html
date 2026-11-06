@@ -2,6 +2,12 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Youth Athlete Edge Workouts</title>
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#167f8c">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="YAE">
+<link rel="apple-touch-icon" href="icons/icon-180.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow:wght@500;700;800&family=Barlow+Condensed:wght@500;600;700&family=Lato:wght@400;700&display=swap">
 <style>
@@ -113,6 +119,12 @@ h1{font:800 clamp(28px,8vw,40px)/1.05 var(--display);margin:0;text-wrap:balance;
 .rest .btns{display:flex;gap:8px;flex:none}
 .rest button{border:1px solid currentColor;background:transparent;color:inherit;border-radius:12px;padding:10px 14px;font-weight:700;white-space:nowrap}
 .bar{position:absolute;left:0;top:0;height:4px;background:var(--gold);transition:width 1s linear}
+.nudge{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:14px 16px;display:flex;flex-direction:column;gap:6px}
+.nudge b{font:700 12px/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--brand)}
+.nudge>a{font:800 22px/1.1 var(--display);color:var(--ink);text-decoration:none}
+.nudge small{color:var(--muted);font-size:14px}
+.nudge .minis{display:flex;gap:8px;flex-wrap:wrap;margin-top:4px}
+.nudge .minis a{font:700 13px/1 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--brand);text-decoration:none;border:1px solid var(--line);border-radius:999px;padding:7px 10px}
 .howto{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:16px 18px;display:flex;flex-direction:column;gap:8px}
 .howto h2{margin:0;font:800 20px/1.15 var(--display)}
 .howto ol{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:6px;font-size:15px}
@@ -131,6 +143,7 @@ h1{font:800 clamp(28px,8vw,40px)/1.05 var(--display);margin:0;text-wrap:balance;
     <div class="pick nums" id="workoutPick" aria-label="Workout"></div>
   </header>
 
+  <section id="nudge"></section>
   <section id="howto"></section>
   <section class="intro" id="intro"></section>
   <main id="workout" class="wrap" style="gap:14px"></main>
@@ -163,6 +176,20 @@ async function load(){
   const r=await fetch('data/yae.json');
   if(!r.ok) throw new Error('did not load');
   return state.data=await r.json();
+}
+// "Next for you": the Foundation or Stability workout after the last one finished on this phone.
+function nudgeHTML(d){
+  const log=store.get('yae:log',[]);
+  const last=[...log].reverse().find(x=>/^(foundation|stability)-/.test(x.id||''));
+  const grp=g=>d.groups.find(x=>x.id===g);
+  let id,why;
+  if(!last){id='foundation-1';why='Nothing done yet on this phone. Start with Foundation 1, or do the ten-minute first session.'}
+  else{const [g,n]=last.id.split('-');const list=grp(g).workouts;const i=list.findIndex(w=>w.id===last.id);id=list[(i+1)%list.length].id;
+    const when=new Date(last.t);const days=Math.round((Date.now()-last.t)/864e5);
+    why=`You did ${esc(last.name)} ${days===0?'today':days===1?'yesterday':days+' days ago'}.`}
+  const w=workoutOf(id);
+  return `<div class="nudge"><b>Next for you</b><a href="play.html#${esc(id)}">▶ ${esc(w.name)}</a><small>${why}</small>
+    <span class="minis"><a href="start.html">Start here</a><a href="week.html">My week</a><a href="gear.html">What you need</a></span></div>`;
 }
 function howtoHTML(w){
   if(store.get('yae:howto',false)) return `<button class="howto-link" data-howto="show">How this works</button>`;
@@ -206,6 +233,7 @@ async function render(){
     ${gear.length?`<p class="gear"><b>You need:</b> ${esc(gear.join(', '))}</p>`:''}
     <div class="toolrow">${(()=>{const d=w.blocks.flatMap(b=>b.exercises).filter(e=>e.swap&&e.swap.default);if(!d.length)return '';const on=d.every(e=>swaps[e.code]);return `<button class="link" data-swapall="${on?'off':'on'}">⇄ ${on?'Take the stability swaps out':`Add stability (swaps ${d.length})`}</button>`})()}<a href="play.html#${esc(w.id)}" class="play">▶ Play it step by step</a><a href="print.html#${esc(w.id)}" target="_blank" rel="noopener">🖨 Print this workout</a></div>`;
   $('#howto').innerHTML=howtoHTML(w);
+  $('#nudge').innerHTML=state.lock==='none'?nudgeHTML(d):'';
 
   const saved=store.get(key(),{ticks:{}});
   let allDone=true, shownSec='';
@@ -256,10 +284,17 @@ async function render(){
   $('#week').innerHTML=`<b>${log.length}</b> workout${log.length===1?'':'s'} done this week`+(log.length?`: ${esc(log.map(x=>x.name).join(', '))}`:'');
 }
 
-let timer=null,rest=null;   // rest = {code, left, total, label, kind} while a rest or hold timer is running
+let timer=null,rest=null;   // rest = {code, left, total, label, kind, ends} while a rest or hold timer is running
+function beep(){
+  try{const c=new (window.AudioContext||window.webkitAudioContext)();const g=c.createGain();g.connect(c.destination);g.gain.value=.25;
+    const o=c.createOscillator();o.connect(g);o.frequency.value=880;o.start();o.stop(c.currentTime+.18);
+    const o2=c.createOscillator();o2.connect(g);o2.frequency.value=1175;o2.start(c.currentTime+.22);o2.stop(c.currentTime+.45)}catch(e){}
+  try{navigator.vibrate&&navigator.vibrate([150,80,150])}catch(e){}
+}
+// Counts on the clock, so a locked phone comes back to the right number.
 function startRest(code,sec,label,kind='rest',block=null){
-  clearInterval(timer);rest={code,block,left:sec,total:sec,label,kind};
-  timer=setInterval(()=>{rest.left--;tick();if(rest.left<=0)stopRest(true)},1000);
+  clearInterval(timer);rest={code,block,left:sec,total:sec,label,kind,ends:Date.now()+sec*1000};
+  timer=setInterval(()=>{rest.left=Math.ceil((rest.ends-Date.now())/1000);tick();if(rest.left<=0){beep();stopRest(true)}},250);
 }
 function tick(){
   const t=$('#tLeft'),b=$('#bar');if(!t||!rest)return;
@@ -268,6 +303,7 @@ function tick(){
 function stopRest(rerender){clearInterval(timer);timer=null;rest=null;if(rerender)render()}
 state.openVid={};
 
+document.addEventListener('visibilitychange',()=>{if(!document.hidden&&rest)tick()});
 document.addEventListener('click',e=>{
   const b=e.target.closest('button');if(!b)return;
   if(b.dataset.group){const g=groupOf(b.dataset.group);state.group=g.id;state.workout=g.workouts[0].id;stopRest();render();return}
@@ -293,7 +329,7 @@ document.addEventListener('click',e=>{
   if(b.dataset.hold){startRest(b.dataset.hold,+b.dataset.sec,'Hold it steady','hold');render();return}
   if(b.dataset.rest){
     if(b.dataset.rest==='skip'){stopRest(true);return}
-    if(rest){rest.left+=15;rest.total+=15;tick()}return;
+    if(rest){rest.ends+=15000;rest.total+=15;rest.left+=15;tick()}return;
   }
   if(b.dataset.howto){store.set('yae:howto',b.dataset.howto==='hide');render();return}
   if(b.dataset.embed){
@@ -326,3 +362,4 @@ async function readHash(){
 readHash().then(render);
 window.addEventListener('hashchange',()=>{readHash().then(()=>{stopRest();render()})});
 </script>
+<script>if('serviceWorker' in navigator&&location.protocol==='https:')navigator.serviceWorker.register('sw.js').catch(()=>{});</script>

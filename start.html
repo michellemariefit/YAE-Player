@@ -1,0 +1,73 @@
+<!doctype html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Start Here · Youth Athlete Edge</title>
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#167f8c">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<link rel="apple-touch-icon" href="icons/icon-180.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow:wght@500;700;800&family=Barlow+Condensed:wght@500;600;700&family=Lato:wght@400;700&display=swap">
+<style>
+/* First-time page. One ten-minute session (five warm-up moves plus the mobility workout) so a new
+   athlete does something today instead of reading. Then the three ways to use the program. */
+:root{--bg:#f3f7f9;--card:#fff;--ink:#14263a;--muted:#5a6b7c;--line:#d6e1e8;--brand:#167f8c;--brand-soft:#dff3f5;--accent:#f2542d;
+  --display:"Barlow","Helvetica Neue",Arial,sans-serif;--body:"Lato","Helvetica Neue",Arial,sans-serif;--mono:"Barlow Condensed","Arial Narrow",sans-serif}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--bg:#0e1a26;--card:#17273a;--ink:#eef4f8;--muted:#a4b4c4;--line:#2a3d52;--brand:#4fc3cf;--brand-soft:#173a40;--accent:#ff7a57;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0e1a26;--card:#17273a;--ink:#eef4f8;--muted:#a4b4c4;--line:#2a3d52;--brand:#4fc3cf;--brand-soft:#173a40;--accent:#ff7a57;color-scheme:dark}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 17px/1.45 var(--body);padding:0 16px 60px}
+.wrap{max-width:560px;margin:0 auto;display:flex;flex-direction:column;gap:14px}
+header{padding-top:14px;display:flex;flex-direction:column;gap:6px}
+.eyebrow{font:600 14px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--brand)}
+h1{font:800 clamp(30px,9vw,44px)/1.02 var(--display);margin:0}
+.lead{margin:0;color:var(--muted)}
+.hero{background:var(--card);border:2px solid var(--brand);border-radius:22px;padding:18px;display:flex;flex-direction:column;gap:10px}
+.hero h2{margin:0;font:800 24px/1.1 var(--display)}
+.hero ol{margin:0;padding-left:22px;display:flex;flex-direction:column;gap:4px}
+.hero .t{font:700 14px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--brand)}
+.go{display:block;text-align:center;background:var(--accent);color:#fff;text-decoration:none;border-radius:16px;padding:18px;font:800 21px/1 var(--display)}
+.ways{display:flex;flex-direction:column;gap:8px}
+.way{display:grid;grid-template-columns:44px 1fr;gap:12px;align-items:center;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:12px 14px;text-decoration:none;color:inherit}
+.way .ic{width:44px;height:44px;border-radius:12px;background:var(--brand-soft);display:grid;place-items:center;font-size:22px}
+.way b{display:block;font:800 17px/1.2 var(--display)}
+.way small{color:var(--muted);font-size:14px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:14px 16px;display:flex;flex-direction:column;gap:8px}
+.card h2{margin:0;font:800 18px/1.2 var(--display)}
+.card p{margin:0;color:var(--muted);font-size:15px}
+.install{background:var(--brand-soft);border:1px solid var(--brand)}
+.install ol{margin:0;padding-left:20px;font-size:15px}
+</style>
+<div class="wrap">
+  <header><span class="eyebrow">Youth Athlete Edge</span><h1>Start here</h1>
+    <p class="lead">Don't read everything. Do this one session today. It takes about ten minutes and it is the exact thing you'll do before games all season.</p></header>
+
+  <section class="hero">
+    <span class="t">Your first session · about 10 minutes</span>
+    <h2>Warm-up, then Mobility</h2>
+    <ol>
+      <li>Five warm-up moves. One set of 10 each. Just a mini band.</li>
+      <li>The Mobility workout. Five moves, two sets of 10 per side.</li>
+      <li>Drink water. You're done. Same thing next practice.</li>
+    </ol>
+    <a class="go" href="play.html#first">▶ Start the 10 minutes</a>
+  </section>
+
+  <section class="ways">
+    <a class="way" href="play.html#warmup"><span class="ic">▶</span><span><b>Play mode</b><small>One exercise at a time, timers run themselves. Best on a phone.</small></span></a>
+    <a class="way" href="index.html"><span class="ic">☰</span><span><b>List view</b><small>See the whole workout on one screen. Tick sets as you go.</small></span></a>
+    <a class="way" href="print.html"><span class="ic">🖨</span><span><b>Print it</b><small>One page per workout, start and end photos, no ink wasted.</small></span></a>
+    <a class="way" href="week.html"><span class="ic">📅</span><span><b>Plan my week</b><small>Tap your practice and game days, the program fits around them.</small></span></a>
+    <a class="way" href="gear.html"><span class="ic">🎒</span><span><b>What you need</b><small>Mini band and floor space to start. The rest, when you're ready.</small></span></a>
+  </section>
+
+  <section class="card install">
+    <h2>Put it on your home screen</h2>
+    <p>Then it opens like an app, full screen, and the photos work with bad signal.</p>
+    <ol>
+      <li><b>iPhone or iPad:</b> open this page in Safari, tap the Share box at the bottom, then "Add to Home Screen".</li>
+      <li><b>Android:</b> tap the three dots at the top right, then "Add to Home screen" or "Install app".</li>
+    </ol>
+  </section>
+</div>
+<script>if('serviceWorker' in navigator&&location.protocol==='https:')navigator.serviceWorker.register('sw.js').catch(()=>{});</script>

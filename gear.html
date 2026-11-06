@@ -1,0 +1,71 @@
+<!doctype html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>What You Need · Youth Athlete Edge</title>
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#167f8c">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<link rel="apple-touch-icon" href="icons/icon-180.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow:wght@500;700;800&family=Barlow+Condensed:wght@500;600;700&family=Lato:wght@400;700&display=swap">
+<style>
+/* Equipment page. Built from the exercise names in data/yae.json so it never drifts from the workouts.
+   The Amazon list is Michelle's. */
+:root{--bg:#f3f7f9;--card:#fff;--ink:#14263a;--muted:#5a6b7c;--line:#d6e1e8;--brand:#167f8c;--brand-soft:#dff3f5;--accent:#f2542d;
+  --display:"Barlow","Helvetica Neue",Arial,sans-serif;--body:"Lato","Helvetica Neue",Arial,sans-serif;--mono:"Barlow Condensed","Arial Narrow",sans-serif}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--bg:#0e1a26;--card:#17273a;--ink:#eef4f8;--muted:#a4b4c4;--line:#2a3d52;--brand:#4fc3cf;--brand-soft:#173a40;--accent:#ff7a57;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0e1a26;--card:#17273a;--ink:#eef4f8;--muted:#a4b4c4;--line:#2a3d52;--brand:#4fc3cf;--brand-soft:#173a40;--accent:#ff7a57;color-scheme:dark}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.5 var(--body);padding:0 16px 60px}
+.wrap{max-width:560px;margin:0 auto;display:flex;flex-direction:column;gap:14px}
+header{padding-top:14px;display:flex;flex-direction:column;gap:6px}
+.eyebrow{font:600 14px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--brand)}
+h1{font:800 clamp(28px,8vw,40px)/1.05 var(--display);margin:0}
+.lead{margin:0;color:var(--muted)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:14px 16px;display:flex;flex-direction:column;gap:10px}
+.card h2{margin:0;font:800 18px/1.2 var(--display)}
+.card p{margin:0;color:var(--muted);font-size:15px}
+.item{display:grid;grid-template-columns:1fr auto;gap:8px;align-items:baseline;padding:8px 0;border-top:1px solid var(--line)}
+.item:first-of-type{border-top:0}
+.item b{font-weight:700}
+.item small{display:block;color:var(--muted);font-size:13px}
+.item .n{font:600 13px/1 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--brand);white-space:nowrap}
+.cta{display:block;text-align:center;background:var(--accent);color:#fff;text-decoration:none;border-radius:14px;padding:16px;font:800 18px/1 var(--display)}
+.note{font-size:13px;color:var(--muted);text-align:center;margin:0}
+.free{background:var(--brand-soft);border:1px solid var(--brand);border-radius:14px;padding:12px 14px}
+.free b{color:var(--brand)}
+a.back{font:700 14px/1 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--brand);text-decoration:none}
+</style>
+<div class="wrap">
+  <header><a class="back" href="index.html">← Workouts</a><span class="eyebrow">Youth Athlete Edge</span><h1>What you need</h1>
+    <p class="lead">Everything the program uses, and which workouts use it. Buy what you need for this month, not the whole list.</p></header>
+  <div class="free"><b>Start with nothing.</b> The Warm-Up, Mobility, Stretching and MAT Holds need a mini band and floor space. That is a full month of the program.</div>
+  <section class="card" id="list"></section>
+  <a class="cta" href="https://amzn.to/4wz2gRz" target="_blank" rel="noopener">Michelle's picks on Amazon →</a>
+  <p class="note">A few options for each item, the same ones used at our house. As an Amazon Associate Michelle earns from qualifying purchases.</p>
+</div>
+<script>
+const GEAR=[
+ ['Mini bands (loop around knees or ankles)',/\bband/i,'The warm-up and most strength moves. Get a set of 3 strengths.'],
+ ['Long resistance band',/stretch/i,'Stretching. A long loop or a band with handles.'],
+ ['Stability ball',/stability ball/i,'Leg curls and hip extensions. 55 cm fits most athletes under 5 ft 6.'],
+ ['Dyna Disc (wobble cushion)',/dyna disc|on disc/i,'The first step in Stability & Balance. Master this before the BOSU.'],
+ ['BOSU or half ball',/bosu/i,'The next step up in Stability & Balance. Any half-ball trainer works.'],
+ ['Sliders',/slider/i,'Two exercises. Paper plates on carpet, or socks on wood floor, work too.'],
+ ['Medicine ball (4 to 6 lb)',/med ball/i,'One Stability exercise.'],
+ ['Light dumbbells (5 to 10 lb)',/deadlift/i,'Deadlifts. Water bottles work to start.'],
+ ['Foam roller',/foam roller/i,'Mobility and recovery.'],
+ ['Hand roller, massage gun, tennis or baseball',null,'Recovery. Pick one, not all three. The ball is the cheap one.'],
+];
+const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+fetch('data/yae.json').then(r=>r.json()).then(d=>{
+  const rows=GEAR.map(([name,re,why])=>{
+    const hit=e=>re.test(e.name)||(e.swap&&re.test(e.swap.name));
+    const uses=re?d.groups.flatMap(g=>g.workouts.filter(w=>w.blocks.some(b=>b.exercises.some(hit))).map(w=>g.name)):['Recovery'];
+    const groups=[...new Set(uses)];
+    return `<div class="item"><div><b>${esc(name)}</b><small>${esc(why)}</small></div><span class="n">${groups.length?esc(groups.join(' · ')):''}</span></div>`;
+  }).join('');
+  document.getElementById('list').innerHTML=`<h2>The list</h2>${rows}`;
+});
+if('serviceWorker' in navigator&&location.protocol==='https:')navigator.serviceWorker.register('sw.js').catch(()=>{});
+</script>
