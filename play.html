@@ -1,0 +1,223 @@
+<!doctype html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Play · Youth Athlete Edge</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow:wght@500;700;800&family=Barlow+Condensed:wght@500;600;700&family=Lato:wght@400;700&display=swap">
+<style>
+/* Guided play mode: one exercise at a time, one big button. The page walks the athlete through
+   every round of every circuit, starts the rest timer itself, and saves ticks to the same place
+   as the player (index.html) so the two agree. Link: play.html#foundation-1 */
+:root{
+  --bg:#f3f7f9; --card:#ffffff; --ink:#14263a; --muted:#5a6b7c; --line:#d6e1e8;
+  --brand:#167f8c; --brand-soft:#dff3f5; --accent:#f2542d; --accent-ink:#ffffff;
+  --display:"Barlow","Helvetica Neue",Arial,sans-serif; --body:"Lato","Helvetica Neue",Arial,sans-serif;
+  --mono:"Barlow Condensed","Arial Narrow","Helvetica Neue",sans-serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0e1a26; --card:#17273a; --ink:#eef4f8; --muted:#a4b4c4; --line:#2a3d52; --brand:#4fc3cf; --brand-soft:#173a40; --accent:#ff7a57; --accent-ink:#0e1a26; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0e1a26; --card:#17273a; --ink:#eef4f8; --muted:#a4b4c4; --line:#2a3d52; --brand:#4fc3cf; --brand-soft:#173a40; --accent:#ff7a57; --accent-ink:#0e1a26; color-scheme:dark}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 17px/1.4 var(--body);display:flex;flex-direction:column;
+  padding:env(safe-area-inset-top,0) max(14px,env(safe-area-inset-right,0)) max(14px,env(safe-area-inset-bottom,0)) max(14px,env(safe-area-inset-left,0))}
+button{font:inherit;color:inherit;cursor:pointer}
+button:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+.top{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:12px 0 8px}
+.top .where{font:700 14px/1.2 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--brand)}
+.top .where small{display:block;color:var(--muted);letter-spacing:.04em;font-size:12px;text-transform:none}
+.top a,.top button.x{font:700 14px/1 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--muted);text-decoration:none;background:none;border:1px solid var(--line);border-radius:999px;padding:8px 12px}
+.dots{display:flex;gap:4px;margin-bottom:12px}
+.dots i{flex:1;height:6px;border-radius:3px;background:var(--line)}
+.dots i.done{background:var(--brand)}.dots i.now{background:var(--accent)}
+main{flex:1;display:flex;flex-direction:column;gap:12px;min-height:0}
+.card{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:14px;display:flex;flex-direction:column;gap:10px;flex:1;min-height:0}
+.pair{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.pair figure{margin:0;position:relative}
+.pair img{width:100%;aspect-ratio:16/11;object-fit:cover;border-radius:14px;background:var(--brand-soft);display:block}
+.pair figcaption{position:absolute;left:8px;top:8px;font:700 11px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;background:rgba(20,38,58,.78);color:#fff;padding:5px 7px;border-radius:6px}
+@media (min-height:760px){.pair{grid-template-columns:1fr}.pair img{aspect-ratio:16/9}}
+.single{width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:14px}
+h1{margin:0;font:800 clamp(24px,7vw,32px)/1.1 var(--display);display:flex;gap:10px;align-items:baseline}
+.code{font:700 15px/1 var(--mono);color:#fff;background:var(--accent);border-radius:7px;padding:5px 7px;flex:none}
+.code.swap{background:var(--brand)}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{font:600 15px/1 var(--mono);letter-spacing:.04em;background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:7px 9px}
+.chip.hot{background:var(--brand-soft);border-color:var(--brand);color:var(--brand)}
+.links{display:flex;gap:14px;flex-wrap:wrap;margin-top:auto}
+.links button,.links a{background:none;border:0;padding:6px 0;font-weight:700;color:var(--accent);text-decoration:none}
+.links .alt{color:var(--brand)}
+.embed{aspect-ratio:16/9;border-radius:12px;overflow:hidden;background:#000}
+.embed iframe{width:100%;height:100%;border:0}
+.go{border:0;background:var(--accent);color:var(--accent-ink);border-radius:16px;padding:20px;font:800 22px/1 var(--display);letter-spacing:.02em;width:100%}
+.go.brand{background:var(--brand);color:#fff}
+.row{display:flex;gap:8px}
+.row .back{flex:0 0 auto;border:1px solid var(--line);background:var(--card);border-radius:16px;padding:0 16px;font:700 15px/1 var(--mono);letter-spacing:.06em;text-transform:uppercase}
+.row .go{flex:1}
+.hold{display:flex;align-items:center;gap:12px;background:var(--ink);color:var(--bg);border-radius:14px;padding:12px 14px}
+.hold .t{font:800 44px/1 var(--mono);font-variant-numeric:tabular-nums;min-width:2.2ch}
+.hold button{border:1px solid currentColor;background:transparent;color:inherit;border-radius:12px;padding:10px 14px;font-weight:700;margin-left:auto}
+.restcard{flex:1;background:var(--brand);color:#fff;border-radius:22px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;padding:20px;text-align:center;position:relative;overflow:hidden}
+.restcard .big{font:800 clamp(90px,30vw,150px)/1 var(--mono);font-variant-numeric:tabular-nums}
+.restcard .lbl{font:700 20px/1.2 var(--display)}
+.restcard .sub{opacity:.85;font-size:16px}
+.restcard .next{margin-top:8px;background:rgba(255,255,255,.15);border-radius:14px;padding:10px 14px;font-size:15px}
+.restcard .next b{display:block;font:800 18px/1.2 var(--display)}
+.restcard .btns{display:flex;gap:10px;margin-top:10px}
+.restcard .btns button{border:2px solid #fff;background:transparent;color:#fff;border-radius:14px;padding:14px 18px;font:800 17px/1 var(--display)}
+.bar{position:absolute;left:0;top:0;height:6px;background:#ffc83d;transition:width 1s linear}
+.donecard{flex:1;background:var(--brand-soft);border:1px solid var(--brand);border-radius:22px;display:flex;flex-direction:column;justify-content:center;gap:10px;padding:24px;text-align:center}
+.donecard h2{margin:0;font:800 34px/1.05 var(--display);color:var(--brand)}
+.donecard p{margin:0;font-size:17px}
+.donecard .go{margin-top:12px}
+.intro{flex:1;display:flex;flex-direction:column;gap:12px;justify-content:center}
+.intro h2{margin:0;font:800 30px/1.1 var(--display)}
+.intro p{margin:0;color:var(--muted)}
+.intro ul{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:6px}
+.intro .opt{display:flex;align-items:center;gap:10px;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px 14px}
+.intro .opt input{width:22px;height:22px;accent-color:var(--brand)}
+@media (prefers-reduced-motion:reduce){.bar{transition:none}}
+</style>
+<header class="top">
+  <div class="where" id="where">Youth Athlete Edge</div>
+  <a id="listLink" href="index.html">List view</a>
+</header>
+<div class="dots" id="dots"></div>
+<main id="main"></main>
+
+<script>
+const EMBED_OK=!/claude|anthropic/i.test(location.hostname) && location.protocol!=='file:';
+const $=s=>document.querySelector(s);
+const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const store={get(k,d){try{const v=localStorage.getItem(k);return v?JSON.parse(v):d}catch(e){return d}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}};
+let DATA=null, W=null, G=null, steps=[], at=-1, rest=null, timer=null, hold=null, openVid=false;
+const key=()=>`yae:${W.id}`;
+
+function holdSeconds(e,w){
+  const m=(e.note||'').match(/(\d+)(?:-(\d+))?[\s-]*(?:second|sec\b)/i)||(w.how||'').match(/hold each rep for (\d+)\s*second/i);
+  return m?+(m[2]||m[1]):0;
+}
+function workoutOf(id){for(const g of DATA.groups){const w=g.workouts.find(w=>w.id===id);if(w)return [w,g]}return [null,null]}
+function shown(e){const sw=store.get(key()+':swaps',{});return (e.swap&&sw[e.code])?{...e.swap,code:e.code,swapped:true,orig:e.name}:e}
+
+// Build the list of steps: every exercise of every round, with a rest step after the last exercise in a circuit.
+function buildSteps(){
+  steps=[];
+  for(const b of W.blocks){
+    for(let r=0;r<W.sets;r++){
+      b.exercises.forEach((e,i)=>{
+        steps.push({kind:'ex',e,round:r,block:b,last:i===b.exercises.length-1});
+      });
+      if(W.restSeconds>0 && r<W.sets-1) steps.push({kind:'rest',block:b,round:r});
+    }
+  }
+}
+function beep(){
+  try{const c=new (window.AudioContext||window.webkitAudioContext)();const o=c.createOscillator(),g=c.createGain();o.connect(g);g.connect(c.destination);
+    o.frequency.value=880;g.gain.value=.25;o.start();o.stop(c.currentTime+.18);
+    const o2=c.createOscillator();o2.connect(g);o2.frequency.value=1175;o2.start(c.currentTime+.22);o2.stop(c.currentTime+.45)}catch(e){}
+  try{navigator.vibrate&&navigator.vibrate([150,80,150])}catch(e){}
+}
+// Rest and hold timers run on the clock, so a locked phone comes back to the right number.
+function startTimer(kind,sec){
+  stopTimer();const ends=Date.now()+sec*1000;
+  const t={kind,ends,total:sec,left:sec};if(kind==='rest')rest=t;else hold=t;
+  timer=setInterval(()=>{t.left=Math.ceil((t.ends-Date.now())/1000);
+    if(t.left<=0){stopTimer();beep();if(kind==='rest')next();else{hold={done:true};render()}}else tick(t)},250);
+  render();
+}
+function stopTimer(){clearInterval(timer);timer=null;rest=null;hold=null}
+function tick(t){const el=$('#tnum'),b=$('#tbar');if(el)el.textContent=t.left;if(b)b.style.width=(100*(t.total-t.left)/t.total)+'%'}
+function tickSet(e,round,on){const s=store.get(key(),{ticks:{}});const a=s.ticks[e.code]||[];a[round]=on;s.ticks[e.code]=a;store.set(key(),s)}
+function allTicked(){const s=store.get(key(),{ticks:{}});return W.blocks.every(b=>b.exercises.every(e=>(s.ticks[e.code]||[]).filter(Boolean).length>=W.sets))}
+
+function next(){
+  stopTimer();openVid=false;
+  const cur=steps[at];
+  if(cur&&cur.kind==='ex'){tickSet(cur.e,cur.round,true);
+    if(cur.last&&W.restSeconds>0&&cur.round<W.sets-1){at++;startTimer('rest',W.restSeconds);return}}
+  at++;
+  if(at>=steps.length){finish();return}
+  if(steps[at].kind==='rest'){startTimer('rest',W.restSeconds);return}
+  render();window.scrollTo(0,0);
+}
+function back(){stopTimer();openVid=false;if(at>0){at--;if(steps[at].kind==='rest')at--;if(steps[at]&&steps[at].kind==='ex')tickSet(steps[at].e,steps[at].round,false)}render()}
+function finish(){
+  const s=store.get(key(),{ticks:{}});s.finished=Date.now();store.set(key(),s);
+  const log=store.get('yae:log',[]);log.push({t:Date.now(),id:W.id,name:W.name});store.set('yae:log',log.slice(-200));
+  at=steps.length;render();
+}
+
+function render(){
+  $('#listLink').href=`index.html#${W.id}`;
+  const exSteps=steps.filter(s=>s.kind==='ex');
+  const doneCount=steps.slice(0,Math.max(at,0)).filter(s=>s.kind==='ex').length;
+  $('#dots').innerHTML=exSteps.map((s,i)=>`<i class="${i<doneCount?'done':i===doneCount&&at<steps.length?'now':''}"></i>`).join('');
+  const m=$('#main');
+  if(at<0){ // intro screen
+    const defaults=W.blocks.flatMap(b=>b.exercises).filter(e=>e.swap&&e.swap.default);
+    const sw=store.get(key()+':swaps',{});
+    $('#where').innerHTML=`${esc(G.name)}<small>${esc(W.name)}</small>`;
+    m.innerHTML=`<div class="intro"><h2>${esc(W.name)}</h2>
+      <p>${esc(W.setsLabel)} · ${esc(W.reps)} reps${W.restLabel?` · rest ${esc(W.restLabel)}`:''}. ${exSteps.length} exercises in total, counting every round. I'll tell you what's next and start the rest timer for you.</p>
+      ${defaults.length?`<label class="opt"><input type="checkbox" id="swapOpt" ${defaults.every(e=>sw[e.code])?'checked':''}><span><b>Add stability</b><br><small style="color:var(--muted)">Swaps ${defaults.map(e=>e.code).join(' and ')} for ${defaults.map(e=>e.swap.name).join(' and ')}</small></span></label>`:''}
+      <button class="go" id="start">Start</button></div>`;
+    return;
+  }
+  if(at>=steps.length){
+    $('#where').innerHTML=`${esc(G.name)}<small>${esc(W.name)}</small>`;
+    const n=store.get('yae:log',[]).filter(x=>{const d=new Date();d.setHours(0,0,0,0);d.setDate(d.getDate()-((d.getDay()+6)%7));return x.t>=d.getTime()}).length;
+    m.innerHTML=`<div class="donecard"><h2>${esc(W.name)} done</h2><p>Nice work. Drink some water and stretch it out.</p><p><b>${n}</b> workout${n===1?'':'s'} this week.</p>
+      <a class="go brand" style="display:block;text-decoration:none;text-align:center" href="week.html">See my week</a><a class="go" style="display:block;text-decoration:none;text-align:center;background:var(--card);color:var(--ink);border:1px solid var(--line)" href="index.html#${esc(W.id)}">Back to the list</a></div>`;
+    return;
+  }
+  const s=steps[at];
+  if(s.kind==='rest'){
+    const nx=steps[at+1];const ne=nx&&nx.kind==='ex'?shown(nx.e):null;
+    $('#where').innerHTML=`Rest<small>${W.circuit?`Round ${s.round+1} of ${W.sets} done`:`Set ${s.round+1} of ${W.sets} done`}</small>`;
+    m.innerHTML=`<div class="restcard"><div class="bar" id="tbar" style="width:${rest?100*(rest.total-rest.left)/rest.total:0}%"></div>
+      <div class="big" id="tnum">${rest?rest.left:W.restSeconds}</div><div class="lbl">Rest</div><div class="sub">Breathe. Shake it out.</div>
+      ${ne?`<div class="next">Next up<b>${esc(ne.code)} · ${esc(ne.name)}</b>round ${s.round+2} of ${W.sets}</div>`:''}
+      <div class="btns"><button id="plus">+15s</button><button id="skip">Skip rest</button></div></div>`;
+    return;
+  }
+  const e=shown(s.e);const hs=holdSeconds(e,W);
+  const idx=exSteps.indexOf(s);
+  $('#where').innerHTML=`${W.circuit?`Round ${s.round+1} of ${W.sets} · ${esc(s.block.label==='Circuit'?'':s.block.label+' circuit')}`:`Set ${s.round+1} of ${W.sets}`}<small>${idx+1} of ${exSteps.length}</small>`;
+  const pic=e.startPhoto&&e.endPhoto
+    ?`<div class="pair"><figure><img src="${esc(e.startPhoto)}" alt=""><figcaption>Start</figcaption></figure><figure><img src="${esc(e.endPhoto)}" alt=""><figcaption>End</figcaption></figure></div>`
+    :(e.photo?`<img class="single" src="${esc(e.photo)}" alt="">`:'');
+  const vids=[{label:'Watch demo',video:e.video,cls:''},...(e.alts||[]).map(a=>({label:a.label,video:a.video,cls:'alt'}))].filter(v=>v.video);
+  const links=vids.map(v=>EMBED_OK?`<button class="${v.cls}" data-embed="${esc(v.video)}">▶ ${esc(v.label)}</button>`:`<a class="${v.cls}" href="https://www.youtube.com/watch?v=${esc(v.video)}" target="_blank" rel="noopener">▶ ${esc(v.label)}</a>`).join('');
+  const holdUI=hs?(hold&&!hold.done?`<div class="hold"><div class="t" id="tnum">${hold.left}</div><div>Hold it steady</div><button id="stopHold">Stop</button></div>`
+    :`<button class="go brand" id="startHold" style="padding:14px;font-size:18px">⏱ ${hold&&hold.done?'Hold done · again?':`Start ${hs}s hold`}</button>`):'';
+  m.innerHTML=`<div class="card">${openVid&&EMBED_OK?`<div class="embed"><iframe src="https://www.youtube-nocookie.com/embed/${esc(openVid)}?rel=0&modestbranding=1&playsinline=1&autoplay=1" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe></div>`:pic}
+    <h1><span class="code ${e.swapped?'swap':''}">${esc(e.code)}</span><span>${esc(e.name)}</span></h1>
+    <div class="chips">${W.reps?`<span class="chip hot">${esc(W.reps)} reps</span>`:''}${e.note?`<span class="chip">${esc(e.note)}</span>`:''}${e.swapped?`<span class="chip">stability swap for ${esc(e.orig)}</span>`:''}</div>
+    ${holdUI}
+    <div class="links">${links}</div></div>
+    <div class="row">${at>0?'<button class="back" id="back">Back</button>':''}<button class="go" id="done">${s.last&&W.restSeconds>0&&s.round<W.sets-1?'Done · start rest':(at===steps.length-1?'Done · finish':'Done · next')}</button></div>`;
+}
+
+document.addEventListener('click',e=>{
+  const b=e.target.closest('button,a');if(!b)return;
+  if(b.id==='start'){const o=$('#swapOpt');if(o){const sw=store.get(key()+':swaps',{});W.blocks.flatMap(x=>x.exercises).filter(x=>x.swap&&x.swap.default).forEach(x=>{sw[x.code]=o.checked});store.set(key()+':swaps',sw)}
+    store.set(key(),{ticks:{}});at=0;render();return}
+  if(b.id==='done'){next();return}
+  if(b.id==='back'){back();return}
+  if(b.id==='skip'){next();return}
+  if(b.id==='plus'&&rest){rest.ends+=15000;rest.total+=15;return}
+  if(b.id==='startHold'){const s=steps[at];startTimer('hold',holdSeconds(shown(s.e),W));return}
+  if(b.id==='stopHold'){stopTimer();render();return}
+  if(b.dataset.embed){openVid=openVid===b.dataset.embed?false:b.dataset.embed;render();return}
+});
+document.addEventListener('visibilitychange',()=>{if(!document.hidden&&(rest||hold))render()});
+
+fetch('data/yae.json').then(r=>r.json()).then(d=>{
+  DATA=d;const id=decodeURIComponent(location.hash.replace(/^#/,'')).toLowerCase();
+  [W,G]=workoutOf(id);if(!W){[W,G]=[d.groups[5].workouts[0],d.groups[5]]}
+  buildSteps();render();
+});
+window.addEventListener('hashchange',()=>location.reload());
+</script>

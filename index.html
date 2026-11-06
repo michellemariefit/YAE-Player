@@ -43,6 +43,7 @@ header.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background
 .pick.nums button{flex:none}
 h1{font:800 clamp(28px,8vw,40px)/1.05 var(--display);margin:0;text-wrap:balance;letter-spacing:-.01em}
 .toolrow{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.toolrow a.play{background:var(--accent);color:#fff;border-color:var(--accent)}
 .toolrow a,.toolrow button.link{font:700 14px/1 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--brand);text-decoration:none;
   border:1px solid var(--line);background:var(--card);border-radius:999px;padding:8px 12px;display:inline-flex;gap:6px;align-items:center}
 
@@ -203,7 +204,7 @@ async function render(){
   $('#intro').innerHTML=`<div class="when"><b>When to do this</b>${esc(g.when||'')}</div><div class="plan"><span class="chip hot">${esc(w.setsLabel)}</span>${w.reps?`<span class="chip hot">${esc(w.reps)} reps</span>`:''}${w.restLabel?`<span class="chip hot">Rest ${esc(w.restLabel)}</span>`:''}</div>
     <p><b>How:</b> ${esc(w.how)}</p>${w.when?`<p><b>When:</b> ${esc(w.when)}</p>`:''}${w.tip?`<p><b>Make it yours:</b> ${esc(w.tip)}</p>`:''}
     ${gear.length?`<p class="gear"><b>You need:</b> ${esc(gear.join(', '))}</p>`:''}
-    <div class="toolrow">${(()=>{const d=w.blocks.flatMap(b=>b.exercises).filter(e=>e.swap&&e.swap.default);if(!d.length)return '';const on=d.every(e=>swaps[e.code]);return `<button class="link" data-swapall="${on?'off':'on'}">⇄ ${on?'Take the stability swaps out':`Add stability (swaps ${d.length})`}</button>`})()}<a href="print.html#${esc(w.id)}" target="_blank" rel="noopener">🖨 Print this workout</a></div>`;
+    <div class="toolrow">${(()=>{const d=w.blocks.flatMap(b=>b.exercises).filter(e=>e.swap&&e.swap.default);if(!d.length)return '';const on=d.every(e=>swaps[e.code]);return `<button class="link" data-swapall="${on?'off':'on'}">⇄ ${on?'Take the stability swaps out':`Add stability (swaps ${d.length})`}</button>`})()}<a href="play.html#${esc(w.id)}" class="play">▶ Play it step by step</a><a href="print.html#${esc(w.id)}" target="_blank" rel="noopener">🖨 Print this workout</a></div>`;
   $('#howto').innerHTML=howtoHTML(w);
 
   const saved=store.get(key(),{ticks:{}});
