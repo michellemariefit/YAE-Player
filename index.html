@@ -48,8 +48,8 @@ h1{font:800 clamp(28px,8vw,40px)/1.05 var(--display);margin:0;text-wrap:balance;
 
 .intro{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:14px 16px;display:flex;flex-direction:column;gap:10px}
 .intro p{margin:0;color:var(--muted)}
-.when{background:var(--gold);color:#14263a;border-radius:12px;padding:10px 12px;font-size:15px;line-height:1.4}
-.when b{display:block;font:700 12px/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;margin-bottom:4px}
+.when{background:var(--brand-soft);color:var(--ink);border:1px solid var(--brand);border-radius:12px;padding:10px 12px;font-size:15px;line-height:1.4}
+.when b{display:block;font:700 12px/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;margin-bottom:4px;color:var(--brand)}
 .intro p b{color:var(--ink)}
 .plan{display:flex;flex-wrap:wrap;gap:6px}
 .chip{font:600 14px/1 var(--mono);letter-spacing:.04em;background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:6px 8px;font-variant-numeric:tabular-nums}
@@ -107,11 +107,11 @@ h1{font:800 clamp(28px,8vw,40px)/1.05 var(--display);margin:0;text-wrap:balance;
 .rest .btns{display:flex;gap:8px;flex:none}
 .rest button{border:1px solid currentColor;background:transparent;color:inherit;border-radius:12px;padding:10px 14px;font-weight:700;white-space:nowrap}
 .bar{position:absolute;left:0;top:0;height:4px;background:var(--gold);transition:width 1s linear}
-.howto{background:var(--accent-soft);border-radius:20px;padding:16px 18px;display:flex;flex-direction:column;gap:8px}
+.howto{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:16px 18px;display:flex;flex-direction:column;gap:8px}
 .howto h2{margin:0;font:800 20px/1.15 var(--display)}
 .howto ol{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:6px;font-size:15px}
 .howto ol b{font-family:var(--mono);font-weight:700;letter-spacing:.04em}
-.howto .got{align-self:flex-start;border:0;background:var(--ink);color:var(--bg);border-radius:12px;padding:10px 16px;font-weight:700;margin-top:4px}
+.howto .got{align-self:flex-start;border:0;background:var(--brand);color:#fff;border-radius:12px;padding:10px 16px;font-weight:700;margin-top:4px}
 .howto-link{align-self:flex-start;border:0;background:none;color:var(--accent);font-weight:700;padding:0;text-decoration:underline}
 .err{background:var(--accent-soft);border-radius:14px;padding:14px}
 @media (prefers-reduced-motion:reduce){.bar{transition:none}}
