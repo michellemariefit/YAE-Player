@@ -1,0 +1,109 @@
+<!doctype html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Recovery · Youth Athlete Edge</title>
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#167f8c">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<link rel="apple-touch-icon" href="icons/icon-180.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow:wght@500;700;800&family=Barlow+Condensed:wght@500;600;700&family=Lato:wght@400;700&display=swap">
+<style>
+/* The recovery session: stretch, MAT holds, then the myofascial checklist. Ticks save per day on this phone.
+   The checklist items live in the RELEASE table below, so Michelle can change the words in one place. */
+:root{--bg:#f3f7f9;--card:#fff;--ink:#14263a;--muted:#5a6b7c;--line:#d6e1e8;--brand:#167f8c;--brand-soft:#dff3f5;--accent:#f2542d;--done:#167f8c;
+  --display:"Barlow","Helvetica Neue",Arial,sans-serif;--body:"Lato","Helvetica Neue",Arial,sans-serif;--mono:"Barlow Condensed","Arial Narrow",sans-serif}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--bg:#0e1a26;--card:#17273a;--ink:#eef4f8;--muted:#a4b4c4;--line:#2a3d52;--brand:#4fc3cf;--brand-soft:#173a40;--accent:#ff7a57;--done:#4fc3cf;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0e1a26;--card:#17273a;--ink:#eef4f8;--muted:#a4b4c4;--line:#2a3d52;--brand:#4fc3cf;--brand-soft:#173a40;--accent:#ff7a57;--done:#4fc3cf;color-scheme:dark}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.5 var(--body);padding:0 16px 60px}
+.wrap{max-width:560px;margin:0 auto;display:flex;flex-direction:column;gap:14px}
+header{padding-top:14px;display:flex;flex-direction:column;gap:6px}
+.eyebrow{font:600 14px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--brand)}
+h1{font:800 clamp(28px,8vw,40px)/1.05 var(--display);margin:0}
+.lead{margin:0;color:var(--muted)}
+a.back{font:700 14px/1 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--brand);text-decoration:none}
+.when{background:var(--brand-soft);border:1px solid var(--brand);border-radius:12px;padding:10px 12px;font-size:15px}
+.when b{display:block;font:700 12px/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;margin-bottom:4px;color:var(--brand)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:14px 16px;display:flex;flex-direction:column;gap:10px}
+.card h2{margin:0;font:800 19px/1.2 var(--display);display:flex;justify-content:space-between;align-items:baseline;gap:8px}
+.card h2 small{font:600 12px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.card p{margin:0;color:var(--muted);font-size:15px}
+.step{display:grid;grid-template-columns:1fr auto;gap:10px;align-items:center;border-top:1px solid var(--line);padding:10px 0}
+.step:first-of-type{border-top:0;padding-top:0}
+.step b{display:block;font:800 17px/1.2 var(--display)}
+.step small{color:var(--muted);font-size:14px}
+.go{background:var(--accent);color:#fff;text-decoration:none;border-radius:12px;padding:12px 14px;font:800 15px/1 var(--display);white-space:nowrap}
+.go.brand{background:var(--brand)}
+.item{display:flex;align-items:flex-start;gap:12px;border-top:1px solid var(--line);padding:10px 0}
+.item:first-of-type{border-top:0;padding-top:0}
+.item input{width:24px;height:24px;margin:2px 0 0;accent-color:var(--done);flex:none}
+.item label{flex:1}
+.item label b{display:block;font-weight:700}
+.item label small{display:block;color:var(--muted);font-size:14px}
+.item.done label b{text-decoration:line-through;color:var(--muted)}
+.rule{font-size:14px;color:var(--muted);margin:0;padding-left:18px}
+.rule li{margin-bottom:4px}
+.finish{border:0;background:var(--accent);color:#fff;border-radius:12px;padding:16px;font:700 18px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase}
+.finish:disabled{opacity:.45}
+.donecard{background:var(--brand-soft);border:1px solid var(--brand);border-radius:18px;padding:16px;text-align:center}
+.donecard b{display:block;font:800 22px/1.1 var(--display);color:var(--brand);margin-bottom:4px}
+</style>
+<div class="wrap">
+  <header><a class="back" href="week.html">← My week</a><span class="eyebrow">Youth Athlete Edge</span><h1>Recovery</h1>
+    <p class="lead">Ten minutes, two or three times a week. After practice, after a game, or on an off day. This is where her body absorbs the training.</p></header>
+
+  <div class="when"><b>The order</b>Stretch first. MAT holds right after, so the muscles wake back up. Then roll out whatever is tight. Pick one tool, not all of them.</div>
+
+  <section class="card">
+    <h2>1 · Stretch and wake up <small>about 5 min</small></h2>
+    <div class="step"><div><b>Stretching</b><small>7 stretches, 5 to 10 reps per side</small></div><a class="go" href="play.html#stretching">▶ Play</a></div>
+    <div class="step"><div><b>MAT Holds</b><small>6 holds, 6 reps of 6 seconds, both sides</small></div><a class="go brand" href="play.html#mat">▶ Play</a></div>
+  </section>
+
+  <section class="card">
+    <h2>2 · Myofascial release <small>about 5 min</small></h2>
+    <p>Pick the tool you have and the spots that are tight. Tick what you did. One minute per spot is plenty. Slow, and stop short of pain.</p>
+    <div id="list"></div>
+    <ul class="rule">
+      <li>Tight today? Roll it. Fine today? Skip it. This is not homework.</li>
+      <li>Never roll directly on a joint, the knee cap, or the low back bones.</li>
+      <li>Anything that hurts for more than two days is a protocol-and-doctor thing, not a roll-it-out thing.</li>
+    </ul>
+  </section>
+
+  <div id="foot"></div>
+</div>
+<script>
+// Edit the words here. Each item: id, name, how, which tool.
+const RELEASE=[
+  ['quads','Quads (front of thigh)','Foam roller or massage gun. Face down, roll hip to knee. 1 minute each leg.','Foam roller · massage gun'],
+  ['hams','Hamstrings (back of thigh)','Foam roller or massage gun. Sit, roller under the thigh, roll knee to hip.','Foam roller · massage gun'],
+  ['calves','Calves','Foam roller, hand roller, or massage gun. Cross the other leg on top for more pressure.','Foam roller · hand roller · massage gun'],
+  ['itband','Outside of the thigh','Foam roller, on your side, hip to knee. This one is tender, go slow.','Foam roller'],
+  ['glutes','Glutes and hips','Baseball or tennis ball. Sit on it, cross the ankle over the knee, find the spot, breathe.','Ball'],
+  ['feet','Bottom of the feet','Ball under the foot, standing. 30 seconds each. Great after games.','Ball'],
+  ['hipflex','Hip flexors (front of hip)','Ball or massage gun, lying face down. Small circles. Skip if it is sharp.','Ball · massage gun'],
+  ['back','Upper back','Foam roller across the shoulder blades, arms hugged. Never the low back.','Foam roller'],
+  ['ice','Ice or velcro ice packs','Anything sore or swollen after a game. 15 minutes on, then off.','Ice'],
+  ['redlight','Red light (optional)','If you have one. 10 to 15 minutes on the sore area. Nice to have, not needed.','Red light'],
+];
+const $=s=>document.querySelector(s);
+const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const store={get(k,d){try{const v=localStorage.getItem(k);return v?JSON.parse(v):d}catch(e){return d}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}};
+const today=new Date();today.setHours(0,0,0,0);
+const KEY='yae:recovery:'+today.toISOString().slice(0,10);
+function render(){
+  const t=store.get(KEY,{});
+  $('#list').innerHTML=RELEASE.map(([id,name,how,tool])=>`<div class="item ${t[id]?'done':''}"><input type="checkbox" id="r-${id}" data-id="${id}" ${t[id]?'checked':''}><label for="r-${id}"><b>${esc(name)}</b><small>${esc(how)}</small><small style="color:var(--brand);font-weight:700">${esc(tool)}</small></label></div>`).join('');
+  const n=Object.values(t).filter(Boolean).length;
+  $('#foot').innerHTML=t.finished
+    ?`<div class="donecard"><b>Recovery done</b>Logged for today. Same again in a couple of days.</div>`
+    :`<button class="finish" id="finish">${n?`Finish recovery · ${n} spot${n===1?'':'s'}`:'Finish recovery'}</button>`;
+}
+document.addEventListener('change',e=>{const c=e.target.closest('input[data-id]');if(!c)return;const t=store.get(KEY,{});t[c.dataset.id]=c.checked;store.set(KEY,t);render()});
+document.addEventListener('click',e=>{if(e.target.id==='finish'){const t=store.get(KEY,{});t.finished=Date.now();store.set(KEY,t);
+  const log=store.get('yae:log',[]);log.push({t:Date.now(),id:'recovery',name:'Recovery'});store.set('yae:log',log.slice(-200));render()}});
+render();
+if('serviceWorker' in navigator&&location.protocol==='https:')navigator.serviceWorker.register('sw.js').catch(()=>{});
+</script>

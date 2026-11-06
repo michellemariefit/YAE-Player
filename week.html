@@ -203,7 +203,7 @@ function buildPlan(){
   // Recovery: 2-3x, after games first, then off days, then practice days (after)
   const recOrder=games.concat(offs.filter(i=>!mobDays.includes(i)),offs,practices.filter(i=>!mobDays.includes(i)),practices);
   const recDays=[...new Set(recOrder)].slice(0,r.recovery[1]);
-  recDays.forEach(i=>plan[i].push({k:'recovery',t:'Recovery',s:(kinds[i]?'after '+kinds[i]:'5 to 10 min')+': stretch, MAT holds, foam roll',link:'stretching'}));
+  recDays.forEach(i=>plan[i].push({k:'recovery',t:'Recovery',s:(kinds[i]?'after '+kinds[i]:'5 to 10 min')+': stretch, MAT holds, roll out',html:'<a href="recovery.html" target="_top">Recovery</a>'}));
   // Workouts: off days, never the day before a game, never a game day. Fall back to a practice day.
   const dayBeforeGame=new Set(games.map(i=>(i+6)%7));
   let slots=offs.filter(i=>!dayBeforeGame.has(i));

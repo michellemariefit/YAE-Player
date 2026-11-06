@@ -160,7 +160,7 @@ const store={
 };
 const key=()=>`yae:${state.workout}`;
 function weekStart(){const d=new Date();d.setHours(0,0,0,0);d.setDate(d.getDate()-((d.getDay()+6)%7));return d.getTime()}
-function weekLog(){return store.get('yae:log',[]).filter(t=>t.t>=weekStart())}
+function weekLog(){return store.get('yae:log',[]).filter(t=>t.t>=weekStart()&&t.id!=='recovery')}
 function esc(s){return String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]))}
 function groupOf(id){return state.data.groups.find(g=>g.id===id)}
 function workoutOf(id){for(const g of state.data.groups){const w=g.workouts.find(w=>w.id===id);if(w)return w}return null}
