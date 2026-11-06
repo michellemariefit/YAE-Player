@@ -69,6 +69,7 @@ h1{font:800 clamp(28px,8vw,40px)/1.05 var(--display);margin:0}
 .item input{width:22px;height:22px;margin:1px 0 0;accent-color:var(--done);flex:none}
 .item label{flex:1}
 .item label b{font-weight:700}
+.item label b a{color:var(--ink);text-decoration:underline;text-decoration-color:var(--brand);text-underline-offset:3px}
 .item label small{display:block;color:var(--muted);font-size:13px}
 .item a{color:var(--accent);font-weight:700;text-decoration:none}
 .item.done label{text-decoration:line-through;color:var(--muted)}
@@ -180,7 +181,7 @@ function nextWorkout(prefix,count){
   return prefix+'-'+(last%count+1);
 }
 const NAMES={foundation:'Foundation Workout',stability:'Stability Workout'};
-function wlink(id){const [p,n]=id.split('-');return `<a href="index.html#${id}" target="_top">${NAMES[p]} ${n}</a>`}
+function wlink(id){const [p,n]=id.split('-');return `<a href="play.html#${id}" target="_top">${NAMES[p]} ${n}</a>`}
 
 function buildPlan(){
   const r=RULES[state.season];
@@ -266,7 +267,7 @@ function render(){
       items.length?items.map((it,j)=>{
         const id=`${i}-${it.k}-${j}`;const on=!!state.ticks[id];
         if(it.k!=='rest'){counts[it.k]++;if(on)done[it.k]++}
-        return `<div class="item ${on?'done':''}">${it.k==='rest'?'<span style="width:22px"></span>':`<input type="checkbox" id="t${id}" data-tick="${id}" ${on?'checked':''}>`}<label for="t${id}"><b>${it.html||esc(it.t)}</b>${it.opt?' <span class="hint">(optional)</span>':''}<small>${esc(it.s)}</small></label></div>`}).join('')
+        return `<div class="item ${on?'done':''}">${it.k==='rest'?'<span style="width:22px"></span>':`<input type="checkbox" id="t${id}" data-tick="${id}" ${on?'checked':''}>`}<label for="t${id}"><b>${it.html||(it.link?`<a href="play.html#${esc(it.link)}" target="_top">${esc(it.t)}</a>`:esc(it.t))}</b>${it.opt?' <span class="hint">(optional)</span>':''}<small>${esc(it.s)}</small></label></div>`}).join('')
       :`<div class="item"><span style="width:22px"></span><label><b>Nothing planned</b><small>free day</small></label></div>`}</div></div>`}).join('');
   $('#streak').innerHTML=streakHTML();
   $('#wins').innerHTML=[['warmup','Warm-ups'],['mobility','Mobility'],['recovery','Recovery'],['workout','Workouts']].map(([k,l])=>`<div class="win ${counts[k]&&done[k]>=counts[k]?'hit':''}"><b>${done[k]}/${counts[k]}</b><small>${l}</small></div>`).join('');
