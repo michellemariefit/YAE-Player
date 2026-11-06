@@ -72,6 +72,13 @@ h1{font:800 clamp(28px,8vw,40px)/1.05 var(--display);margin:0}
 .rules{font-size:14px;color:var(--muted);margin:0;padding-left:18px;display:flex;flex-direction:column;gap:4px}
 .toolrow{display:flex;gap:8px;flex-wrap:wrap}
 .toolrow button{font:700 14px/1 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--brand);border:1px solid var(--line);background:var(--card);border-radius:999px;padding:8px 12px}
+.srow{display:flex;gap:12px;align-items:flex-start;border-top:1px solid var(--line);padding-top:10px}
+.snum{flex:none;text-align:center;background:var(--brand-soft);border:1px solid var(--brand);border-radius:14px;padding:8px 12px;min-width:84px}
+.snum b{display:block;font:800 30px/1 var(--display);color:var(--brand)}
+.snum small{font:600 11px/1.2 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.badges{display:flex;flex-wrap:wrap;gap:6px}
+.badge{font:600 12px/1.2 var(--mono);letter-spacing:.04em;border:1px solid var(--line);border-radius:999px;padding:6px 9px;color:var(--muted)}
+.badge.on{border-color:var(--brand);color:var(--brand);background:var(--brand-soft)}
 .wins{display:grid;grid-template-columns:repeat(4,1fr);gap:6px}
 .win{border:1px solid var(--line);border-radius:12px;padding:8px 6px;text-align:center}
 .win b{display:block;font:800 22px/1 var(--display);color:var(--brand)}
@@ -113,6 +120,7 @@ h1{font:800 clamp(28px,8vw,40px)/1.05 var(--display);margin:0}
     <h2>Your week</h2>
     <div class="plan" id="plan"></div>
     <div class="wins" id="wins"></div>
+    <div class="streak" id="streak"></div>
     <div class="toolrow"><button id="printBtn">🖨 Print this week</button><button id="clearBtn">Clear ticks</button></div>
   </section>
 
@@ -204,6 +212,27 @@ function buildPlan(){
   return {plan,notes,workouts,sessions};
 }
 
+// Streak = weeks in a row with at least one logged workout (this week counts once something is logged).
+// Wins are one-time badges worked out from the workout log on this phone.
+function streakHTML(){
+  const log=store.get('yae:log',[]);
+  const wk=t=>{const d=new Date(t);d.setHours(0,0,0,0);d.setDate(d.getDate()-((d.getDay()+6)%7));return d.getTime()};
+  const weeks=new Set(log.map(x=>wk(x.t)));
+  let n=0,cur=weekStart().getTime();
+  if(!weeks.has(cur)) cur-=7*864e5;           // this week not started yet still keeps the streak alive
+  while(weeks.has(cur)){n++;cur-=7*864e5}
+  const found=new Set(log.map(x=>x.id).filter(Boolean));
+  const wins=[
+    ['First workout done',log.length>=1],
+    ['Warm-up before a game',!!Object.keys(state.ticks).find(k=>/warmup/.test(k)&&state.ticks[k])],
+    ['Two weeks in a row',n>=2],
+    ['Four weeks in a row',n>=4],
+    ['All six Stability workouts',[1,2,3,4,5,6].every(i=>found.has('stability-'+i))],
+    ['All eight Foundation workouts',[1,2,3,4,5,6,7,8].every(i=>found.has('foundation-'+i))],
+  ];
+  return `<div class="srow"><div class="snum"><b>${n}</b><small>week${n===1?'':'s'} in a row</small></div>
+    <div class="badges">${wins.map(([l,on])=>`<span class="badge ${on?'on':''}">${on?'★':'☆'} ${esc(l)}</span>`).join('')}</div></div>`;
+}
 function render(){
   const r=RULES[state.season];
   $('#inSeason').setAttribute('aria-pressed',state.season==='season');
@@ -223,6 +252,7 @@ function render(){
         if(it.k!=='rest'){counts[it.k]++;if(on)done[it.k]++}
         return `<div class="item ${on?'done':''}">${it.k==='rest'?'<span style="width:22px"></span>':`<input type="checkbox" id="t${id}" data-tick="${id}" ${on?'checked':''}>`}<label for="t${id}"><b>${it.html||esc(it.t)}</b>${it.opt?' <span class="hint">(optional)</span>':''}<small>${esc(it.s)}</small></label></div>`}).join('')
       :`<div class="item"><span style="width:22px"></span><label><b>Nothing planned</b><small>free day</small></label></div>`}</div></div>`}).join('');
+  $('#streak').innerHTML=streakHTML();
   $('#wins').innerHTML=[['warmup','Warm-ups'],['mobility','Mobility'],['recovery','Recovery'],['workout','Workouts']].map(([k,l])=>`<div class="win ${counts[k]&&done[k]>=counts[k]?'hit':''}"><b>${done[k]}/${counts[k]}</b><small>${l}</small></div>`).join('');
   $('#rules').innerHTML=r.text.map(t=>`<li>${esc(t)}</li>`).join('');
 }
