@@ -39,6 +39,9 @@ h1{font:800 clamp(28px,8vw,40px)/1.05 var(--display);margin:0}
 .card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:14px 16px;display:flex;flex-direction:column;gap:10px}
 .card h2{margin:0;font:800 18px/1.2 var(--display)}
 .step{font:700 13px/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--accent)}
+.weeknav{display:flex;align-items:center;gap:10px;margin-top:4px}
+.weeknav button{width:40px;height:40px;border-radius:12px;border:1px solid var(--line);background:var(--card);font:800 22px/1 var(--display)}
+.weeknav b{font:700 15px/1.2 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--brand)}
 .seg{display:grid;grid-template-columns:1fr 1fr;background:var(--bg);border:1px solid var(--line);border-radius:14px;padding:4px}
 .seg button{border:0;background:transparent;border-radius:10px;padding:10px;font:600 16px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase}
 .seg button[aria-pressed="true"]{background:var(--brand);color:#fff}
@@ -97,6 +100,7 @@ h1{font:800 clamp(28px,8vw,40px)/1.05 var(--display);margin:0}
   <header>
     <span class="eyebrow">Youth Athlete Edge · My Week</span>
     <h1>Plan your week</h1>
+    <div class="weeknav"><button id="prevWeek" aria-label="Last week">‹</button><b id="weekLabel"></b><button id="nextWeek" aria-label="Next week">›</button></div>
     <p class="lead">Your practices and games go in first. The program fits around them. Two minutes on Sunday night, then stick it on the fridge.</p>
   </header>
 
@@ -154,10 +158,19 @@ const RULES={
 const DAYS=['Mon','Tue','Wed','Thu','Fri','Sat','Sun'];
 const $=s=>document.querySelector(s);
 const store={get(k,d){try{const v=localStorage.getItem(k);return v?JSON.parse(v):d}catch(e){return d}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}};
-function weekStart(){const d=new Date();d.setHours(0,0,0,0);d.setDate(d.getDate()-((d.getDay()+6)%7));return d}
-const WEEK=weekStart().toISOString().slice(0,10);
+function weekStart(offset=0){const d=new Date();d.setHours(0,0,0,0);d.setDate(d.getDate()-((d.getDay()+6)%7)+7*offset);return d}
+const iso=d=>d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
+// Each week keeps its own practice and game days. A week not set up yet copies the most recent week that was.
+let OFFSET=0, WEEK=iso(weekStart());
 const state=Object.assign({season:'season',days:['','','','','','',''],ticks:{}},store.get('yae:week:setup',{}));
-state.ticks=store.get('yae:week:'+WEEK,{});
+function loadWeek(){
+  WEEK=iso(weekStart(OFFSET));
+  state.ticks=store.get('yae:week:'+WEEK,{});
+  let days=store.get('yae:week:days:'+WEEK,null);
+  if(!days){for(let k=1;k<=8&&!days;k++)days=store.get('yae:week:days:'+iso(weekStart(OFFSET-k)),null)}
+  state.days=days||store.get('yae:week:setup',{}).days||['','','','','','',''];
+}
+loadWeek();
 const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 
 // Which workout is next? Reads the player's log on this phone so it rotates through the numbers.
@@ -235,6 +248,9 @@ function streakHTML(){
 }
 function render(){
   const r=RULES[state.season];
+  const ws=weekStart(OFFSET), we=new Date(ws);we.setDate(we.getDate()+6);
+  const fmt=d=>d.toLocaleDateString(undefined,{month:'short',day:'numeric'});
+  $('#weekLabel').textContent=(OFFSET===0?'This week · ':OFFSET===1?'Next week · ':OFFSET===-1?'Last week · ':'')+fmt(ws)+' to '+fmt(we);
   $('#inSeason').setAttribute('aria-pressed',state.season==='season');
   $('#offSeason').setAttribute('aria-pressed',state.season==='off');
   $('#seasonHint').textContent=state.season==='season'
@@ -267,7 +283,9 @@ document.addEventListener('change',e=>{
   const c=e.target.closest('input[data-tick]');if(!c)return;
   state.ticks[c.dataset.tick]=c.checked;store.set('yae:week:'+WEEK,state.ticks);render();
 });
-function save(){store.set('yae:week:setup',{season:state.season,days:state.days})}
+function save(){store.set('yae:week:setup',{season:state.season,days:state.days});store.set('yae:week:days:'+WEEK,state.days)}
+document.getElementById('prevWeek').addEventListener('click',()=>{OFFSET--;loadWeek();render()});
+document.getElementById('nextWeek').addEventListener('click',()=>{OFFSET++;loadWeek();render()});
 render();
 </script>
 <script>if('serviceWorker' in navigator&&location.protocol==='https:')navigator.serviceWorker.register('sw.js').catch(()=>{});</script>
