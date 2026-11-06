@@ -82,6 +82,11 @@ h1{font:800 clamp(28px,8vw,40px)/1.05 var(--display);margin:0;text-wrap:balance;
 .sets button{min-width:44px;height:44px;padding:0 12px;border-radius:12px;border:2px solid var(--line);background:var(--bg);font:600 14px/1 var(--mono);white-space:nowrap}
 .sets button[aria-pressed="true"]{background:var(--done);border-color:var(--done);color:#fff}
 .links{display:flex;gap:12px;flex-wrap:wrap}
+.swaprow{display:flex;flex-direction:column;gap:4px;align-items:flex-start}
+.swaprow small{font-size:12px;color:var(--brand);font-weight:700}
+.swap{border:1px dashed var(--brand);background:transparent;color:var(--brand);border-radius:999px;padding:8px 12px;font:700 13px/1.2 var(--mono);letter-spacing:.04em;text-align:left}
+.swap.on{background:var(--brand);color:#fff;border-style:solid}
+.ex.swapped .code{background:var(--brand)}
 .demo{font-weight:700;font-size:14px;color:var(--accent);text-decoration:none;display:inline-flex;align-items:center;gap:6px;border:0;background:none;padding:6px 0}
 .demo.alt{color:var(--brand)}
 .embed{grid-column:1/-1;aspect-ratio:16/9;max-width:100%;border-radius:12px;overflow:hidden;background:#000}
@@ -194,10 +199,11 @@ async function render(){
     return `<button aria-pressed="${x.id===w.id}" data-workout="${x.id}" class="${done?'is-done':''}">Workout ${esc(shortName(x,g))}</button>`}).join(''):'';
 
   const gear=gearFor(w);
+  const swaps=store.get(key()+':swaps',{});
   $('#intro').innerHTML=`<div class="when"><b>When to do this</b>${esc(g.when||'')}</div><div class="plan"><span class="chip hot">${esc(w.setsLabel)}</span>${w.reps?`<span class="chip hot">${esc(w.reps)} reps</span>`:''}${w.restLabel?`<span class="chip hot">Rest ${esc(w.restLabel)}</span>`:''}</div>
     <p><b>How:</b> ${esc(w.how)}</p>${w.when?`<p><b>When:</b> ${esc(w.when)}</p>`:''}${w.tip?`<p><b>Make it yours:</b> ${esc(w.tip)}</p>`:''}
     ${gear.length?`<p class="gear"><b>You need:</b> ${esc(gear.join(', '))}</p>`:''}
-    <div class="toolrow"><a href="print.html#${esc(w.id)}" target="_blank" rel="noopener">🖨 Print this workout</a></div>`;
+    <div class="toolrow">${(()=>{const d=w.blocks.flatMap(b=>b.exercises).filter(e=>e.swap&&e.swap.default);if(!d.length)return '';const on=d.every(e=>swaps[e.code]);return `<button class="link" data-swapall="${on?'off':'on'}">⇄ ${on?'Take the stability swaps out':`Add stability (swaps ${d.length})`}</button>`})()}<a href="print.html#${esc(w.id)}" target="_blank" rel="noopener">🖨 Print this workout</a></div>`;
   $('#howto').innerHTML=howtoHTML(w);
 
   const saved=store.get(key(),{ticks:{}});
@@ -210,7 +216,9 @@ async function render(){
       ?`<div class="ss-head"><h2>${s.label==='Circuit'?'Circuit':`${esc(s.label)} · ${kind}`}</h2><span>${complete?'Done':`${w.setsLabel}, back to back`}</span></div>`
       :(s.exercises[0].section&&s.exercises[0].section!==shownSec?(shownSec=s.exercises[0].section,`<div class="sec">${esc(shownSec)}</div>`):'');
     return `<section class="ss ${complete?'complete':''}">${head}`+
-    s.exercises.map((e,ei)=>{
+    s.exercises.map((e0,ei)=>{
+      const sw=e0.swap, swapped=!!(sw&&swaps[e0.code]);
+      const e=swapped?{...sw,code:e0.code}:e0;
       const t=saved.ticks[e.code]||[];
       const btns=Array.from({length:w.sets},(_,i)=>`<button aria-pressed="${!!t[i]}" aria-label="Set ${i+1} of ${esc(e.name)}" data-tick="${e.code}" data-i="${i}">Set ${i+1}</button>`).join('');
       const vids=[{label:'Watch demo',video:e.video,cls:''},...(e.alts||[]).map(a=>({label:a.label,video:a.video,cls:'alt'}))].filter(v=>v.video);
@@ -224,12 +232,13 @@ async function render(){
         ?`<div class="pair"><figure><img src="${esc(e.startPhoto)}" alt="Start position for ${esc(e.name)}" loading="lazy"><figcaption>Start</figcaption></figure><figure><img src="${esc(e.endPhoto)}" alt="End position for ${esc(e.name)}" loading="lazy"><figcaption>End</figcaption></figure></div>`
         :(e.photo?`<img class="single" src="${esc(e.photo)}" alt="${esc(e.name)}" loading="lazy">`:'');
       const vid=state.openVid[e.code];
-      return `<div class="ex" id="ex-${e.code}">
+      const swapBtn=sw?`<div class="swaprow"><button class="swap ${swapped?'on':''}" data-swap="${e.code}">⇄ ${swapped?`Back to ${esc(e0.name)}`:`Swap for stability: ${esc(sw.name)}`}</button>${swapped?`<small>Stability swap · from ${esc(sw.from||'Stability')}</small>`:''}</div>`:'';
+      return `<div class="ex ${swapped?'swapped':''}" id="ex-${e.code}">
         ${pic}
         <div class="info"><h3><span class="code">${esc(e.code)}</span>${esc(e.name)}</h3>
           <div class="meta">${w.reps?`<span class="chip">${esc(w.reps)} reps</span>`:''}${e.note?`<span class="chip">${esc(e.note)}</span>`:''}</div>
           <div class="row"><div class="sets">${btns}${hold?`<button data-hold="${e.code}" data-sec="${hold}">⏱ ${hold}s hold</button>`:''}</div></div>
-          <div class="links">${links}</div>
+          <div class="links">${links}</div>${swapBtn}
         </div>
         ${vid&&EMBED_OK?`<div class="embed"><iframe src="https://www.youtube-nocookie.com/embed/${esc(vid)}?rel=0&modestbranding=1&playsinline=1${state.justOpened===e.code?'&autoplay=1':''}" title="${esc(e.name)} demo" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe></div>`:''}
         ${rest&&rest.kind==='hold'&&rest.code===e.code?restHTML():''}
@@ -291,6 +300,10 @@ document.addEventListener('click',e=>{
     if(state.openVid[c]===b.dataset.embed)delete state.openVid[c];else{state.openVid[c]=b.dataset.embed;state.justOpened=c}
     render();return;
   }
+  if(b.dataset.swap){const sw=store.get(key()+':swaps',{});sw[b.dataset.swap]=!sw[b.dataset.swap];store.set(key()+':swaps',sw);delete state.openVid[b.dataset.swap];render();return}
+  if(b.dataset.swapall){const w=workoutOf(state.workout);const sw=store.get(key()+':swaps',{});
+    w.blocks.flatMap(x=>x.exercises).filter(e=>e.swap&&e.swap.default).forEach(e=>{sw[e.code]=b.dataset.swapall==='on'});
+    store.set(key()+':swaps',sw);render();return}
   if(b.dataset.reset){store.set(key(),{ticks:{}});stopRest();render();return}
   if(b.id==='finish'&&!b.disabled){
     const w=workoutOf(state.workout);

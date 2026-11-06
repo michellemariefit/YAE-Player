@@ -180,6 +180,44 @@ def build_workout(file_id, group):
             "circuit": lettered or meta["restSeconds"] > 0, "blocks": blocks}
 
 
+SWAPS = os.path.join(ROOT, "tools", "swaps.json")
+
+
+def add_swaps(data):
+    """Attach the Stability substitute (from tools/swaps.json) to each Foundation exercise."""
+    if not os.path.exists(SWAPS):
+        return
+    swaps = {k: v for k, v in json.load(open(SWAPS)).items() if not k.startswith("_")}
+    by_video = {}
+    for g in data["groups"]:
+        if g["id"] != "stability":
+            continue
+        for w in g["workouts"]:
+            for b in w["blocks"]:
+                for e in b["exercises"]:
+                    by_video.setdefault(e["video"], {**e, "from": w["name"]})
+    n = 0
+    for g in data["groups"]:
+        for w in g["workouts"]:
+            table = swaps.get(w["id"])
+            if not table:
+                continue
+            for b in w["blocks"]:
+                for e in b["exercises"]:
+                    pick = table.get(e["code"])
+                    if not pick:
+                        continue
+                    src = by_video.get(pick["video"])
+                    if not src:
+                        print("   swap not found for", w["id"], e["code"], pick["video"])
+                        continue
+                    e["swap"] = {k: src[k] for k in ("name", "video", "photo", "startPhoto", "endPhoto", "note", "alts", "from") if src.get(k)}
+                    if pick.get("default"):
+                        e["swap"]["default"] = True
+                    n += 1
+    print(f"{n} stability swaps attached")
+
+
 def main():
     os.makedirs(IMAGES, exist_ok=True)
     data = {"program": "YAE", "name": "The Youth Athlete Edge", "groups": []}
@@ -205,6 +243,7 @@ def main():
             print(f"{w['id']}: {w['name']} · {sum(len(b['exercises']) for b in w['blocks'])} exercises · "
                   f"{w['setsLabel']} · {w['reps']} reps · rest {w['restLabel'] or 'none'}")
         data["groups"].append(group)
+    add_swaps(data)
     json.dump(data, open(OUT, "w"), indent=1, ensure_ascii=False)
     print(f"\n{n} exercise slots -> {os.path.relpath(OUT, ROOT)}")
 

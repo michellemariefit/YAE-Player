@@ -57,7 +57,7 @@ function pageHTML(w,g){
     const pics=e.startPhoto&&e.endPhoto
       ?`<div class="pics"><figure><img src="${esc(e.startPhoto)}" alt=""><figcaption>Start</figcaption></figure><figure><img src="${esc(e.endPhoto)}" alt=""><figcaption>End</figcaption></figure></div>`
       :(e.photo?`<div class="pics one"><figure><img src="${esc(e.photo)}" alt=""></figure></div>`:'<div class="pics one"></div>');
-    const alts=(e.alts||[]).map(a=>`Progression: ${a.label}`).join(' · ');
+    const alts=[...(e.alts||[]).map(a=>`Progression: ${a.label}`),...(e.swap?[`Stability swap: ${e.swap.name}`]:[])].join(' · ');
     return `<div class="cell">${sec}<h2><span class="code">${esc(e.code)}</span><span>${esc(e.name)}</span></h2>${pics}${(e.note||alts)?`<p class="note">${esc([e.note,alts].filter(Boolean).join(' · '))}</p>`:''}</div>`;
   }).join('');
   const plan=[w.setsLabel,w.reps?`${w.reps} reps`:'',w.restLabel?`rest ${w.restLabel}`:''].filter(Boolean).join(' · ');
