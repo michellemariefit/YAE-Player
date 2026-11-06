@@ -46,7 +46,10 @@ h1{font:800 clamp(28px,8vw,40px)/1.05 var(--display);margin:0}
 .seg button{border:0;background:transparent;border-radius:10px;padding:10px;font:600 16px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase}
 .seg button[aria-pressed="true"]{background:var(--brand);color:#fff}
 .days{display:grid;grid-template-columns:repeat(7,1fr);gap:6px}
+.days .dwrap>button:first-child{width:100%}
 .days button{border:1px solid var(--line);background:var(--bg);border-radius:12px;padding:10px 2px;display:flex;flex-direction:column;align-items:center;gap:4px;font:600 13px/1 var(--mono)}
+.dwrap{position:relative}
+.days .clear{position:absolute;top:-8px;right:-6px;width:24px;height:24px;border-radius:50%;border:1px solid var(--line);background:var(--card);color:var(--muted);font:700 15px/1 var(--body);padding:0;display:grid;place-items:center}
 .days button b{font:800 16px/1 var(--display)}
 .days button small{font-size:11px;color:var(--muted)}
 .days button[data-kind="practice"]{background:var(--brand-soft);border-color:var(--brand)}
@@ -116,7 +119,7 @@ h1{font:800 clamp(28px,8vw,40px)/1.05 var(--display);margin:0}
     <span class="step">Step 2</span>
     <h2>Tap your practice and game days</h2>
     <div class="days" id="days"></div>
-    <p class="hint">Tap once for practice, twice for a game, three times to clear. Privates and trainings count as practice.</p>
+    <p class="hint">Tap a day to mark practice. Tap again for a game. The × clears it. Privates and trainings count as practice.</p>
     <div class="summary" id="summary"></div>
   </section>
 
@@ -257,7 +260,7 @@ function render(){
   $('#seasonHint').textContent=state.season==='season'
     ?'In season: practices and games fill the week, so the program attaches to them. One workout, mobility before practice, recovery after.'
     :'Off season: two workouts a week, and mobility and recovery get their own days.';
-  $('#days').innerHTML=DAYS.map((d,i)=>`<button data-day="${i}" data-kind="${state.days[i]}"><b>${d}</b><small>${state.days[i]==='game'?'Game':state.days[i]==='practice'?'Practice':'off'}</small></button>`).join('');
+  $('#days').innerHTML=DAYS.map((d,i)=>`<div class="dwrap"><button data-day="${i}" data-kind="${state.days[i]}"><b>${d}</b><small>${state.days[i]==='game'?'Game':state.days[i]==='practice'?'Practice':'off'}</small></button>${state.days[i]?`<button class="clear" data-clear="${i}" aria-label="Clear ${d}">×</button>`:''}</div>`).join('');
   const {plan,notes,workouts,sessions}=buildPlan();
   $('#summary').innerHTML=`<span class="chip">${sessions} team session${sessions===1?'':'s'}</span><span class="chip">${workouts} workout${workouts===1?'':'s'}</span>`+notes.map(n=>`<span class="chip warn">${esc(n)}</span>`).join('');
   const counts={warmup:0,mobility:0,recovery:0,workout:0},done={warmup:0,mobility:0,recovery:0,workout:0};
@@ -275,6 +278,7 @@ function render(){
 }
 document.addEventListener('click',e=>{
   const b=e.target.closest('button');
+  if(b&&b.dataset.clear!==undefined){state.days[+b.dataset.clear]='';save();render();return}
   if(b&&b.dataset.day!==undefined){const i=+b.dataset.day;state.days[i]={'':'practice',practice:'game',game:''}[state.days[i]];save();render();return}
   if(b&&(b.id==='inSeason'||b.id==='offSeason')){state.season=b.id==='inSeason'?'season':'off';save();render();return}
   if(b&&b.id==='printBtn'){window.print();return}
