@@ -1,0 +1,70 @@
+<!doctype html>
+<meta charset="utf-8">
+<base target="_top">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Add to Home Screen · Youth Athlete Edge</title>
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#1b2e4c">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<link rel="apple-touch-icon" href="icons/icon-180.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Inter:wght@400;500;600;700&display=swap">
+<style>
+/* Step-by-step: put the player on the home screen so it opens like an app. Screenshots by Michelle. */
+:root{--bg:#f3f7f9;--card:#fff;--ink:#1b2e4c;--muted:#5a6b7c;--line:#d6e1e8;--brand:#0e9a8f;--brand-soft:#dcf3f0;--accent:#b0295e;
+  --display:"Bricolage Grotesque","Helvetica Neue",Arial,sans-serif;--body:"Inter","Helvetica Neue",Arial,sans-serif}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--bg:#0f1b2e;--card:#1b2b45;--ink:#eef4f8;--muted:#a4b4c4;--line:#2c3f5c;--brand:#4fcfc4;--brand-soft:#17403c;--accent:#e8558a;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0f1b2e;--card:#1b2b45;--ink:#eef4f8;--muted:#a4b4c4;--line:#2c3f5c;--brand:#4fcfc4;--brand-soft:#17403c;--accent:#e8558a;color-scheme:dark}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 17px/1.45 var(--body);padding:0 16px 60px}
+.wrap{max-width:560px;margin:0 auto;display:flex;flex-direction:column;gap:14px}
+header{padding-top:14px;display:flex;flex-direction:column;gap:6px}
+.eyebrow{font:700 12px/1.2 var(--body);letter-spacing:.1em;text-transform:uppercase;color:var(--brand)}
+h1{font:800 clamp(28px,8vw,40px)/1.05 var(--display);margin:0}
+.lead{margin:0;color:var(--muted)}
+a.back{font:700 13px/1 var(--body);letter-spacing:.06em;text-transform:uppercase;color:var(--brand);text-decoration:none}
+.tabs{display:flex;gap:6px}
+.tabs button{flex:1;border:1px solid var(--line);background:var(--card);border-radius:12px;padding:12px;font:700 15px/1 var(--display);cursor:pointer}
+.tabs button[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.step{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:14px 16px;display:grid;grid-template-columns:1fr 150px;gap:14px;align-items:start}
+.step .n{display:inline-grid;place-items:center;width:30px;height:30px;border-radius:50%;background:var(--accent);color:#fff;font:800 15px/1 var(--display);margin-bottom:8px}
+.step h2{margin:0 0 4px;font:800 19px/1.2 var(--display)}
+.step p{margin:0;color:var(--muted);font-size:15px}
+.step img{width:150px;border-radius:12px;border:1px solid var(--line);display:block}
+.step.noimg{grid-template-columns:1fr}
+.done{background:var(--brand-soft);border:1px solid var(--brand);border-radius:14px;padding:12px 14px;font-size:15px}
+.done b{color:var(--brand)}
+.go{display:block;text-align:center;background:var(--accent);color:#fff;text-decoration:none;border-radius:14px;padding:16px;font:800 18px/1 var(--display)}
+@media (max-width:380px){.step{grid-template-columns:1fr 120px}.step img{width:120px}}
+</style>
+<div class="wrap">
+  <header><a class="back" href="start.html">← Start here</a><span class="eyebrow">Youth Athlete Edge</span><h1>Put it on your home screen</h1>
+    <p class="lead">One minute, once. Then the player opens like an app: your own icon, full screen, no browser bar, and the photos work at the field with one bar of signal.</p>
+    <div class="tabs"><button data-os="ios" aria-pressed="true">iPhone / iPad</button><button data-os="android" aria-pressed="false">Android</button></div></header>
+  <div id="steps"></div>
+  <div class="done"><b>That's it.</b> Look for the EDGE icon on your home screen. Open the player from there from now on. If you ever delete it, come back to this page.</div>
+  <a class="go" href="start.html">Back to Start here</a>
+</div>
+<script>
+const STEPS={
+ ios:[
+  ['Open this page in Safari or Chrome','Tap the Share button, the square with the arrow pointing up. In Chrome it is next to the web address. In Safari it is at the bottom of the screen.','icons/howto/iphone-1.jpg'],
+  ['Scroll the share sheet','Swipe the row of icons to the left, or tap "View More" if you see it.','icons/howto/iphone-2.jpg'],
+  ['Tap "Add to Home Screen"','It is in the list, a square with a plus sign.','icons/howto/iphone-3.jpg'],
+  ['Tap Add','Leave the name as YAE, or change it. Tap Add in the top corner.','icons/howto/iphone-4.jpg'],
+ ],
+ android:[
+  ['Open this page in Chrome','Use the Chrome browser, not Samsung Internet or another one.',''],
+  ['Tap the three dots','Top right corner of the screen.',''],
+  ['Tap "Add to Home screen" or "Install app"','One of the two will be in the menu. Either works.',''],
+  ['Tap Add or Install','Leave the name as YAE. The icon appears on your home screen.',''],
+ ]};
+let os=/android/i.test(navigator.userAgent)?'android':'ios';
+function render(){
+  document.querySelectorAll('.tabs button').forEach(b=>b.setAttribute('aria-pressed',b.dataset.os===os));
+  document.getElementById('steps').innerHTML=STEPS[os].map(([h,p,img],i)=>`<section class="step ${img?'':'noimg'}"><div><span class="n">${i+1}</span><h2>${h}</h2><p>${p}</p></div>${img?`<img src="${img}" alt="Step ${i+1}">`:''}</section>`).join('');
+}
+document.querySelectorAll('.tabs button').forEach(b=>b.addEventListener('click',()=>{os=b.dataset.os;render()}));
+render();
+if('serviceWorker' in navigator&&location.protocol==='https:')navigator.serviceWorker.register('sw.js').catch(()=>{});
+</script>
