@@ -139,7 +139,7 @@ a.back{font:700 13px/1 var(--body,var(--mono));letter-spacing:.06em;text-transfo
 
 <div class="wrap">
   <header class="top">
-    <a class="back" href="start.html">← Start here</a>
+    <a class="back" href="start.html">← Home</a>
     <span class="eyebrow" id="eyebrow">Youth Athlete Edge</span>
     <div class="pick nums" id="groupPick" aria-label="Workout type"></div>
     <h1 id="title">Loading…</h1>
@@ -192,7 +192,7 @@ function nudgeHTML(d){
     why=`You did ${esc(last.name)} ${days===0?'today':days===1?'yesterday':days+' days ago'}.`}
   const w=workoutOf(id);
   return `<div class="nudge"><b>Next for you</b><a href="play.html#${esc(id)}">▶ ${esc(w.name)}</a><small>${why}</small>
-    <span class="minis"><a href="start.html">Start here</a><a href="week.html">My week</a><a href="gear.html">What you need</a></span></div>`;
+    <span class="minis"><a href="start.html">Home</a><a href="week.html">My week</a><a href="gear.html">What you need</a></span></div>`;
 }
 function howtoHTML(w){
   if(store.get('yae:howto',false)) return `<button class="howto-link" data-howto="show">How this works</button>`;
