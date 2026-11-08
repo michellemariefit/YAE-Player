@@ -221,7 +221,7 @@ function buildPlan(){
     const id=ids[n]||ids[0];
     plan[i].push({k:'workout',t:'Workout',s:[kinds[i]?'add it after '+kinds[i]+', one hard session a day':'',workouts===1?'strength or stability, your pick':''].filter(Boolean).join(' · '),link:id,html:wlink(id)});
   });
-  if(sessions>=RULES.heavyWeek) notes.push(`${sessions} team sessions this week, so just 1 workout. That is the rule, not a shortcut.`);
+  if(sessions>=RULES.heavyWeek) notes.push(`${sessions} team sessions this week, so 1 workout is plenty. Her body is already getting the work.`);
   else if(sessions>0&&state.season==='season') notes.push(`Only ${sessions} team sessions this week, so there is room for 2 workouts.`);
   if(sessions===0) notes.push('No practices or games this week? Use the off-season plan and take at least one full rest day.');
   if(chosen.some(i=>kinds[i])) notes.push('No free day for the workout, so it sits after a practice. Never before a game.');
