@@ -205,7 +205,7 @@ function howtoHTML(w){
     :`<li>Do the exercises in order. Tap <b>Set 1</b> when you finish a set.</li>
       <li>Tap <b>Watch demo</b> if you forget how one goes.</li>
       <li>Tap a set again to untick it. When every set is ticked, press Finish.</li>`;
-  return `<div class="howto"><h2>How this works</h2><ol>${steps}</ol><button class="got" data-howto="hide">Got it</button></div>`;
+  return `<div class="howto"><h2>How this works</h2><ol>${steps}</ol><p style="margin:0;font-size:15px;color:var(--muted)">Rather be walked through it? Tap <b>Play it step by step</b> above. Need paper? Tap <b>Print</b>.</p><button class="got" data-howto="hide">Got it</button></div>`;
 }
 function holdSeconds(e,w){
   const m=(e.note||'').match(/(\d+)(?:-(\d+))?[\s-]*(?:second|sec\b)/i)||(w.how||'').match(/hold each rep for (\d+)\s*second/i);
