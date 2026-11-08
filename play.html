@@ -85,6 +85,15 @@ h1{margin:0;font:800 clamp(24px,7vw,32px)/1.1 var(--display);display:flex;gap:10
 .intro ul{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:6px}
 .intro .opt{display:flex;align-items:center;gap:10px;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px 14px}
 .intro .opt input{width:22px;height:22px;accent-color:var(--brand)}
+.picker{display:flex;flex-direction:column;gap:14px;padding-bottom:20px}
+.picker h2{margin:0;font:800 30px/1.1 var(--display)}
+.picker .grp{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:14px;display:flex;flex-direction:column;gap:8px}
+.picker .grp h3{margin:0;font:800 18px/1.2 var(--display)}
+.picker .grp p{margin:0;color:var(--muted);font-size:14px}
+.picker .ws{display:flex;flex-wrap:wrap;gap:8px}
+.picker .ws a{text-decoration:none;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:999px;padding:10px 14px;font:700 14px/1 var(--display)}
+.picker .ws a.one{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
+.intro .change{font:700 13px/1 var(--body);letter-spacing:.06em;text-transform:uppercase;color:var(--brand);text-decoration:none}
 @media (prefers-reduced-motion:reduce){.bar{transition:none}}
 </style>
 <header class="top">
@@ -170,7 +179,7 @@ function render(){
     m.innerHTML=`<div class="intro"><h2>${esc(W.name)}</h2>
       <p>${W.id==='first'?'Five warm-up moves, then five mobility moves. About ten minutes. Tap Done after each one.':`${esc(W.setsLabel)} · ${esc(W.reps)} reps${W.restLabel?` · rest ${esc(W.restLabel)}`:''}. ${exSteps.length} exercises in total, counting every round. I'll tell you what's next and start the rest timer for you.`}</p>
       ${defaults.length?`<label class="opt"><input type="checkbox" id="swapOpt" ${defaults.every(e=>sw[e.code])?'checked':''}><span><b>Add stability</b><br><small style="color:var(--muted)">Swaps ${defaults.map(e=>e.code).join(' and ')} for ${defaults.map(e=>e.swap.name).join(' and ')}</small></span></label>`:''}
-      <button class="go" id="start">Start</button></div>`;
+      <button class="go" id="start">Start</button>${W.id==='first'?'':'<a class="change" href="play.html">Pick a different workout</a>'}</div>`;
     return;
   }
   if(at>=steps.length){
@@ -230,9 +239,20 @@ fetch('data/yae.json').then(r=>r.json()).then(d=>{
     W={id:'first',name:'Your first session',sets:1,setsLabel:'1 set',reps:'10',restSeconds:0,restLabel:'',how:'',circuit:false,
        blocks:[{label:'Warm-up',exercises:picks.map(e=>({...e,note:'10 reps'}))},{label:'Mobility',exercises:mo.blocks.flatMap(b=>b.exercises).map(e=>({...e,note:'10 each side, do it twice'}))}]};
     G={id:'start',name:'Start here'};
-  } else {[W,G]=workoutOf(id);if(!W){[W,G]=[d.groups[5].workouts[0],d.groups[5]]}}
+  } else {[W,G]=workoutOf(id);if(!W){renderPicker(id);return}}
   buildSteps();render();
 });
+
+// No workout in the address: show the list of groups and workouts, each a link into play mode.
+function renderPicker(gid){
+  $('#where').innerHTML=`Youth Athlete Edge<small>Pick a workout</small>`;
+  $('#listLink').href='index.html';$('#dots').innerHTML='';
+  const groups=[...DATA.groups].sort((a,b)=>(a.id===gid?-1:0)-(b.id===gid?-1:0));
+  $('#main').innerHTML=`<div class="picker"><h2>What are we doing today?</h2>
+    <div class="grp"><h3>Your first session</h3><p>Ten minutes. Five warm-up moves, then mobility. Start here if this is new.</p><div class="ws"><a class="one" href="play.html#first">▶ Start the 10 minutes</a></div></div>
+    ${groups.map(g=>`<div class="grp"><h3>${esc(g.name)}</h3>${g.when?`<p>${esc(g.when)}</p>`:''}<div class="ws">${g.workouts.map(w=>`<a class="${g.workouts.length===1?'one':''}" href="play.html#${esc(w.id)}">▶ ${esc(g.workouts.length===1?'Play':w.name.replace(/ Workout/i,''))}</a>`).join('')}</div></div>`).join('')}
+  </div>`;
+}
 window.addEventListener('hashchange',()=>location.reload());
 </script>
 <script>if('serviceWorker' in navigator&&location.protocol==='https:')navigator.serviceWorker.register('sw.js').catch(()=>{});</script>
