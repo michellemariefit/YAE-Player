@@ -48,7 +48,7 @@
   ]},
   {"name": "Stability & Balance", "lessons": [
    {"id": "stability", "title": "Balance and stability", "for": "athlete", "watch": 4.2,
-    "points": ["Nobody trains the small muscles around the knee and ankle, or does single-leg work. These workouts do.", "A Dyna Disc is enough. The BOSU is harder, not required.", "Four exercises a workout, easiest to hardest. Stay on one as long as you like.", "Off season twice a week. In season once."],
+    "points": ["Nobody trains the small muscles around the knee and ankle, or does single-leg work. These workouts do.", "A Dyna Disc is enough. The BOSU is harder, not required.", "Four exercises a workout, easiest to hardest. Stay on one as long as you like.", "Four or more team sessions in the week: one workout. Two or three: two."],
     "do": ["Stability Workout 1 in the player."]},
    {"id": "core", "title": "Working the core", "for": "athlete", "watch": 1.5,
     "points": ["If you have the Core Edge, add one or two core exercises to a Stability or Foundation workout instead of a separate day."],
@@ -56,13 +56,13 @@
   ]},
   {"name": "Foundation Strength", "lessons": [
    {"id": "foundation", "title": "The Foundation program", "for": "athlete", "watch": 2.2,
-    "points": ["Strength, done in a balanced way: back of the body, glutes and hamstrings, core.", "Body weight first. Add load slowly, off season.", "In season, one strength workout a week at most. Off season is when you build."],
+    "points": ["Strength, done in a balanced way: back of the body, glutes and hamstrings, core.", "Body weight first. Add load slowly, off season.", "How many a week comes from her team sessions: four or more means one workout, two or three means two. Off season is when you build."],
     "do": []},
    {"id": "instructions", "title": "Workout instructions", "for": "athlete", "watch": 2.2,
     "points": ["Eight workouts. One or two a week, four weeks each, then move on.", "Short on time? Swap an exercise for a Stability one. The player has a button for it."],
     "do": ["Foundation Workout 1 in the player. Work through the eight in order."]},
    {"id": "strength-schedule", "title": "Example strength schedule", "for": "both", "watch": 2,
-    "points": ["Off season: two strength workouts plus conditioning is plenty. The more work, the more recovery.", "In season, no more than one strength workout a week, and only if she is doing her recovery. Stability, core, mobility and stretching carry the season."],
+    "points": ["Off season: two strength workouts plus conditioning is plenty. The more work, the more recovery.", "Count the team sessions, not the season. Four or more in a week: one workout. Two or three: two. The more work, the more recovery."],
     "do": []}
   ]}
  ],
@@ -71,14 +71,14 @@
   "items": [
    {"q": "She says her knee (or ankle, or back) hurts. What do we do?", "a": "Stop, don't play through it. Most knee pain in young athletes is tightness pulling the joint out of line, not an injury. Roll the inner quad near the knee, the hip flexors and the calves (Recovery page). If it is gone the next day, carry on. If it lingers more than two days, or there is swelling, that is a doctor visit, not a roll-it-out.", "source": "Myofascial Release, Parent Playbook 2"},
    {"q": "How old does she need to be?", "a": "The program is built for athletes roughly 8 to 16. Under 10, do it with her for the first few weeks. Michelle's own kids started this kind of work at 7 and 8.", "source": "Parent Playbook, Foundation Program"},
-   {"q": "Can she do strength work during the season?", "a": "Yes, but not more than one a week, and only if she is doing her recovery. The season is for stability, core, mobility and stretching. Off season and pre-season are when she builds strength.", "source": "Example Strength Schedule"},
-   {"q": "How many workouts a week?", "a": "Count her team sessions first. Four or more in a week: one workout. Two or three: two workouts, one Foundation and one Stability. Mobility two or three times, recovery two or three times, warm-up before every game. The week planner works this out when you tap her days.", "source": "Week One sheet, Example Schedule"},
+   {"q": "Can she do strength work during the season?", "a": "Yes. Count her team sessions: four or more in the week means one workout, strength or stability. Two or three means two, one Foundation and one Stability. Only if she is doing her recovery. Off season and pre-season are when she builds.", "source": "Example Strength Schedule"},
+   {"q": "How many workouts a week?", "a": "Count her team sessions first, not the season. Four or more practices, games and trainings in a week: one strength or stability workout. Two or three: two workouts, one Foundation and one Stability. A light week in season can take two. Mobility two or three times, recovery two or three times, warm-up before every game. The week planner works this out when you tap her days.", "source": "Week One sheet, Example Schedule"},
    {"q": "We don't have a BOSU.", "a": "A Dyna Disc does the job. The BOSU is harder, not required. Start with nothing but a mini band: the warm-up, mobility, stretching and MAT holds need no equipment.", "source": "Balance and Stability"},
    {"q": "She has a hard training session and a workout on the same day.", "a": "Don't. Move one. If two things must happen in one day, put mobility or stretching between them.", "source": "Parent: Recovery and Mobility"},
    {"q": "Is static stretching bad?", "a": "Holding a stretch for 20 to 30 seconds switches the muscle off and can make you tighter. Do the dynamic stretches in the program, then the MAT holds to switch the muscles back on.", "source": "Stretching, MAT Test"},
-   {"q": "She wears a knee brace. Can she do this?", "a": "needs Michelle", "source": ""},
-   {"q": "She is hypermobile (very flexible). Anything different?", "a": "needs Michelle", "source": ""},
-   {"q": "She is coming back from an injury.", "a": "needs Michelle", "source": ""}
+   {"q": "She wears a knee brace. Can she do this?", "a": "Yes, as long as she has no pain. The brace stays on. Pain is the signal to stop, not the brace.", "source": "Michelle"},
+   {"q": "She is hypermobile (very flexible). Anything different?", "a": "Skip the stretching. Her joints already have more range than they can control. Do mobility, the strength and stability workouts, and recovery with the roller, ball or massage gun instead.", "source": "Michelle"},
+   {"q": "She is coming back from an injury.", "a": "Recovery and mobility right away. Strength and stability once she can do them without pain. Pain during an exercise means stop that exercise, not push through.", "source": "Michelle"}
   ]
  }
 }

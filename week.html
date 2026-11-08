@@ -142,12 +142,12 @@ h1{font:800 clamp(28px,8vw,40px)/1.05 var(--display);margin:0}
 // Michelle's scheduling rules, in one place so they are easy to change.
 const RULES={
   season:{
-    workouts:1, workoutLabel:'1 workout a week: strength or stability. Swap a Stability exercise or two into the Foundation workout if you like.',
+    workouts:1, workoutLabel:'Count the team sessions: 4 or more means 1 workout, 2 or 3 means 2.',
     mobility:[2,3], recovery:[2,3],
     text:['Warm-up before every game. Before practice too if there is time.',
           'Mobility 2 to 3 times a week, 5 to 10 minutes, before practice on practice days.',
           'Recovery (stretch, MAT holds, foam roll) 2 to 3 times a week, 5 to 10 minutes, after practice or a game, or on an off day.',
-          'One strength or stability workout a week. Not the day before a game.',
+          'Workouts come from the team sessions: 4 or more in the week means 1, 2 or 3 means 2. Not the day before a game.',
           'Mobility and recovery are not workouts. They attach to a practice or a game.']},
   off:{
     workouts:2, workoutLabel:'2 workouts a week: one Foundation (strength) and one Stability & Balance.',
@@ -193,7 +193,7 @@ function buildPlan(){
   const games=kinds.map((k,i)=>k==='game'?i:-1).filter(i=>i>=0);
   const practices=kinds.map((k,i)=>k==='practice'?i:-1).filter(i=>i>=0);
   const offs=kinds.map((k,i)=>k?-1:i).filter(i=>i>=0);
-  let workouts=sessions>=RULES.heavyWeek?1:r.workouts;
+  let workouts=sessions>=RULES.heavyWeek?1:2;   // 4+ team sessions = 1 workout, 2 or 3 = 2, whatever the season
   const plan=DAYS.map(()=>[]);
   const notes=[];
   // Warm-up: every game day, practice days if time (off season: every practice too)
@@ -215,12 +215,13 @@ function buildPlan(){
   if(slots.length<workouts) slots=slots.concat(practices.filter(i=>!slots.includes(i)));
   // spread them out: first and middle of the available slots
   const chosen=workouts===1?[slots[0]]:[slots[0],slots[Math.floor(slots.length/2)]||slots[1]];
-  const ids=state.season==='off'?[nextWorkout('foundation',8),nextWorkout('stability',6)]:[nextWorkout('foundation',8)];
+  const ids=workouts===2?[nextWorkout('foundation',8),nextWorkout('stability',6)]:[nextWorkout('foundation',8)];
   chosen.filter(i=>i!==undefined).forEach((i,n)=>{
     const id=ids[n]||ids[0];
-    plan[i].push({k:'workout',t:'Workout',s:[kinds[i]?'add it after '+kinds[i]+', one hard session a day':'',state.season==='season'?'strength or stability, your pick':''].filter(Boolean).join(' · '),link:id,html:wlink(id)});
+    plan[i].push({k:'workout',t:'Workout',s:[kinds[i]?'add it after '+kinds[i]+', one hard session a day':'',workouts===1?'strength or stability, your pick':''].filter(Boolean).join(' · '),link:id,html:wlink(id)});
   });
   if(sessions>=RULES.heavyWeek) notes.push(`${sessions} team sessions this week, so just 1 workout. That is the rule, not a shortcut.`);
+  else if(sessions>0&&state.season==='season') notes.push(`Only ${sessions} team sessions this week, so there is room for 2 workouts.`);
   if(sessions===0) notes.push('No practices or games this week? Use the off-season plan and take at least one full rest day.');
   if(chosen.some(i=>kinds[i])) notes.push('No free day for the workout, so it sits after a practice. Never before a game.');
   // one full rest day
@@ -258,7 +259,7 @@ function render(){
   $('#inSeason').setAttribute('aria-pressed',state.season==='season');
   $('#offSeason').setAttribute('aria-pressed',state.season==='off');
   $('#seasonHint').textContent=state.season==='season'
-    ?'In season: practices and games fill the week, so the program attaches to them. One workout, mobility before practice, recovery after.'
+    ?'In season: practices and games fill the week, so the program attaches to them. Mobility before practice, recovery after. Workouts depend on how many team sessions she has.'
     :'Off season: two workouts a week, and mobility and recovery get their own days.';
   $('#days').innerHTML=DAYS.map((d,i)=>`<div class="dwrap"><button data-day="${i}" data-kind="${state.days[i]}"><b>${d}</b><small>${state.days[i]==='game'?'Game':state.days[i]==='practice'?'Practice':'off'}</small></button>${state.days[i]?`<button class="clear" data-clear="${i}" aria-label="Clear ${d}">×</button>`:''}</div>`).join('');
   const {plan,notes,workouts,sessions}=buildPlan();

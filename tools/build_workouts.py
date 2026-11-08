@@ -49,10 +49,10 @@ GROUPS = [
      "when": "Right after stretching, every time. Stretching relaxes the muscles; these turn them back on."},
     {"id": "stability", "name": "Stability & Balance", "files": [f"stability-{n}" for n in range(1, 7)],
      "intro": "Off-season: 2 a week. In season: 1 a week still helps. Master the Disc version before moving up to the BOSU.",
-     "when": "In season: 1 workout a week, this or a Foundation workout. Off season: 2 workouts a week, one Stability and one Foundation. Never the day before a game."},
+     "when": "Count the week's practices, games and trainings. 4 or more: 1 workout, this or a Foundation. 2 or 3: 2 workouts, one Stability and one Foundation. Never the day before a game."},
     {"id": "foundation", "name": "Foundation Strength", "files": [f"foundation-{n}" for n in range(1, 9)],
      "intro": "Off-season: 2 a week. In season: 1 a week. Swap in a Stability exercise or two any time.",
-     "when": "In season: 1 workout a week, this or a Stability workout. Off season: 2 workouts a week, one Foundation and one Stability. Never the day before a game. Work through the eight in order."},
+     "when": "Count the week's practices, games and trainings. 4 or more: 1 workout, this or a Stability. 2 or 3: 2 workouts, one Foundation and one Stability. Never the day before a game. Work through the eight in order."},
 ]
 TITLE_FIX = {"warmup": "Warm-Up", "mat": "MAT Holds"}
 YT = re.compile(r"youtu\.be/([A-Za-z0-9_-]{11})")
