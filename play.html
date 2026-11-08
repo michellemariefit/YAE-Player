@@ -98,7 +98,7 @@ h1{margin:0;font:800 clamp(24px,7vw,32px)/1.1 var(--display);display:flex;gap:10
 </style>
 <header class="top">
   <div class="where" id="where">Youth Athlete Edge</div>
-  <a id="listLink" href="index.html">List view</a>
+  <a id="listLink" href="index.html#all">List view</a>
 </header>
 <div class="dots" id="dots"></div>
 <main id="main"></main>
@@ -246,7 +246,7 @@ fetch('data/yae.json').then(r=>r.json()).then(d=>{
 // No workout in the address: show the list of groups and workouts, each a link into play mode.
 function renderPicker(gid){
   $('#where').innerHTML=`Youth Athlete Edge<small>Pick a workout</small>`;
-  $('#listLink').href='index.html';$('#dots').innerHTML='';
+  $('#listLink').href='index.html#all';$('#dots').innerHTML='';
   const groups=[...DATA.groups].sort((a,b)=>(a.id===gid?-1:0)-(b.id===gid?-1:0));
   $('#main').innerHTML=`<div class="picker"><h2>What are we doing today?</h2>
     <p style="margin:0;color:var(--muted)">Play walks you through one exercise at a time. Want the whole workout on one page? Tap List view, top right.</p>

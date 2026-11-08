@@ -353,7 +353,8 @@ document.addEventListener('click',e=>{
   }
 });
 // #foundation-1 in a lesson link shows only that workout. #foundation shows the eight Foundation workouts with a picker.
-// No hash shows everything.
+// #all shows everything. No hash at all means someone typed the bare address, so send them to the home page.
+if(!location.hash&&window.top===window.self)location.replace('start.html');
 async function readHash(){
   const d=await load();
   const h=decodeURIComponent(location.hash.replace(/^#/,'')).toLowerCase();
