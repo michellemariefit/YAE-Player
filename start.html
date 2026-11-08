@@ -10,8 +10,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Inter:wght@400;500;600;700&display=swap">
 <style>
-/* First-time page. One ten-minute session (five warm-up moves plus the mobility workout) so a new
-   athlete does something today instead of reading. Then the three ways to use the program. */
+/* Home page. Three big buttons for what people do on a given day, then the rest. */
 :root{--bg:#f3f7f9;--card:#fff;--ink:#1b2e4c;--muted:#5a6b7c;--line:#d6e1e8;--brand:#0e9a8f;--brand-soft:#dcf3f0;--accent:#b0295e;
   --display:"Bricolage Grotesque","Helvetica Neue",Arial,sans-serif;--body:"Inter","Helvetica Neue",Arial,sans-serif;--mono:"Inter","Helvetica Neue",Arial,sans-serif}
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--bg:#0f1b2e;--card:#1b2b45;--ink:#eef4f8;--muted:#a4b4c4;--line:#2c3f5c;--brand:#4fcfc4;--brand-soft:#17403c;--accent:#e8558a;color-scheme:dark}}
@@ -23,10 +22,10 @@ header{padding-top:14px;display:flex;flex-direction:column;gap:6px}
 .eyebrow{font:700 12px/1.2 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--brand)}
 h1{font:800 clamp(30px,9vw,44px)/1.02 var(--display);margin:0}
 .lead{margin:0;color:var(--muted)}
-.hero{background:var(--card);border:2px solid var(--brand);border-radius:22px;padding:18px;display:flex;flex-direction:column;gap:10px}
-.hero h2{margin:0;font:800 24px/1.1 var(--display)}
-.hero ol{margin:0;padding-left:22px;display:flex;flex-direction:column;gap:4px}
-.hero .t{font:700 14px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--brand)}
+.big{display:flex;flex-direction:column;gap:8px}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.go.brand{background:var(--brand);font-size:17px;padding:16px 10px}
+h2.also{margin:6px 0 -6px;font:800 13px/1.2 var(--body);letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
 .go{display:block;text-align:center;background:var(--accent);color:#fff;text-decoration:none;border-radius:16px;padding:18px;font:800 21px/1 var(--display)}
 .ways{display:flex;flex-direction:column;gap:8px}
 .way{display:grid;grid-template-columns:44px 1fr;gap:12px;align-items:center;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:12px 14px;text-decoration:none;color:inherit}
@@ -40,27 +39,27 @@ h1{font:800 clamp(30px,9vw,44px)/1.02 var(--display);margin:0}
 .install ol{margin:0;padding-left:20px;font-size:15px}
 </style>
 <div class="wrap">
-  <header><img src="icons/logo.png" alt="The Youth Athlete Edge" style="width:min(260px,70%);height:auto;margin-bottom:6px"><h1>Start here</h1>
-    <p class="lead">Don't read everything. Do this one session today. It takes about ten minutes and it is the exact thing you'll do before games all season.</p></header>
+  <header><img src="icons/logo.png" alt="The Youth Athlete Edge" style="width:min(260px,70%);height:auto;margin-bottom:6px"><h1>Your workouts</h1>
+    <p class="lead">Everything from the program is here. Pick a workout, or let the planner pick for you.</p></header>
 
-  <section class="hero">
-    <span class="t">Your first session · about 10 minutes</span>
-    <h2>Warm-up, then Mobility</h2>
-    <ol>
-      <li>Five warm-up moves. One set of 10 each. Just a mini band.</li>
-      <li>The Mobility workout. Five moves, two sets of 10 per side.</li>
-      <li>Drink water. You're done. Same thing next practice.</li>
-    </ol>
-    <a class="go" href="play.html#first">▶ Start the 10 minutes</a>
+  <section class="big">
+    <a class="go" href="play.html">▶ Today's workout</a>
+    <div class="two">
+      <a class="go brand" href="week.html">📅 Plan my week</a>
+      <a class="go brand" href="recovery.html">🧘 Recovery</a>
+    </div>
   </section>
 
+  <section class="card">
+    <h2>Two ways to see a workout</h2>
+    <p><b>Play</b> walks you through one exercise at a time and runs the timers for you. Best on a phone, mid-workout.<br><b>List</b> shows the whole workout on one page. Best for a quick look or an iPad on the floor.<br>Every workout has both. Switch any time.</p>
+  </section>
+
+  <h2 class="also">Also here</h2>
   <section class="ways">
-    <a class="way" href="play.html"><span class="ic">▶</span><span><b>Play mode</b><small>One exercise at a time, timers run themselves. Best on a phone.</small></span></a>
-    <a class="way" href="index.html"><span class="ic">☰</span><span><b>List view</b><small>See the whole workout on one screen. Tick sets as you go.</small></span></a>
+    <a class="way" href="index.html"><span class="ic">☰</span><span><b>List view</b><small>All the workouts, whole page each. Tick sets as you go.</small></span></a>
     <a class="way" href="print.html"><span class="ic">🖨</span><span><b>Print it</b><small>One page per workout, start and end photos, no ink wasted.</small></span></a>
-    <a class="way" href="week.html"><span class="ic">📅</span><span><b>Plan my week</b><small>Tap your practice and game days, the program fits around them.</small></span></a>
     <a class="way" href="lessons.html"><span class="ic">📝</span><span><b>Lesson notes</b><small>Every lesson video in a few bullets, plus the questions parents ask most.</small></span></a>
-    <a class="way" href="recovery.html"><span class="ic">🧘</span><span><b>Recovery</b><small>Stretch, MAT holds, then roll out what is tight. A checklist, not a video.</small></span></a>
     <a class="way" href="gear.html"><span class="ic">🎒</span><span><b>What you need</b><small>Mini band and floor space to start. The rest, when you're ready.</small></span></a>
   </section>
 

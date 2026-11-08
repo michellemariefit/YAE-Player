@@ -167,7 +167,7 @@ function finish(){
 }
 
 function render(){
-  $('#listLink').href=W.id==='first'?'start.html':`index.html#${W.id}`;
+  $('#listLink').href=`index.html#${W.id}`;
   const exSteps=steps.filter(s=>s.kind==='ex');
   const doneCount=steps.slice(0,Math.max(at,0)).filter(s=>s.kind==='ex').length;
   $('#dots').innerHTML=exSteps.map((s,i)=>`<i class="${i<doneCount?'done':i===doneCount&&at<steps.length?'now':''}"></i>`).join('');
@@ -177,16 +177,22 @@ function render(){
     const sw=store.get(key()+':swaps',{});
     $('#where').innerHTML=`${esc(G.name)}<small>${esc(W.name)}</small>`;
     m.innerHTML=`<div class="intro"><h2>${esc(W.name)}</h2>
-      <p>${W.id==='first'?'Five warm-up moves, then five mobility moves. About ten minutes. Tap Done after each one.':`${esc(W.setsLabel)} · ${esc(W.reps)} reps${W.restLabel?` · rest ${esc(W.restLabel)}`:''}. ${exSteps.length} exercises in total, counting every round. I'll tell you what's next and start the rest timer for you.`}</p>
+      <p>${`${esc(W.setsLabel)} · ${esc(W.reps)} reps${W.restLabel?` · rest ${esc(W.restLabel)}`:''}. ${exSteps.length} exercises in total, counting every round. I'll tell you what's next and start the rest timer for you.`}</p>
       ${defaults.length?`<label class="opt"><input type="checkbox" id="swapOpt" ${defaults.every(e=>sw[e.code])?'checked':''}><span><b>Add stability</b><br><small style="color:var(--muted)">Swaps ${defaults.map(e=>e.code).join(' and ')} for ${defaults.map(e=>e.swap.name).join(' and ')}</small></span></label>`:''}
-      <button class="go" id="start">Start</button>${W.id==='first'?'':'<a class="change" href="play.html">Pick a different workout</a>'}</div>`;
+      <button class="go" id="start">Start</button><a class="change" href="play.html">Pick a different workout</a></div>`;
     return;
   }
   if(at>=steps.length){
     $('#where').innerHTML=`${esc(G.name)}<small>${esc(W.name)}</small>`;
     const n=store.get('yae:log',[]).filter(x=>{const d=new Date();d.setHours(0,0,0,0);d.setDate(d.getDate()-((d.getDay()+6)%7));return x.t>=d.getTime()}).length;
-    m.innerHTML=`<div class="donecard"><h2>${W.id==='first'?'That was it.':esc(W.name)+' done'}</h2><p>${W.id==='first'?'Same thing before your next practice. That is the whole habit.':'Nice work. Drink some water and stretch it out.'}</p><p><b>${n}</b> workout${n===1?'':'s'} this week.</p>
-      <a class="go brand" style="display:block;text-decoration:none;text-align:center" href="week.html">See my week</a><a class="go" style="display:block;text-decoration:none;text-align:center;background:var(--card);color:var(--ink);border:1px solid var(--line)" href="index.html#${esc(W.id)}">Back to the list</a></div>`;
+    const NEXT={warmup:['Game today? You are ready. Practice day? Add Mobility.','play.html#mobility','▶ Mobility'],
+      mobility:['Done for today. Stretch and MAT Holds in a day or two.','recovery.html','Recovery'],
+      stretching:['Now the MAT Holds, so the muscles wake back up.','play.html#mat','▶ MAT Holds'],
+      mat:['Roll out anything tight and you are done.','recovery.html','Roll out'],
+      stability:['Nice work. Stretch tonight if you can.','play.html#stretching','▶ Stretching'],
+      foundation:['Nice work. Stretch tonight if you can.','play.html#stretching','▶ Stretching']}[G.id]||['Nice work. Drink some water.','week.html','See my week'];
+    m.innerHTML=`<div class="donecard"><h2>${esc(W.name)} done</h2><p>${NEXT[0]}</p><p><b>${n}</b> workout${n===1?'':'s'} this week.</p>
+      <a class="go" style="display:block;text-decoration:none;text-align:center" href="${NEXT[1]}">${NEXT[2]}</a><a class="go brand" style="display:block;text-decoration:none;text-align:center" href="week.html">See my week</a><a class="go" style="display:block;text-decoration:none;text-align:center;background:var(--card);color:var(--ink);border:1px solid var(--line)" href="start.html">Home</a></div>`;
     return;
   }
   const s=steps[at];
@@ -233,13 +239,7 @@ document.addEventListener('visibilitychange',()=>{if(!document.hidden&&(rest||ho
 
 fetch('data/yae.json').then(r=>r.json()).then(d=>{
   DATA=d;const id=decodeURIComponent(location.hash.replace(/^#/,'')).toLowerCase();
-  if(id==='first'){ // Start Here session: five warm-up moves, then the mobility workout, one round
-    const wu=d.groups.find(g=>g.id==='warmup').workouts[0], mo=d.groups.find(g=>g.id==='mobility').workouts[0];
-    const picks=wu.blocks.flatMap(b=>b.exercises).filter(e=>/hip flexion|abduction|backkick|band walk|single leg reach/i.test(e.name)).slice(0,5);
-    W={id:'first',name:'Your first session',sets:1,setsLabel:'1 set',reps:'10',restSeconds:0,restLabel:'',how:'',circuit:false,
-       blocks:[{label:'Warm-up',exercises:picks.map(e=>({...e,note:'10 reps'}))},{label:'Mobility',exercises:mo.blocks.flatMap(b=>b.exercises).map(e=>({...e,note:'10 each side, do it twice'}))}]};
-    G={id:'start',name:'Start here'};
-  } else {[W,G]=workoutOf(id);if(!W){renderPicker(id);return}}
+  [W,G]=workoutOf(id);if(!W){renderPicker(id);return}
   buildSteps();render();
 });
 
@@ -249,7 +249,7 @@ function renderPicker(gid){
   $('#listLink').href='index.html';$('#dots').innerHTML='';
   const groups=[...DATA.groups].sort((a,b)=>(a.id===gid?-1:0)-(b.id===gid?-1:0));
   $('#main').innerHTML=`<div class="picker"><h2>What are we doing today?</h2>
-    <div class="grp"><h3>Your first session</h3><p>Ten minutes. Five warm-up moves, then mobility. Start here if this is new.</p><div class="ws"><a class="one" href="play.html#first">▶ Start the 10 minutes</a></div></div>
+    <p style="margin:0;color:var(--muted)">Play walks you through one exercise at a time. Want the whole workout on one page? Tap List view, top right.</p>
     ${groups.map(g=>`<div class="grp"><h3>${esc(g.name)}</h3>${g.when?`<p>${esc(g.when)}</p>`:''}<div class="ws">${g.workouts.map(w=>`<a class="${g.workouts.length===1?'one':''}" href="play.html#${esc(w.id)}">▶ ${esc(g.workouts.length===1?'Play':w.name.replace(/ Workout/i,''))}</a>`).join('')}</div></div>`).join('')}
   </div>`;
 }
