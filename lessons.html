@@ -1,0 +1,89 @@
+<!doctype html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Lesson Notes · Youth Athlete Edge</title>
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#1b2e4c">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<link rel="apple-touch-icon" href="icons/icon-180.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Inter:wght@400;500;600;700&display=swap">
+<style>
+/* The one-page notes for each lesson video, plus the FAQ. Reads data/lessons.json. Prints ink-light. */
+:root{--bg:#f3f7f9;--card:#fff;--ink:#1b2e4c;--muted:#5a6b7c;--line:#d6e1e8;--brand:#0e9a8f;--brand-soft:#dcf3f0;--accent:#b0295e;--accent-soft:#f7e3ea;
+  --display:"Bricolage Grotesque","Helvetica Neue",Arial,sans-serif;--body:"Inter","Helvetica Neue",Arial,sans-serif}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--bg:#0f1b2e;--card:#1b2b45;--ink:#eef4f8;--muted:#a4b4c4;--line:#2c3f5c;--brand:#4fcfc4;--brand-soft:#17403c;--accent:#e8558a;--accent-soft:#3a1a2a;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0f1b2e;--card:#1b2b45;--ink:#eef4f8;--muted:#a4b4c4;--line:#2c3f5c;--brand:#4fcfc4;--brand-soft:#17403c;--accent:#e8558a;--accent-soft:#3a1a2a;color-scheme:dark}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.5 var(--body);padding:0 16px 60px}
+.wrap{max-width:620px;margin:0 auto;display:flex;flex-direction:column;gap:14px}
+header{padding-top:14px;display:flex;flex-direction:column;gap:6px}
+.eyebrow{font:700 12px/1.2 var(--body);letter-spacing:.1em;text-transform:uppercase;color:var(--brand)}
+h1{font:800 clamp(28px,8vw,40px)/1.05 var(--display);margin:0}
+.lead{margin:0;color:var(--muted)}
+a.back{font:700 13px/1 var(--body);letter-spacing:.06em;text-transform:uppercase;color:var(--brand);text-decoration:none}
+.tabs{display:flex;gap:6px;flex-wrap:wrap}
+.tabs button{border:1px solid var(--line);background:var(--card);border-radius:999px;padding:8px 12px;font:700 13px/1 var(--body);letter-spacing:.04em;text-transform:uppercase;cursor:pointer}
+.tabs button[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+h2.mod{margin:10px 0 0;font:800 14px/1.2 var(--body);letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:14px 16px;display:flex;flex-direction:column;gap:8px;break-inside:avoid}
+.card h3{margin:0;font:800 19px/1.2 var(--display);display:flex;justify-content:space-between;gap:10px;align-items:baseline}
+.card h3 small{font:600 12px/1 var(--body);color:var(--muted);white-space:nowrap}
+.who{display:inline-block;font:700 11px/1 var(--body);letter-spacing:.08em;text-transform:uppercase;border-radius:6px;padding:4px 6px;background:var(--brand-soft);color:var(--brand)}
+.who.parent{background:var(--accent-soft);color:var(--accent)}
+.card ul{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:5px}
+.card .do{border-top:1px dashed var(--line);padding-top:8px}
+.card .do b{display:block;font:700 12px/1 var(--body);letter-spacing:.08em;text-transform:uppercase;color:var(--brand);margin-bottom:6px}
+.card .do label{display:flex;gap:10px;align-items:flex-start;margin-bottom:4px}
+.card .do input{width:20px;height:20px;margin:1px 0 0;accent-color:var(--brand)}
+.faq .q{font:700 16px/1.3 var(--display);margin:0}
+.faq .a{margin:4px 0 0;color:var(--ink)}
+.faq .src{font-size:12px;color:var(--muted)}
+.faq .todo{color:var(--accent);font-style:italic}
+.toolrow{display:flex;gap:8px;flex-wrap:wrap}
+.toolrow button{font:700 13px/1 var(--body);letter-spacing:.06em;text-transform:uppercase;color:var(--brand);border:1px solid var(--line);background:var(--card);border-radius:999px;padding:8px 12px;cursor:pointer}
+@media print{
+  @page{size:letter;margin:.5in}
+  body{background:#fff;color:#000;padding:0;font-size:11.5px}
+  .tabs,.toolrow,a.back,.lead{display:none}
+  .wrap{max-width:none;gap:8px}.card{border-color:#999;border-radius:6px;background:#fff;padding:8px 10px}
+  .who,.who.parent{background:#fff;border:1px solid #000;color:#000}
+  h2.mod{break-after:avoid}
+}
+</style>
+<div class="wrap">
+  <header><a class="back" href="start.html">← Start here</a><span class="eyebrow">Youth Athlete Edge</span><h1>Lesson notes</h1>
+    <p class="lead">Can't watch right now? Every lesson video, boiled down to what it says and what to do about it. Tick the "do" items as you go.</p>
+    <div class="tabs" id="tabs"></div>
+    <div class="toolrow"><button id="printBtn">🖨 Print these notes</button></div></header>
+  <div id="body"></div>
+</div>
+<script>
+const $=s=>document.querySelector(s);
+const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const store={get(k,d){try{const v=localStorage.getItem(k);return v?JSON.parse(v):d}catch(e){return d}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}};
+let D=null, tab=store.get('yae:lessons:tab','all');
+function render(){
+  const tabs=[['all','All'],['parent','Parent'],['athlete','Athlete'],['faq','Questions']];
+  $('#tabs').innerHTML=tabs.map(([k,l])=>`<button data-tab="${k}" aria-pressed="${tab===k}">${l}</button>`).join('');
+  const done=store.get('yae:lessons:done',{});
+  if(tab==='faq'){
+    $('#body').innerHTML=`<div class="card faq" style="gap:14px">${D.faq.items.map(f=>`<div><p class="q">${esc(f.q)}</p>${f.a==='needs Michelle'?`<p class="a todo">Answer coming.</p>`:`<p class="a">${esc(f.a)}</p><div class="src">From: ${esc(f.source)}</div>`}</div>`).join('')}</div>`;
+    return;
+  }
+  $('#body').innerHTML=D.modules.map(m=>{
+    const ls=m.lessons.filter(l=>tab==='all'||l.for===tab||l.for==='both');
+    if(!ls.length) return '';
+    return `<h2 class="mod">${esc(m.name)}</h2>`+ls.map(l=>`<section class="card"><h3><span>${esc(l.title)}</span><small>${l.watch} min</small></h3>
+      <span class="who ${l.for}">${l.for==='both'?'parent and athlete':l.for}</span>
+      <ul>${l.points.map(p=>`<li>${esc(p)}</li>`).join('')}</ul>
+      ${l.do.length?`<div class="do"><b>Do</b>${l.do.map((d,i)=>{const id=l.id+':'+i;return `<label><input type="checkbox" data-done="${id}" ${done[id]?'checked':''}><span>${esc(d)}</span></label>`}).join('')}</div>`:''}</section>`).join('');
+  }).join('');
+}
+document.addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;
+  if(b.dataset.tab){tab=b.dataset.tab;store.set('yae:lessons:tab',tab);render()}
+  if(b.id==='printBtn'){window.print()}});
+document.addEventListener('change',e=>{const c=e.target.closest('input[data-done]');if(!c)return;const d=store.get('yae:lessons:done',{});d[c.dataset.done]=c.checked;store.set('yae:lessons:done',d)});
+fetch('data/lessons.json').then(r=>r.json()).then(d=>{D=d;render()});
+if('serviceWorker' in navigator&&location.protocol==='https:')navigator.serviceWorker.register('sw.js').catch(()=>{});
+</script>
