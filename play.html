@@ -179,6 +179,7 @@ function render(){
     m.innerHTML=`<div class="intro"><h2>${esc(W.name)}</h2>
       <p>${`${esc(W.setsLabel)} · ${esc(W.reps)} reps${W.restLabel?` · rest ${esc(W.restLabel)}`:''}. ${exSteps.length} exercises in total, counting every round. I'll tell you what's next and start the rest timer for you.`}</p>
       ${defaults.length?`<label class="opt"><input type="checkbox" id="swapOpt" ${defaults.every(e=>sw[e.code])?'checked':''}><span><b>Add stability</b><br><small style="color:var(--muted)">Swaps ${defaults.map(e=>e.code).join(' and ')} for ${defaults.map(e=>e.swap.name).join(' and ')}</small></span></label>`:''}
+      ${G.video?(openVid===G.video&&EMBED_OK?`<div class="embed"><iframe src="https://www.youtube-nocookie.com/embed/${esc(G.video)}?rel=0&modestbranding=1&playsinline=1&autoplay=1" title="${esc(G.name)} explained" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe></div><button class="change" data-embed="${esc(G.video)}" style="background:none;border:0;text-align:left;padding:0;cursor:pointer">✕ Close video</button>`:EMBED_OK?`<button class="change" data-embed="${esc(G.video)}" style="background:none;border:0;text-align:left;padding:0;cursor:pointer">▶ Watch Michelle explain this</button>`:`<a class="change" href="https://www.youtube.com/watch?v=${esc(G.video)}" target="_blank" rel="noopener">▶ Watch Michelle explain this</a>`):''}
       <button class="go" id="start">Start</button><a class="change" href="play.html">Pick a different workout</a></div>`;
     return;
   }

@@ -55,6 +55,8 @@ GROUPS = [
      "when": "Count the week's practices, games and trainings. 4 or more: 1 workout, this or a Stability. 2 or 3: 2 workouts, one Foundation and one Stability. Never the day before a game. Work through the eight in order."},
 ]
 TITLE_FIX = {"warmup": "Warm-Up", "mat": "MAT Holds"}
+# Michelle's lesson video for each group, unlisted on YouTube. Shown as "Watch Michelle explain this".
+GROUP_VIDEOS = {"warmup": "", "mobility": "", "stretching": "2QCBnW1Jx8E", "mat": "", "stability": "", "foundation": ""}
 YT = re.compile(r"youtu\.be/([A-Za-z0-9_-]{11})")
 
 
@@ -229,7 +231,7 @@ def main():
                             existing[e["video"]] = (e["startPhoto"], e["endPhoto"])
     n = 0
     for g in GROUPS:
-        group = {"id": g["id"], "name": g["name"], "intro": g["intro"], "when": g["when"], "workouts": []}
+        group = {"id": g["id"], "name": g["name"], "intro": g["intro"], "when": g["when"], "video": GROUP_VIDEOS.get(g["id"], ""), "workouts": []}
         for f in g["files"]:
             w = build_workout(f, g)
             for b in w["blocks"]:

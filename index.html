@@ -99,6 +99,7 @@ h1{font:800 clamp(28px,8vw,40px)/1.05 var(--display);margin:0;text-wrap:balance;
 .demo.alt{color:var(--brand)}
 .embed{grid-column:1/-1;aspect-ratio:16/9;max-width:100%;border-radius:12px;overflow:hidden;background:#000}
 .embed iframe{width:100%;height:100%;border:0}
+.intro-embed{margin-top:-2px}
 
 .finish{border:0;background:var(--accent);color:var(--accent-ink);border-radius:12px;padding:18px;font:700 19px/1 var(--mono);letter-spacing:.12em;text-transform:uppercase}
 .finish:disabled{opacity:.45;cursor:default}
@@ -205,7 +206,7 @@ function howtoHTML(w){
     :`<li>Do the exercises in order. Tap <b>Set 1</b> when you finish a set.</li>
       <li>Tap <b>Watch demo</b> if you forget how one goes.</li>
       <li>Tap a set again to untick it. When every set is ticked, press Finish.</li>`;
-  return `<div class="howto"><h2>How this works</h2><ol>${steps}</ol><p style="margin:0;font-size:15px;color:var(--muted)">Rather be walked through it? Tap <b>Play it step by step</b> above. Need paper? Tap <b>Print</b>.</p><button class="got" data-howto="hide">Got it</button></div>`;
+  return `<div class="howto"><h2>How this works</h2><ol>${steps}</ol><p style="margin:0;font-size:15px;color:var(--muted)">Rather be walked through it? Tap <b>Play it step by step</b> just below. Need paper? Tap <b>Print</b>.</p><button class="got" data-howto="hide">Got it</button></div>`;
 }
 function holdSeconds(e,w){
   const m=(e.note||'').match(/(\d+)(?:-(\d+))?[\s-]*(?:second|sec\b)/i)||(w.how||'').match(/hold each rep for (\d+)\s*second/i);
@@ -231,7 +232,8 @@ async function render(){
 
   const gear=gearFor(w);
   const swaps=store.get(key()+':swaps',{});
-  $('#intro').innerHTML=`<div class="when"><b>When to do this</b>${esc(g.when||'')}</div><div class="plan"><span class="chip hot">${esc(w.setsLabel)}</span>${w.reps?`<span class="chip hot">${esc(w.reps)} reps</span>`:''}${w.restLabel?`<span class="chip hot">Rest ${esc(w.restLabel)}</span>`:''}</div>
+  const gv=g.video&&EMBED_OK?(state.openVid.intro===g.video?`<button class="demo" data-embed="${esc(g.video)}" data-code="intro">✕ Close video</button><div class="embed intro-embed"><iframe src="https://www.youtube-nocookie.com/embed/${esc(g.video)}?rel=0&modestbranding=1&playsinline=1&autoplay=1" title="${esc(g.name)} explained" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe></div>`:`<button class="demo" data-embed="${esc(g.video)}" data-code="intro">▶ Watch Michelle explain this</button>`):(g.video?`<a class="demo" href="https://www.youtube.com/watch?v=${esc(g.video)}" target="_blank" rel="noopener">▶ Watch Michelle explain this</a>`:'');
+  $('#intro').innerHTML=`<div class="when"><b>When to do this</b>${esc(g.when||'')}</div>${gv}<div class="plan"><span class="chip hot">${esc(w.setsLabel)}</span>${w.reps?`<span class="chip hot">${esc(w.reps)} reps</span>`:''}${w.restLabel?`<span class="chip hot">Rest ${esc(w.restLabel)}</span>`:''}</div>
     <p><b>How:</b> ${esc(w.how)}</p>${w.when?`<p><b>When:</b> ${esc(w.when)}</p>`:''}${w.tip?`<p><b>Make it yours:</b> ${esc(w.tip)}</p>`:''}
     ${gear.length?`<p class="gear"><b>You need:</b> ${esc(gear.join(', '))}</p>`:''}
     <div class="toolrow">${(()=>{const d=w.blocks.flatMap(b=>b.exercises).filter(e=>e.swap&&e.swap.default);if(!d.length)return '';const on=d.every(e=>swaps[e.code]);return `<button class="link" data-swapall="${on?'off':'on'}">⇄ ${on?'Take the stability swaps out':`Add stability (swaps ${d.length})`}</button>`})()}<a href="play.html#${esc(w.id)}" class="play">▶ Play it step by step</a><a href="print.html#${esc(w.id)}" target="_blank" rel="noopener">🖨 Print this workout</a></div>`;
