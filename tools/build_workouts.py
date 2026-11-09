@@ -56,7 +56,7 @@ GROUPS = [
 ]
 TITLE_FIX = {"warmup": "Warm-Up", "mat": "MAT Holds"}
 # Michelle's lesson video for each group, unlisted on YouTube. Shown as "Watch Michelle explain this".
-GROUP_VIDEOS = {"warmup": "", "mobility": "", "stretching": "2QCBnW1Jx8E", "mat": "", "stability": "", "foundation": ""}
+GROUP_VIDEOS = {"warmup": "", "mobility": "JA0EUWuhwf4", "stretching": "2QCBnW1Jx8E", "mat": "S87CAiGbUUI", "stability": "", "foundation": ""}
 YT = re.compile(r"youtu\.be/([A-Za-z0-9_-]{11})")
 
 
