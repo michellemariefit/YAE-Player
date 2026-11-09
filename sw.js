@@ -1,6 +1,6 @@
 // Offline cache: pages, data and photos are kept after the first visit, so the player works
 // at a field with one bar of signal. Bump VERSION when files change so phones refresh.
-const VERSION = 'yae-v33';
+const VERSION = 'yae-v34';
 const CORE = ['./', './index.html', './play.html', './week.html', './print.html', './start.html', './gear.html', './recovery.html', './lessons.html', './install.html', './data/lessons.json', './data/yae.json', './manifest.json'];
 self.addEventListener('install', e => { e.waitUntil(caches.open(VERSION).then(c => Promise.all(CORE.map(u => fetch(u, { cache: 'no-cache' }).then(r => c.put(u, r))))).then(() => self.skipWaiting())); });
 self.addEventListener('activate', e => { e.waitUntil(caches.keys().then(ks => Promise.all(ks.filter(k => k !== VERSION).map(k => caches.delete(k)))).then(() => self.clients.claim())); });
