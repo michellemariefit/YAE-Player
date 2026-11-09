@@ -104,8 +104,8 @@ const HURT=[
   ['ice','Ice or velcro ice packs','Anything sore or swollen after a game. 15 minutes on, then off.'],
   ['redlight','Red light','For an injury, a sore spot or inflammation. 10 to 15 minutes on the area. Skip it when nothing hurts.'],
 ];
-// The how-to videos live in the GHL course. Fill in the lesson links once Michelle sends the course address.
-const VIDS=[['Foam roller',''],['Hand roller',''],['Massage gun',''],['Ball (deep release)','']];
+// Unlisted YouTube links from Michelle. An empty link shows as a grey placeholder until she sends it.
+const VIDS=[['Myofascial release: start here','https://youtu.be/8rkGMjDVxbU'],['Foam roller',''],['Hand roller',''],['Massage gun',''],['Ball (deep release)','']];
 const $=s=>document.querySelector(s);
 const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 const store={get(k,d){try{const v=localStorage.getItem(k);return v?JSON.parse(v):d}catch(e){return d}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}};
